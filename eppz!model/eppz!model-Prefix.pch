@@ -8,8 +8,4 @@
 
     #import <Foundation/Foundation.h>
 
-    // Common.
-    #import "EPPZLog.h"
-    #import "NSObject+EPPZModel.h"
-
 #endif

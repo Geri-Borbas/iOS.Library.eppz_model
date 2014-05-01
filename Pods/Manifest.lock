@@ -1,0 +1,10 @@
+PODS:
+  - eppz!swizzler (0.1.1)
+
+DEPENDENCIES:
+  - eppz!swizzler (~> 0.1.1)
+
+SPEC CHECKSUMS:
+  eppz!swizzler: dbc8bd7eea2bef3064f498a507a9860f4e027422
+
+COCOAPODS: 0.32.1
