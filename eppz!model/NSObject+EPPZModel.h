@@ -27,10 +27,13 @@ static NSString *const __unknownTypeEncodingFormat = @"type encoding `%@`";
 +(instancetype)instance;
 
 
-#pragma mark - Property inspection
+#pragma mark - Class inspection
 
 /*! Alias for `NSStringFromClass(self.class)`. */
 -(NSString*)className;
+
+
+#pragma mark - Property inspection
 
 /*! Returns the type name of the property called `propertyName`. */
 -(NSString*)typeOfPropertyNamed:(NSString*) propertyName;

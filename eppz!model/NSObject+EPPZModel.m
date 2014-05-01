@@ -45,7 +45,6 @@
     // Parse property attributes.
     NSString *propertyAttributes = [NSString stringWithCString:propertyAttributesCString encoding:NSUTF8StringEncoding];
     NSArray *splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@","];
-    NSLog(@"%@", splitPropertyAttributes);
     if (splitPropertyAttributes.count > 0)
     {
         // From Objective-C Runtime Programming Guide.
@@ -65,6 +64,7 @@
     // From Objective-C Runtime Programming Guide.
     // xcdoc://ios//library/prerelease/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
     NSDictionary *typeNamesForTypeEncodings = @{
+                                                
                                                 @"Tc" : @"char",
                                                 @"Ti" : @"int",
                                                 @"Ts" : @"short",
@@ -83,6 +83,26 @@
                                                 @"T@" : @"id",
                                                 @"T#" : @"Class",
                                                 @"T:" : @"SEL",
+                                                
+                                                @"T^c" : @"char*",
+                                                @"T^i" : @"int*",
+                                                @"T^s" : @"short*",
+                                                @"T^l" : @"long*",
+                                                @"T^q" : @"long long*",
+                                                @"T^C" : @"unsigned char*",
+                                                @"T^I" : @"unsigned int*",
+                                                @"T^S" : @"unsigned short*",
+                                                @"T^L" : @"unsigned long*",
+                                                @"T^Q" : @"unsigned long long*",
+                                                @"T^f" : @"float*",
+                                                @"T^d" : @"double*",
+                                                @"T^v" : @"void*",
+                                                @"T^*" : @"char**",
+                                                
+                                                @"T@" : @"id",
+                                                @"T#" : @"Class",
+                                                @"T:" : @"SEL"
+                                                
                                                 };
     
     // Recognized format.
@@ -91,9 +111,22 @@
     
     // Struct property.
     if ([typeEncoding hasPrefix:@"T{"])
-    { return @"struct"; }
+    {
+        // Try to get struct name.
+        NSCharacterSet *delimiters = [NSCharacterSet characterSetWithCharactersInString:@"{="];
+        NSArray *components = [typeEncoding componentsSeparatedByCharactersInSet:delimiters];
+        NSString *structName;
+        if (components.count > 1)
+        { structName = components[1]; }
+        
+        // Falls back to `struct` when unknown name encountered.
+        if ([structName isEqualToString:@"?"]) structName = @"struct";
+        
+        return structName;
+    }
     
-    return FORMAT(__unknownTypeEncodingFormat, typeEncoding);
+    // Falls back to raw encoding if none of the above.
+    return typeEncoding;
 }
 
 -(Class)classOfPropertyNamed:(NSString*) propertyName

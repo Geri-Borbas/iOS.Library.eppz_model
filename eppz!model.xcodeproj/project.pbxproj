@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		AEABF7261912A647006E9041 /* EPPZLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7251912A647006E9041 /* EPPZLog.m */; };
-		AEABF7291912AA99006E9041 /* NSObject+EPPZModel_tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7281912AA99006E9041 /* NSObject+EPPZModel_tests.m */; };
+		AEABF7291912AA99006E9041 /* PropertyInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */; };
+		AEABF72B1912AAD0006E9041 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEABF72A1912AAD0006E9041 /* UIKit.framework */; };
+		AEABF72D1912AAD8006E9041 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEABF72C1912AAD8006E9041 /* CoreGraphics.framework */; };
 		AEAE03851912A0F50055FC20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03841912A0F50055FC20 /* Foundation.framework */; };
 		AEAE03931912A0F50055FC20 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03921912A0F50055FC20 /* XCTest.framework */; };
 		AEAE03941912A0F50055FC20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03841912A0F50055FC20 /* Foundation.framework */; };
-		AEAE03961912A0F50055FC20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03951912A0F50055FC20 /* UIKit.framework */; };
 		AEAE03991912A0F50055FC20 /* libeppz!model.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03811912A0F50055FC20 /* libeppz!model.a */; };
 		AEAE039F1912A0F50055FC20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEAE039D1912A0F50055FC20 /* InfoPlist.strings */; };
-		AEAE03A11912A0F50055FC20 /* eppz_modelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAE03A01912A0F50055FC20 /* eppz_modelTests.m */; };
 		AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel.m */; };
 /* End PBXBuildFile section */
 
@@ -44,17 +44,17 @@
 /* Begin PBXFileReference section */
 		AEABF7241912A647006E9041 /* EPPZLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZLog.h; sourceTree = "<group>"; };
 		AEABF7251912A647006E9041 /* EPPZLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZLog.m; sourceTree = "<group>"; };
-		AEABF7271912AA99006E9041 /* NSObject+EPPZModel_tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_tests.h"; sourceTree = "<group>"; };
-		AEABF7281912AA99006E9041 /* NSObject+EPPZModel_tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_tests.m"; sourceTree = "<group>"; };
+		AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInspectionTests.m; sourceTree = "<group>"; };
+		AEABF72A1912AAD0006E9041 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AEABF72C1912AAD8006E9041 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AEABF72E1912AE92006E9041 /* EPPZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPPZModel.h; sourceTree = "<group>"; };
 		AEAE03811912A0F50055FC20 /* libeppz!model.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libeppz!model.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEAE03841912A0F50055FC20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AEAE03881912A0F50055FC20 /* eppz!model-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eppz!model-Prefix.pch"; sourceTree = "<group>"; };
 		AEAE03911912A0F50055FC20 /* eppz!modelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eppz!modelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEAE03921912A0F50055FC20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		AEAE03951912A0F50055FC20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		AEAE039C1912A0F50055FC20 /* eppz!modelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "eppz!modelTests-Info.plist"; sourceTree = "<group>"; };
 		AEAE039E1912A0F50055FC20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AEAE03A01912A0F50055FC20 /* eppz_modelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = eppz_modelTests.m; sourceTree = "<group>"; };
 		AEAE03AD1912A16F0055FC20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		AEAE03AE1912A1790055FC20 /* VERSIONS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSIONS.md; sourceTree = "<group>"; };
 		AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel.h"; sourceTree = "<group>"; };
@@ -74,8 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEABF72D1912AAD8006E9041 /* CoreGraphics.framework in Frameworks */,
+				AEABF72B1912AAD0006E9041 /* UIKit.framework in Frameworks */,
 				AEAE03931912A0F50055FC20 /* XCTest.framework in Frameworks */,
-				AEAE03961912A0F50055FC20 /* UIKit.framework in Frameworks */,
 				AEAE03991912A0F50055FC20 /* libeppz!model.a in Frameworks */,
 				AEAE03941912A0F50055FC20 /* Foundation.framework in Frameworks */,
 			);
@@ -108,9 +109,10 @@
 		AEAE03831912A0F50055FC20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEABF72C1912AAD8006E9041 /* CoreGraphics.framework */,
+				AEABF72A1912AAD0006E9041 /* UIKit.framework */,
 				AEAE03841912A0F50055FC20 /* Foundation.framework */,
 				AEAE03921912A0F50055FC20 /* XCTest.framework */,
-				AEAE03951912A0F50055FC20 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,6 +120,7 @@
 		AEAE03861912A0F50055FC20 /* eppz!model */ = {
 			isa = PBXGroup;
 			children = (
+				AEABF72E1912AE92006E9041 /* EPPZModel.h */,
 				AEABF7241912A647006E9041 /* EPPZLog.h */,
 				AEABF7251912A647006E9041 /* EPPZLog.m */,
 				AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel.h */,
@@ -138,9 +141,7 @@
 		AEAE039A1912A0F50055FC20 /* eppz!modelTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEAE03A01912A0F50055FC20 /* eppz_modelTests.m */,
-				AEABF7271912AA99006E9041 /* NSObject+EPPZModel_tests.h */,
-				AEABF7281912AA99006E9041 /* NSObject+EPPZModel_tests.m */,
+				AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */,
 				AEAE039B1912A0F50055FC20 /* Supporting Files */,
 			);
 			path = "eppz!modelTests";
@@ -245,8 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEABF7291912AA99006E9041 /* NSObject+EPPZModel_tests.m in Sources */,
-				AEAE03A11912A0F50055FC20 /* eppz_modelTests.m in Sources */,
+				AEABF7291912AA99006E9041 /* PropertyInspectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +379,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "eppz!modelTests/eppz!modelTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -395,6 +401,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eppz!model/eppz!model-Prefix.pch";
 				INFOPLIST_FILE = "eppz!modelTests/eppz!modelTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
