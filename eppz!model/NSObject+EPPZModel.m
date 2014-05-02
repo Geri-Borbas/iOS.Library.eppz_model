@@ -16,12 +16,12 @@
 
 
 @interface NSObject (EPPZModel_private)
-@property (nonatomic, strong) NSArray *propertyNameList_;
+@property (nonatomic, strong) NSArray *propertyNames_;
 @end
 
 
 @implementation NSObject (EPPZModel_private)
-@dynamic propertyNameList_;
+@dynamic propertyNames_;
 @end
 
 
@@ -32,7 +32,7 @@
 
 +(void)load
 {
-    [EPPZSwizzler synthesizePropertyNamed:@"propertyNameList_"
+    [EPPZSwizzler synthesizePropertyNamed:@"propertyNames_"
                                    ofKind:[NSArray class]
                                  forClass:[NSObject class]
                                withPolicy:retain];
@@ -44,45 +44,52 @@
 
 #pragma mark - Class inspection
 
++(NSString*)className
+{ return NSStringFromClass(self); }
+
 -(NSString*)className
 { return NSStringFromClass(self.class); }
 
--(NSArray*)propertyNameList
+-(NSArray*)propertyNames
 {
     // Lazy initialize.
-    if (self.propertyNameList_ == nil)
-    { self.propertyNameList_ = [self.class propertyNameListIncludingSuperclassProperties]; }
-    return self.propertyNameList_;
+    if (self.propertyNames_ == nil)
+    { self.propertyNames_ = [self.class propertyNamesIncludingSuperclassProperties]; }
+    return self.propertyNames_;
 }
 
--(void)updatePropertyNameList
+-(void)updatePropertyNames
 {
-    self.propertyNameList_ = [self.class propertyNameListIncludingSuperclassProperties];
+    self.propertyNames_ = [self.class propertyNamesIncludingSuperclassProperties];
 }
 
-+(NSArray*)propertyNameListIncludingSuperclassProperties
++(NSArray*)propertyNamesIncludingSuperclassProperties
 {
+    // Only collects `<EPPZModel>` properties.
+    if ([self conformsToProtocol:@protocol(EPPZModel)] == NO)
+    { return @[]; }
+    
     // Collection.
-    NSMutableArray *collectedPropertyNames = [NSMutableArray new];
+    NSMutableArray *propertyNames = [NSMutableArray new];
     
     // Iterative up the inheritance chain.
-    NSArray *superClassPropertyNames = [[self superclass] propertyNameListIncludingSuperclassProperties];
+    NSArray *superClassPropertyNames = [[self superclass] propertyNamesIncludingSuperclassProperties];
 
     // Collect only properties that have not collected so far.
     [superClassPropertyNames enumerateObjectsUsingBlock:^(NSString *eachPropertyName, NSUInteger index, BOOL *stop)
     {
-        if ([collectedPropertyNames containsObject:eachPropertyName] == NO)
-        { [collectedPropertyNames addObject:eachPropertyName]; }
+        if ([propertyNames containsObject:eachPropertyName] == NO)
+        { [propertyNames addObject:eachPropertyName]; }
     }];
     
     // Collect properties from this class.
-    [collectedPropertyNames addObjectsFromArray:[self propertyNameListForClassOnly]];
+    [propertyNames addObjectsFromArray:[self propertyNamesForClassOnly]];
     
     // Return immutable copy.
-    return [NSArray arrayWithArray:collectedPropertyNames];
+    return [NSArray arrayWithArray:propertyNames];
 }
 
-+(NSArray*)propertyNameListForClassOnly
++(NSArray*)propertyNamesForClassOnly
 {
     // Collection.
     NSMutableArray *propertyNames = [NSMutableArray new];
@@ -92,9 +99,11 @@
     objc_property_t *properties = class_copyPropertyList(self, &propertyCount);
     for (int index = 0; index < propertyCount; index++)
     {
-        NSString *key = [NSString stringWithUTF8String:property_getName(properties[index])];
-        [propertyNames addObject:key];
+        NSString *eachPropertyName = [NSString stringWithUTF8String:property_getName(properties[index])];
+        [propertyNames addObject:eachPropertyName];
     }
+    
+    free(properties); // As it is a copy
     
     // Return immutable.
     return [NSArray arrayWithArray:propertyNames];

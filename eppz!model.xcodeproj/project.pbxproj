@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		AE730A11191304DA00731BBD /* ClassInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A10191304DA00731BBD /* ClassInspectionTests.m */; };
 		AE730A12191308F800731BBD /* PropertyInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */; };
+		AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */; };
+		AE730A1A19131EEE00731BBD /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1919131EEE00731BBD /* Human.m */; };
+		AE730A1D19131F2A00731BBD /* SuperHero.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1C19131F2A00731BBD /* SuperHero.m */; };
+		AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */; };
+		AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A2119132BFF00731BBD /* EPPZMapper.m */; };
+		AEA5985119142C2C000364F1 /* GameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985019142C2C000364F1 /* GameProgress.m */; };
+		AEA5985419142C52000364F1 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985319142C52000364F1 /* Player.m */; };
 		AEABF7261912A647006E9041 /* EPPZLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7251912A647006E9041 /* EPPZLog.m */; };
 		AEABF72B1912AAD0006E9041 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEABF72A1912AAD0006E9041 /* UIKit.framework */; };
 		AEABF72D1912AAD8006E9041 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEABF72C1912AAD8006E9041 /* CoreGraphics.framework */; };
@@ -18,6 +25,9 @@
 		AEAE03991912A0F50055FC20 /* libeppz!model.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03811912A0F50055FC20 /* libeppz!model.a */; };
 		AEAE039F1912A0F50055FC20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEAE039D1912A0F50055FC20 /* InfoPlist.strings */; };
 		AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel.m */; };
+		AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FA191426C0007EC769 /* EPPZValueMapper.m */; };
+		AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */; };
+		AEC8120619142A37007EC769 /* PropertyInspectionTestsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */; };
 		D03518B5911046448507B78B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C74A81B0F9B47768378D8B8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +57,19 @@
 		02AD504177094BA3916E5A80 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5C74A81B0F9B47768378D8B8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE730A10191304DA00731BBD /* ClassInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInspectionTests.m; sourceTree = "<group>"; };
+		AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_mapping.h"; sourceTree = "<group>"; };
+		AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_mapping.m"; sourceTree = "<group>"; };
+		AE730A1819131EEE00731BBD /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
+		AE730A1919131EEE00731BBD /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
+		AE730A1B19131F2A00731BBD /* SuperHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperHero.h; sourceTree = "<group>"; };
+		AE730A1C19131F2A00731BBD /* SuperHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperHero.m; sourceTree = "<group>"; };
+		AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryRepresentationTests.m; sourceTree = "<group>"; };
+		AE730A2019132BFF00731BBD /* EPPZMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZMapper.h; sourceTree = "<group>"; };
+		AE730A2119132BFF00731BBD /* EPPZMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZMapper.m; sourceTree = "<group>"; };
+		AEA5984F19142C2C000364F1 /* GameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameProgress.h; sourceTree = "<group>"; };
+		AEA5985019142C2C000364F1 /* GameProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameProgress.m; sourceTree = "<group>"; };
+		AEA5985219142C52000364F1 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		AEA5985319142C52000364F1 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		AEABF7241912A647006E9041 /* EPPZLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZLog.h; sourceTree = "<group>"; };
 		AEABF7251912A647006E9041 /* EPPZLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZLog.m; sourceTree = "<group>"; };
 		AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInspectionTests.m; sourceTree = "<group>"; };
@@ -65,6 +88,12 @@
 		AEAE03AE1912A1790055FC20 /* VERSIONS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSIONS.md; sourceTree = "<group>"; };
 		AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel.h"; sourceTree = "<group>"; };
 		AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel.m"; sourceTree = "<group>"; };
+		AEC811F9191426C0007EC769 /* EPPZValueMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZValueMapper.h; sourceTree = "<group>"; };
+		AEC811FA191426C0007EC769 /* EPPZValueMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZValueMapper.m; sourceTree = "<group>"; };
+		AEC811FC191426CB007EC769 /* EPPZFieldMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZFieldMapper.h; sourceTree = "<group>"; };
+		AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZFieldMapper.m; sourceTree = "<group>"; };
+		AEC8120419142A37007EC769 /* PropertyInspectionTestsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyInspectionTestsModel.h; sourceTree = "<group>"; };
+		AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInspectionTestsModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +121,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE730A1719131ED900731BBD /* Class inspection */ = {
+			isa = PBXGroup;
+			children = (
+				AEC8120119142A0F007EC769 /* Models */,
+				AE730A10191304DA00731BBD /* ClassInspectionTests.m */,
+			);
+			name = "Class inspection";
+			sourceTree = "<group>";
+		};
+		AE730A2319132D6E00731BBD /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */,
+				AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */,
+				AE730A2419132D7800731BBD /* Mapper */,
+			);
+			name = Mapping;
+			sourceTree = "<group>";
+		};
+		AE730A2419132D7800731BBD /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AE730A2019132BFF00731BBD /* EPPZMapper.h */,
+				AE730A2119132BFF00731BBD /* EPPZMapper.m */,
+				AEC811FF1914275C007EC769 /* Field mapper */,
+				AEC8120019142779007EC769 /* Value mapper */,
+			);
+			name = Mapper;
+			sourceTree = "<group>";
+		};
+		AEA5984D19142B05000364F1 /* Dictionary representation */ = {
+			isa = PBXGroup;
+			children = (
+				AEA5984E19142C05000364F1 /* Models */,
+				AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */,
+			);
+			name = "Dictionary representation";
+			sourceTree = "<group>";
+		};
+		AEA5984E19142C05000364F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEA5985219142C52000364F1 /* Player.h */,
+				AEA5985319142C52000364F1 /* Player.m */,
+				AEA5984F19142C2C000364F1 /* GameProgress.h */,
+				AEA5985019142C2C000364F1 /* GameProgress.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		AEAE03781912A0F40055FC20 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +214,7 @@
 				AEABF7251912A647006E9041 /* EPPZLog.m */,
 				AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel.h */,
 				AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel.m */,
+				AE730A2319132D6E00731BBD /* Mapping */,
 				AEAE03871912A0F50055FC20 /* Supporting Files */,
 			);
 			path = "eppz!model";
@@ -151,8 +231,9 @@
 		AEAE039A1912A0F50055FC20 /* eppz!modelTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */,
-				AE730A10191304DA00731BBD /* ClassInspectionTests.m */,
+				AE730A1719131ED900731BBD /* Class inspection */,
+				AEC8120219142A20007EC769 /* Property inspection */,
+				AEA5984D19142B05000364F1 /* Dictionary representation */,
 				AEAE039B1912A0F50055FC20 /* Supporting Files */,
 			);
 			path = "eppz!modelTests";
@@ -165,6 +246,53 @@
 				AEAE039D1912A0F50055FC20 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AEC811FF1914275C007EC769 /* Field mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AEC811FC191426CB007EC769 /* EPPZFieldMapper.h */,
+				AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */,
+			);
+			name = "Field mapper";
+			sourceTree = "<group>";
+		};
+		AEC8120019142779007EC769 /* Value mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AEC811F9191426C0007EC769 /* EPPZValueMapper.h */,
+				AEC811FA191426C0007EC769 /* EPPZValueMapper.m */,
+			);
+			name = "Value mapper";
+			sourceTree = "<group>";
+		};
+		AEC8120119142A0F007EC769 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE730A1819131EEE00731BBD /* Human.h */,
+				AE730A1919131EEE00731BBD /* Human.m */,
+				AE730A1B19131F2A00731BBD /* SuperHero.h */,
+				AE730A1C19131F2A00731BBD /* SuperHero.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AEC8120219142A20007EC769 /* Property inspection */ = {
+			isa = PBXGroup;
+			children = (
+				AEC8120319142A2E007EC769 /* Models */,
+				AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */,
+			);
+			name = "Property inspection";
+			sourceTree = "<group>";
+		};
+		AEC8120319142A2E007EC769 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEC8120419142A37007EC769 /* PropertyInspectionTestsModel.h */,
+				AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +444,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel.m in Sources */,
+				AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */,
 				AEABF7261912A647006E9041 /* EPPZLog.m in Sources */,
+				AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */,
+				AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */,
+				AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,8 +456,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA5985419142C52000364F1 /* Player.m in Sources */,
+				AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */,
+				AEA5985119142C2C000364F1 /* GameProgress.m in Sources */,
+				AE730A1A19131EEE00731BBD /* Human.m in Sources */,
+				AEC8120619142A37007EC769 /* PropertyInspectionTestsModel.m in Sources */,
 				AE730A12191308F800731BBD /* PropertyInspectionTests.m in Sources */,
 				AE730A11191304DA00731BBD /* ClassInspectionTests.m in Sources */,
+				AE730A1D19131F2A00731BBD /* SuperHero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

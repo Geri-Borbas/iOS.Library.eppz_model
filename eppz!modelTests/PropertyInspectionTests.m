@@ -13,95 +13,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <UIKit/UIKit.h>
 #import "EPPZModel.h"
+#import "PropertyInspectionTestsModel.h"
 
-
-#pragma mark - Test model
-
-typedef struct
-{
-    int number;
-    char character;
-} PropertyInspectionTestsStruct;
-
-
-@interface PropertyInspectionTestsModel : NSObject
-
-
-#pragma mark - Basic C types
-
-@property (nonatomic) char charProperty;
-@property (nonatomic) int intProperty;
-@property (nonatomic) short shortProperty;
-@property (nonatomic) long longProperty;
-@property (nonatomic) long long longLongProperty;
-
-@property (nonatomic) unsigned char unsignedCharProperty;
-@property (nonatomic) unsigned int unsignedIntProperty;
-@property (nonatomic) unsigned short unsignedShortProperty;
-@property (nonatomic) unsigned long unsignedLongProperty;
-@property (nonatomic) unsigned long long unsignedLongLongProperty;
-
-@property (nonatomic) float floatProperty;
-@property (nonatomic) double doubleProperty;
-@property (nonatomic) char *characterStringProperty;
-
-
-#pragma mark - Basic C type pointers
-
-@property (nonatomic) char *charPointerProperty;
-@property (nonatomic) int *intPointerProperty;
-@property (nonatomic) short *shortPointerProperty;
-@property (nonatomic) long *longPointerProperty;
-@property (nonatomic) long long *longLongPointerProperty;
-
-@property (nonatomic) unsigned char *unsignedCharPointerProperty;
-@property (nonatomic) unsigned int *unsignedIntPointerProperty;
-@property (nonatomic) unsigned short *unsignedShortPointerProperty;
-@property (nonatomic) unsigned long *unsignedLongPointerProperty;
-@property (nonatomic) unsigned long long *unsignedLongLongPointerProperty;
-
-@property (nonatomic) float *floatPointerProperty;
-@property (nonatomic) double *doublePointerProperty;
-@property (nonatomic) void *voidPointerProperty;
-@property (nonatomic) char **characterStringPointerProperty;
-
-
-#pragma mark - Basic Objective-C types
-
-@property (nonatomic) id idProperty;
-@property (nonatomic) Class classProperty;
-@property (nonatomic) SEL selectorProperty;
-
-
-#pragma mark - Platform abstracted types
-
-@property (nonatomic) UInt16 uInt16Property;
-@property (nonatomic) Float64 float64Property;
-
-
-#pragma mark - CoreGraphics struct types
-
-@property (nonatomic) CGPoint pointProperty;
-@property (nonatomic) CGSize sizeProperty;
-@property (nonatomic) CGVector vectorProperty;
-@property (nonatomic) CGRect rectProperty;
-
-
-#pragma mark - Struct types
-
-@property (nonatomic) PropertyInspectionTestsStruct structProperty;
-
-
-@end
-
-
-@implementation PropertyInspectionTestsModel
-@end
-
-
-#pragma mark - Test case
 
 @interface PropertyInspectionTests : XCTestCase
 @property (nonatomic, strong) PropertyInspectionTestsModel *model;
@@ -119,12 +33,9 @@ typedef struct
 
 -(void)testClassOfPropertyNamed
 {
-    /*
-    
-    XCTAssertEqualObjects([self.model classOfPropertyNamed:@"viewProperty"],
-                          [UIView class],
-                          PropertyInspectionShouldWork);
-    */
+     XCTAssertEqualObjects([self.model classOfPropertyNamed:@"stringProperty"],
+                           [NSString class],
+                           @"Class of property `stringProperty` should return `[NSString class]`.");
 }
 
 -(void)testTypeOfPropertyNamed
@@ -160,6 +71,7 @@ typedef struct
                                    @"characterStringPointerProperty" : @"char**",
                                    
                                    @"idProperty" : @"id",
+                                   @"stringProperty" : @"NSString",
                                    @"classProperty" : @"Class",
                                    @"selectorProperty" : @"SEL",
                                    

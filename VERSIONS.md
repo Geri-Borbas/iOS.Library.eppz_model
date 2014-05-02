@@ -1,5 +1,11 @@
 ## Versions
 
+* 0.2.0
+
+    + Mappings (extracted to a composable object)
+        + Field mappings
+        + Value mappings (have not implemented yet)
+
 * 0.0.16
 
     + Property name list added

@@ -14,27 +14,8 @@
 
 #import <XCTest/XCTest.h>
 #import "EPPZModel.h"
-
-
-#pragma mark - Test models
-
-@interface Human : NSObject
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *hairColor;
-@end
-
-
-@implementation Human
-@end
-
-
-@interface SuperHero : Human
-@property (nonatomic, strong) NSString *civilianName;
-@end
-
-
-@implementation SuperHero
-@end
+#import "Human.h"
+#import "SuperHero.h"
 
 
 #pragma mark - Test case
@@ -60,36 +41,14 @@
                           @"SuperHero",
                           @"Class name should work.");
     
-    XCTAssertTrue([self.model.propertyNameList containsObject:@"name"],
+    XCTAssertTrue([self.model.propertyNames containsObject:@"name"],
                   @"Property name list should contain superclass properties.");
     
-    XCTAssertTrue([self.model.propertyNameList containsObject:@"hairColor"],
+    XCTAssertTrue([self.model.propertyNames containsObject:@"hairColor"],
                   @"Property name list should contain superclass properties.");
     
-    XCTAssertTrue([self.model.propertyNameList containsObject:@"civilianName"],
+    XCTAssertTrue([self.model.propertyNames containsObject:@"civilianName"],
                   @"Property name list should contain class properties.");
-    
-    /*
-     
-     propertyNameList,
-     "propertyNameList_",
-     isAccessibilityElement,
-     accessibilityLabel,
-     accessibilityHint,
-     accessibilityValue,
-     accessibilityTraits,
-     accessibilityFrame,
-     accessibilityPath,
-     accessibilityActivationPoint,
-     accessibilityLanguage,
-     accessibilityElementsHidden,
-     accessibilityViewIsModal,
-     shouldGroupAccessibilityChildren,
-     name,
-     hairColor,
-     civilianName
-     
-    */
 }
 
 

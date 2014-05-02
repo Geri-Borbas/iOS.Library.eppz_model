@@ -1,8 +1,8 @@
 //
-//  EPPZModel.h
+//  EPPZMapper.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 01/05/14.
+//  Created by orbás Geri  on 02/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,6 +12,24 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "EPPZLog.h"
-#import "NSObject+EPPZModel.h"
-#import "NSObject+EPPZModel_mapping.h"
+#import <Foundation/Foundation.h>
+#import "EPPZFieldMapper.h"
+#import "EPPZValueMapper.h"
+
+
+@interface EPPZMapper : NSObject
+
+
+@property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
+@property (nonatomic, strong) NSDictionary *valueMappersForFields;
+@property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;
+
+
+/*! Returns a dictionary representation of the given model only with the given fields. */
+-(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(NSArray*) fields;
+
+/*! Configures the given model with the given dictionary representation. */
+-(void)configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary;
+
+
+@end

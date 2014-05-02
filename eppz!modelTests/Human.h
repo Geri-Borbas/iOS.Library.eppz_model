@@ -1,5 +1,5 @@
 //
-//  EPPZModel.h
+//  Human.h
 //  eppz!model
 //
 //  Created by Borbás Geri on 01/05/14.
@@ -12,6 +12,17 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "EPPZLog.h"
-#import "NSObject+EPPZModel.h"
-#import "NSObject+EPPZModel_mapping.h"
+#import <Foundation/Foundation.h>
+#import "EPPZModel.h"
+
+
+@interface Human : NSObject
+
+    <EPPZModel>
+
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *hairColor;
+
+
+@end

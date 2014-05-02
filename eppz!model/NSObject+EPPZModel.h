@@ -19,6 +19,14 @@
 #import "EPPZLog.h"
 
 
+/*!
+ 
+ Protocol only to mark a given object to enjoy @c EPPZModel features.
+ 
+ */
+@protocol EPPZModel <NSObject>
+@end
+
 
 @interface NSObject (EPPZModel)
 
@@ -27,8 +35,8 @@
 
 /*!
  
- Any custom instance initializing implementation that `EPPZModel` operations can use.
- Default implementation falls back to `+[NSObject new]`.
+ Any custom instance initializing implementation that @c EPPZModel operations can use.
+ Default implementation falls back to @c +new.
  
  */
 +(instancetype)instance;
@@ -36,26 +44,39 @@
 
 #pragma mark - Class inspection
 
-/*! Alias for `NSStringFromClass(self.class)`. */
--(NSString*)className;
+/*! Alias for @c NSStringFromClass actually. */
++(NSString*)className;
 
-/*! Returns an array with all the available properties for the given object. */
-@property (nonatomic, readonly) NSArray *propertyNameList;
+/*! Alias for @c NSStringFromClass actually. */
+-(NSString*)className;
 
 /*!
  
- If the class property structure changes (you create properties at runtime for example),
- you can update the property name list for further model operations.
+ Returns an array with all the available properties for the given @c <EPPZModel> object.
+ It traverses up the inheritance chain, but collects properties only from @c <EPPZModel>
+ classes.
+ 
+ It gets populated once when the class loads, so later updates have to be invoked manually
+ using @c -updatePropertyNames.
  
  */
--(void)updatePropertyNameList;
+@property (nonatomic, readonly) NSArray *propertyNames;
+
+/*!
+ 
+ If the class property structure changes at runtime (e.g. you swizzle properties), you
+ can update @c propertyNames for further operations.
+ 
+ */
+-(void)updatePropertyNames;
+
 
 #pragma mark - Property inspection
 
-/*! Returns the type name of the property called `propertyName`. */
+/*! Returns the type name (either class name) of the property called @c propertyName. */
 -(NSString*)typeOfPropertyNamed:(NSString*) propertyName;
 
-/*! Returns the class of the property called `propertyName`. */
+/*! Returns the class of the property called @c propertyName. */
 -(Class)classOfPropertyNamed:(NSString*) propertyName;
 
 
