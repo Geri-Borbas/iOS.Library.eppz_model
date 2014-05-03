@@ -1,5 +1,13 @@
 ## Versions
 
+* 0.2.2
+
+    + Value mappings
+        + Created format
+        + Hooked into representation
+        + Class aliases
+        + Hooked in `typeName` prefixes
+
 * 0.2.0
 
     + Mappings (extracted to a composable object)

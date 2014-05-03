@@ -44,7 +44,7 @@ static char mapper_key;
     return mapper;
 }
 
--(void)setMapper:(EPPZMapper*) mapper
++(void)setMapper:(EPPZMapper*) mapper
 {
     // Associate the key for the property to the class itself.
     NSString *keyString = FORMAT(@"%@_mapper_key", self.className);
@@ -59,7 +59,12 @@ static char mapper_key;
 #pragma mark - Representation (runtime to dictionary)
 
 -(NSDictionary*)dictionaryRepresentation
-{ return [self dictionaryRepresentationOfFields:self.propertyNames]; }
+{
+    // Represent mapped fields (or every property).
+    EPPZFieldMapper *fieldMapper = self.class.mapper.fieldMapper;
+    NSArray *fields = (fieldMapper.isCustomized) ? fieldMapper.runtimeFields : self.propertyNames;
+    return [self dictionaryRepresentationOfFields:fields];
+}
 
 -(NSDictionary*)dictionaryRepresentationOfFields:(NSArray*) fields
 { return [self.class.mapper dictionaryRepresentationOfModel:self fields:fields]; }

@@ -39,8 +39,18 @@ static NSString *const EPPZFieldMapperWarningNoRuntimeCounterpart = @"No runtime
 /*! A short alias for @c +fieldMapperWithRepresentationFieldMap: factory method. */
 +(instancetype)map:(NSDictionary*) representationFieldMap;
 
+/*! Returns YES if any map is contained within. */
+@property (nonatomic, readonly) BOOL isCustomized;
+
+
 
 #pragma mark - Accessors
+
+/*! List of runtime fields. */
+-(NSArray*)runtimeFields;
+
+/*! List of representation fields. */
+-(NSArray*)representationFields;
 
 /*! Returns the representation field counterpart for a given runtime field. */
 -(NSString*)representationFieldForField:(NSString*) runtimeField;

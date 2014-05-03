@@ -31,7 +31,7 @@
  
  */
 +(EPPZMapper*)mapper;
--(void)setMapper:(EPPZMapper*) mapper;
++(void)setMapper:(EPPZMapper*) mapper;
 
 
 #pragma mark - Representation (runtime to dictionary)

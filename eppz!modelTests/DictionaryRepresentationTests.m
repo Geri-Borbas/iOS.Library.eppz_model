@@ -82,7 +82,10 @@
                                   @"UUID" : @"42",
                                   @"name" : @"Bruce",
                                   @"email" : @"bruce.wayne@wayne.com",
-                                  @"gameProgress" : _null_,
+                                  @"size" : @"CGSize:{0, 0}",
+                                  @"color" : @"<null>",
+                                  @"friends" : @"<null>",
+                                  @"gameProgress" : @"<null>",
                                   
                                   };
     
@@ -93,14 +96,15 @@
 
 -(void)testFieldMapper
 {
-    // Set custom field mapper.
-    [self.player.class mapper].fieldMapper =
+    // Set custom field mapper for class.
+    [Player mapper].fieldMapper =
     [EPPZFieldMapper map:@{
                            
-                           @"UUID" : @"uuid",
-                           @"name" : @"name",
-                           @"email" : @"email",
-                           @"gameProgress" : @"game_progress"
+                           @"UUID" : @"player_uuid",
+                           @"name" : @"player_name",
+                           @"email" : @"player_email",
+                           @"friends" : @"player_friends",
+                           @"gameProgress" : @"player_game_progress"
                            
                            }];
     
@@ -108,10 +112,11 @@
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
                                   
-                                  @"uuid" : @"42",
-                                  @"name" : @"Bruce",
-                                  @"email" : @"bruce.wayne@wayne.com",
-                                  @"game_progress" : _null_,
+                                  @"player_uuid" : @"42",
+                                  @"player_name" : @"Bruce",
+                                  @"player_email" : @"bruce.wayne@wayne.com",
+                                  @"player_friends" : @"<null>",
+                                  @"player_game_progress" : @"<null>",
                                   
                                   };
     

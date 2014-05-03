@@ -15,8 +15,38 @@
 #import <Foundation/Foundation.h>
 
 
+static NSString *const EPPZValueMapperTypeNameDelimiter = @":";
+
+
 @interface EPPZValueMapper : NSObject
 
+
+#pragma mark - Creation
+
++(instancetype)valueMapperWithRepresenter:(id(^)(id runtimeValue)) representerBlock
+                            reconstructor:(id(^)(id representedValue)) reconstructorBlock;
+
+/*! Alias for +valueMapperWithRepresenter:reconstructor: factory method. */
++(instancetype)representer:(id(^)(id runtimeValue)) representerBlock
+             reconstructor:(id(^)(id representedValue)) reconstructorBlock;
+
+/*! 
+ 
+ Create a value mapper for a specific type. Represented values
+ will be prefixed with the given @c typeName if defined any.
+ 
+ */
++(instancetype)valueMapperWithTypeName:(NSString*) typeName
+                           representer:(id(^)(id runtimeValue)) representerBlock
+                         reconstructor:(id(^)(id representedValue)) reconstructorBlock;
+
+/*! Alias for +valueMapperWithTypeName:representer:reconstructor: factory method. */
++(instancetype)type:(NSString*) typeName
+        representer:(id(^)(id runtimeValue)) representerBlock
+      reconstructor:(id(^)(id representedValue)) reconstructorBlock;
+
+
+#pragma mark - Value mapping
 
 -(id)representValue:(id) runtimeValue;
 -(id)reconstructValue:(id) representedValue;

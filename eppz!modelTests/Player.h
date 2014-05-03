@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "EPPZModel.h"
 #import "GameProgress.h"
 
@@ -19,6 +20,11 @@
 @property (nonatomic, strong) NSString *UUID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
+
+@property (nonatomic) CGSize size;
+@property (nonatomic, strong) UIColor *color;
+
+@property (nonatomic, strong) NSArray *friends; // `Players`
 
 @property (nonatomic, strong) GameProgress *gameProgress;
 

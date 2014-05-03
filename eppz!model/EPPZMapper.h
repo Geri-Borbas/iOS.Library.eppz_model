@@ -13,8 +13,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #import "EPPZFieldMapper.h"
+@compatibility_alias FieldMapper EPPZFieldMapper;
+
 #import "EPPZValueMapper.h"
+@compatibility_alias ValueMapper EPPZValueMapper;
 
 
 @interface EPPZMapper : NSObject

@@ -40,6 +40,9 @@
 
 #pragma mark - Field maps
 
+-(BOOL)isCustomized
+{ return (self.representationFieldMap != nil); }
+
 -(void)setRepresentationFieldMap:(NSDictionary*) representationFieldMap
 {
     NSMutableDictionary *representationFieldMap_ = [NSMutableDictionary new];
@@ -68,6 +71,12 @@
 
 
 #pragma mark - Accessors
+
+-(NSArray*)runtimeFields
+{ return self.representationFieldMap.allKeys; }
+
+-(NSArray*)representationFields
+{ return self.runtimeFieldMap.allKeys; }
 
 -(NSString*)representationFieldForField:(NSString*) runtimeField
 {

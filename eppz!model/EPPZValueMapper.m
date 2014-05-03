@@ -13,75 +13,87 @@
 //
 
 #import "EPPZValueMapper.h"
+#import "EPPZLog.h"
+
+
+@interface EPPZValueMapper ()
+@property (nonatomic, strong) NSString *typeName;
+@property (nonatomic, strong) NSString *typeNamePrefix;
+@property (nonatomic, strong) id (^representerBlock)(id runtimeValue);
+@property (nonatomic, strong) id (^reconstructorBlock)(id representedValue);
+@end
+
 
 
 @implementation EPPZValueMapper
 
 
+#pragma mark - Creation
+
++(instancetype)representer:(id(^)(id runtimeValue)) representerBlock reconstructor:(id(^)(id representedValue)) reconstructorBlock
+{ return [self valueMapperWithRepresenter:representerBlock reconstructor:reconstructorBlock]; }
+
++(instancetype)valueMapperWithRepresenter:(id(^)(id runtimeValue)) representerBlock reconstructor:(id(^)(id representedValue)) reconstructorBlock
+{ return [self valueMapperWithTypeName:nil representer:representerBlock reconstructor:reconstructorBlock]; }
+
++(instancetype)type:(NSString*) typeName representer:(id(^)(id runtimeValue)) representerBlock reconstructor:(id(^)(id representedValue)) reconstructorBlock
+{ return [self valueMapperWithTypeName:typeName representer:representerBlock reconstructor:reconstructorBlock]; }
+
++(instancetype)valueMapperWithTypeName:(NSString*) typeName
+                           representer:(id(^)(id runtimeValue)) representerBlock
+                         reconstructor:(id(^)(id representedValue)) reconstructorBlock
+{
+    EPPZValueMapper *instance = [self new];
+    instance.typeName = typeName;
+    instance.representerBlock = representerBlock;
+    instance.reconstructorBlock = reconstructorBlock;
+    return instance;
+}
+
+
+#pragma mark - Value mapping
+
+-(void)setTypeName:(NSString*) typeName
+{
+    _typeName = typeName;
+    
+    // Create `typeNamePrefix`.
+    if (_typeName == nil)
+    { self.typeNamePrefix = @""; }
+    else
+    { self.typeNamePrefix = FORMAT(@"%@%@", self.typeName, EPPZValueMapperTypeNameDelimiter); }
+}
+
 -(id)representValue:(id) runtimeValue
-{ return runtimeValue; }
+{
+    id representedValue = runtimeValue;
+    
+    // Block if any.
+    if (self.representerBlock != nil) representedValue = self.representerBlock(runtimeValue);
+    
+    // Prefix with `typeName` if any.
+    if (self.typeName != nil)
+    { representedValue = FORMAT(@"%@%@", self.typeNamePrefix, representedValue); }
+    
+    return representedValue;
+}
 
 -(id)reconstructValue:(id) representedValue
-{ return representedValue; }
+{
+    id runtimeValue = representedValue;
+    
+    // Remove `typeName` prefix if any.
+    if (self.typeName != nil)
+    {
+        NSString *representedString = (NSString*)representedValue;
+        representedValue = [representedString stringByReplacingOccurrencesOfString:self.typeNamePrefix withString:@""];
+    }
+    
+    // Block if any.
+    if (self.reconstructorBlock != nil) runtimeValue = self.reconstructorBlock(representedValue);
+    
+    return runtimeValue;
+}
 
-
-/*
- 
- -(id)representationValueForRuntimeValue:(id) value
- {
- #warning Hook in representers!
- return value;
- }
- 
- -(NSDictionary*)representersForPropertyNames
- {
- return @{
- 
- @"threeValue" : [EPPZMapper mapperForTypeName:@"NSArray"
- representer:^id(NSArray *value){
- if (value.count < 3) return nil; // Checks
- return [value componentsJoinedByString:@","];
- }
- reconstructor:^id(NSString *value){
- return [value componentsSeparatedByString:@","];
- }]
- 
- };
- }
- 
- -(NSArray*)representersForTypeNames
- {
- return @[
- 
- [EPPZMapper mapperForTypeName:@"NSArray"
- representer:^id(NSArray *value){
- 
- NSMutableArray *representation = [NSMutableArray new];
- [value enumerateObjectsUsingBlock:^(id eachValue, NSUInteger idx, BOOL *stop){
- 
- // Represent each array member as well.
- [representation addObject:[self representationValueForRuntimeValue:eachValue]];
- 
- }];
- return [NSArray arrayWithArray:representation];
- 
- }
- reconstructor:^id(NSString *value) { return value; }],
- 
- [EPPZMapper mapperForTypeName:@"NSString"
- representer:^id(NSString *value) { return value; }
- reconstructor:^id(NSString *value) { return value; }],
- 
- [EPPZMapper mapperForTypeName:@"float"
- representer:^id(float value){
- return @(value);
- }
- reconstructor:^float(NSNumber *representation){
- return representation.floatValue;
- }],
- 
- ];
- }
- */
 
 @end
