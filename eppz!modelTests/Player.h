@@ -23,9 +23,9 @@
 
 @property (nonatomic) CGSize size;
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, strong) NSArray *colorPalette;
 
-@property (nonatomic, strong) NSArray *friends; // `Players`
-
+@property (nonatomic, strong) NSArray *friends; // Collection of `Players`
 @property (nonatomic, strong) GameProgress *gameProgress;
 
 

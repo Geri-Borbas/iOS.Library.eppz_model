@@ -2,7 +2,7 @@
 //  EPPZValueMapper.h
 //  eppz!model
 //
-//  Created by orbás Geri  on 02/05/14.
+//  Created by Borbás Geri  on 02/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -48,8 +48,19 @@ static NSString *const EPPZValueMapperTypeNameDelimiter = @":";
 
 #pragma mark - Value mapping
 
+/*! If any sub-objects gonna represented, may pass in fields for that. */
+@property (nonatomic, strong) NSDictionary *fields;
+
 -(id)representValue:(id) runtimeValue;
 -(id)reconstructValue:(id) representedValue;
+
+
+#pragma mark - Properties
+
+@property (nonatomic, strong) NSString *typeName;
+@property (nonatomic, strong) id (^representerBlock)(id runtimeValue);
+@property (nonatomic, strong) id (^reconstructorBlock)(id representedValue);
+
 
 
 @end

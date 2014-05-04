@@ -2,7 +2,7 @@
 //  EPPZFieldMapper.h
 //  eppz!model
 //
-//  Created by orbás Geri  on 02/05/14.
+//  Created by Borbás Geri  on 02/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz

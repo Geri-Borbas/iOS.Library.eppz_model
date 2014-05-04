@@ -36,11 +36,28 @@
 
 #pragma mark - Representation (runtime to dictionary)
 
-/*! Returns a dictionary representation (using selected mapper). */
+/*!
+ 
+ Returns a dictionary representation (using selected mapper), but only if object
+ explicitly conforms to `<EPPZModel>` protocol. Simply returns the object otherwise.s
+ 
+ */
 -(NSDictionary*)dictionaryRepresentation;
 
-/*! Returns a dictionary representation only with the given fields (properties) using selected mapper. */
--(NSDictionary*)dictionaryRepresentationOfFields:(NSArray*) fields;
+/*!
+ 
+ Returns a dictionary representation only with the given fields (properties)
+ using selected mapper, but only if object explicitly conforms to `<EPPZModel>`
+ protocol. Simply returns the object otherwise.
+ 
+ @param fields
+ Either an @c NSArray of fields to be represented, or may pass in an @c NSDictionary with fields,
+ and can also passing sub-fields within collections down the line. In the latter case only
+ the keys gonna be parsed, the actual values will be dismissed (unless it is a sub-field
+ @c NSDictionary).
+ 
+ */
+-(NSDictionary*)dictionaryRepresentationOfFields:(id) fields;
 
 
 #pragma mark - Reconstruction (dictionary to runtime)

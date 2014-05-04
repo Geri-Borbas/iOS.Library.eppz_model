@@ -82,8 +82,10 @@
                                   @"UUID" : @"42",
                                   @"name" : @"Bruce",
                                   @"email" : @"bruce.wayne@wayne.com",
+                                  
                                   @"size" : @"CGSize:{0, 0}",
                                   @"color" : @"<null>",
+                                  
                                   @"friends" : @"<null>",
                                   @"gameProgress" : @"<null>",
                                   
@@ -103,6 +105,7 @@
                            @"UUID" : @"player_uuid",
                            @"name" : @"player_name",
                            @"email" : @"player_email",
+                           
                            @"friends" : @"player_friends",
                            @"gameProgress" : @"player_game_progress"
                            
@@ -123,7 +126,33 @@
     XCTAssertEqualObjects(dictionary,
                           assertation,
                           @"Dictionary representation should be equal to asserted dictionary.");
+    
+    // Switch back to default mapper.
+    [Player mapper].fieldMapper = [EPPZFieldMapper new];
 }
+
+-(void)testDictionaryRepresentationOfFields
+{
+    NSDictionary *dictionary = [self.player
+                                dictionaryRepresentationOfFields:@[
+                                                                   @"name",
+                                                                   @"email"
+                                                                   ]];
+}
+
+-(void)testDictionaryRepresentationOfFieldsWithSubFields
+{
+    NSDictionary *dictionary = [self.player
+                                dictionaryRepresentationOfFields:@{
+                                                                   field(@"name"),
+                                                                   field(@"email"),
+                                                                   @"firends" : @{
+                                                                           field(@"email"),
+                                                                           field(@"email")
+                                                                           }
+                                                                   }];
+}
+                                
 
 @end
 

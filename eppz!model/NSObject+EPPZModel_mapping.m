@@ -12,8 +12,8 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "NSObject+EPPZModel_inspecting.h"
 #import "NSObject+EPPZModel_mapping.h"
-#import "NSObject+EPPZModel.h"
 
 
 static char mapper_key;
@@ -74,7 +74,7 @@ static char mapper_key;
 
 +(instancetype)instanceWithDictionary:(NSDictionary*) dictionary
 {
-    NSObject *instance = [self instance];
+    NSObject *instance = [self new];
     [instance configureWithDictionary:dictionary];
     return instance;
 }

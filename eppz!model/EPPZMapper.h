@@ -2,7 +2,7 @@
 //  EPPZMapper.h
 //  eppz!model
 //
-//  Created by orbás Geri  on 02/05/14.
+//  Created by Borbás Geri  on 02/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -21,6 +21,13 @@
 #import "EPPZValueMapper.h"
 @compatibility_alias ValueMapper EPPZValueMapper;
 
+#import "EPPZCollectionEnumerator.h"
+@compatibility_alias Collections EPPZCollectionEnumerator;
+
+
+/*! Field dictionary entry shortcut */
+#define field(field) field : @(0)
+
 
 @interface EPPZMapper : NSObject
 
@@ -30,8 +37,18 @@
 @property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;
 
 
-/*! Returns a dictionary representation of the given model only with the given fields. */
--(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(NSArray*) fields;
+/*!
+ 
+ Returns a dictionary representation of the given model only with the given fields.
+ 
+ @param fields
+ Either an @c NSArray of fields to be represented, or may pass in an @c NSDictionary with fields,
+ and can also passing sub-fields within collections down the line. In the latter case only
+ the keys gonna be parsed, the actual values will be dismissed (unless it is a sub-field
+ @c NSDictionary).
+ 
+ */
+-(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields;
 
 /*! Configures the given model with the given dictionary representation. */
 -(void)configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary;

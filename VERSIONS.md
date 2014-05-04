@@ -1,5 +1,14 @@
 ## Versions
 
+* 0.2.4
+
+    + Value mapping
+        + Now accepts fields
+    + Fields
+        + Accepts both `NSArray` and `NSDictionary`
+    + Collection processors
+        + Representing now creeps trough collections
+
 * 0.2.2
 
     + Value mappings

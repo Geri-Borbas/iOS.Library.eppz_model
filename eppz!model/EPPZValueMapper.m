@@ -2,7 +2,7 @@
 //  EPPZValueMapper.m
 //  eppz!model
 //
-//  Created by orbás Geri  on 02/05/14.
+//  Created by Borbás Geri  on 02/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -17,10 +17,7 @@
 
 
 @interface EPPZValueMapper ()
-@property (nonatomic, strong) NSString *typeName;
 @property (nonatomic, strong) NSString *typeNamePrefix;
-@property (nonatomic, strong) id (^representerBlock)(id runtimeValue);
-@property (nonatomic, strong) id (^reconstructorBlock)(id representedValue);
 @end
 
 
@@ -68,7 +65,7 @@
 {
     id representedValue = runtimeValue;
     
-    // Block if any.
+    // Using block if any.
     if (self.representerBlock != nil) representedValue = self.representerBlock(runtimeValue);
     
     // Prefix with `typeName` if any.
@@ -89,7 +86,7 @@
         representedValue = [representedString stringByReplacingOccurrencesOfString:self.typeNamePrefix withString:@""];
     }
     
-    // Block if any.
+    // Using block if any.
     if (self.reconstructorBlock != nil) runtimeValue = self.reconstructorBlock(representedValue);
     
     return runtimeValue;

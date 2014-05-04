@@ -1,5 +1,5 @@
 //
-//  NSObject+EPPZModel.m
+//  NSObject+EPPZModel_inspecting.m
 //  eppz!model
 //
 //  Created by Borbás Geri on 01/05/14.
@@ -12,20 +12,20 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_inspecting.h"
 
 
-@interface NSObject (EPPZModel_private)
+@interface NSObject (EPPZModel_inspecting_private)
 @property (nonatomic, strong) NSArray *propertyNames_;
 @end
 
 
-@implementation NSObject (EPPZModel_private)
+@implementation NSObject (EPPZModel_inspecting_private)
 @dynamic propertyNames_;
 @end
 
 
-@implementation NSObject (EPPZModel)
+@implementation NSObject (EPPZModel_inspecting)
 
 
 #pragma mark - Synthesize dynamic properties
@@ -37,9 +37,6 @@
                                  forClass:[NSObject class]
                                withPolicy:retain];
 }
-
-+(instancetype)instance
-{ return [self new]; }
 
 
 #pragma mark - Class inspection

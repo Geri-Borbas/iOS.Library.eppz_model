@@ -28,18 +28,7 @@
 @end
 
 
-@interface NSObject (EPPZModel)
-
-
-#pragma mark - Creation
-
-/*!
- 
- Any custom instance initializing implementation that @c EPPZModel operations can use.
- Default implementation falls back to @c +new.
- 
- */
-+(instancetype)instance;
+@interface NSObject (Inspecting)
 
 
 #pragma mark - Class inspection
