@@ -13,5 +13,5 @@
 //
 
 #import "EPPZLog.h"
-#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_inspecting.h"
 #import "NSObject+EPPZModel_mapping.h"

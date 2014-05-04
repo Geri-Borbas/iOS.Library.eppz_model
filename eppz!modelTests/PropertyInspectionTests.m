@@ -28,7 +28,7 @@
 -(void)setUp
 {
     [super setUp];
-    self.model = [PropertyInspectionTestsModel instance];
+    self.model = [PropertyInspectionTestsModel new];
 }
 
 -(void)testClassOfPropertyNamed

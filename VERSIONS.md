@@ -1,5 +1,12 @@
 ## Versions
 
+* 0.3.0
+
+    + Aliases in value mappers
+    + Resolving type names trough with getter methods (to comply with `UIKit` members)
+    + Representing model attributes (modelId, className)
+    + Mapper holds model attribute fields
+
 * 0.2.4
 
     + Value mapping

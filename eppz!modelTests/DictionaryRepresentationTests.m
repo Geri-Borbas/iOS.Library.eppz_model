@@ -17,14 +17,12 @@
 #import "Player.h"
 
 
-#define _null_ [NSNull null]
-
-
 #pragma mark - Test case
 
 
 @interface DictionaryRepresentationTests : XCTestCase
 @property (nonatomic, strong) Player *player;
+@property (nonatomic, weak) Player *invitee;
 @end
 
 
@@ -34,12 +32,8 @@
 -(void)setUp
 {
     [super setUp];
-    
-    // Model.
-    self.player = [Player instance];
-    self.player.UUID = @"42";
-    self.player.name = @"Bruce";
-    self.player.email = @"bruce.wayne@wayne.com";
+    self.player = [Player testPlayer];
+    self.invitee = self.player.invitees[0];
 }
 
 -(void)testSetMapper
@@ -75,24 +69,140 @@
 
 -(void)testDefaultMapper
 {
-    // Assert.
+    // Make sure that representing model attributes for classes is turned on.
+    [Player mapper].representModelAttributes = YES;
+    [GameProgress mapper].representModelAttributes = YES;
+    [Achivement mapper].representModelAttributes = YES;
+    
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
                                   
-                                  @"UUID" : @"42",
+                                  // Model attributes.
+                                  @"_id" : self.player.modelId,
+                                  @"_type" : @"Player",
+                                  
+                                  // Arbitrary values, no value mapping.
+                                  @"UUID" : @(1),
                                   @"name" : @"Bruce",
-                                  @"email" : @"bruce.wayne@wayne.com",
+                                  @"email" : @"bruce@wayne.com",
                                   
-                                  @"size" : @"CGSize:{0, 0}",
-                                  @"color" : @"<null>",
+                                  // `CGRect` value represented with default value mapping for type.
+                                  @"size" : @"CGSize:{10, 10}",
                                   
-                                  @"friends" : @"<null>",
-                                  @"gameProgress" : @"<null>",
+                                  // `UIView` objects conforming `<EPPZModel>` with custom field mapping (representing only `frame`).
+                                  @"mainView" : @{
+                                          @"_id" : self.player.mainView.modelId,
+                                          @"_type" : @"UIView",
+                                          @"frame" : @"CGRect:{{0, 0}, {40, 40}}"
+                                          },
                                   
+                                  // `NSArray` collection with `<EPPZModel>` conforming objects within (same as `UIView` above).
+                                  @"subViews" : @[
+                                          @{
+                                              @"_id" : [self.player.subViews[0] modelId],
+                                              @"_type" : @"UIView",
+                                              @"frame" : @"CGRect:{{0, 0}, {50, 50}}"
+                                              },
+                                          @{
+                                              @"_id" : [self.player.subViews[1] modelId],
+                                              @"_type" : @"UIView",
+                                              @"frame" : @"CGRect:{{0, 0}, {60, 60}}"
+                                              },
+                                          @{
+                                              @"_id" : [self.player.subViews[2] modelId],
+                                              @"_type" : @"UIView",
+                                              @"frame" : @"CGRect:{{0, 0}, {70, 70}}"
+                                              }
+                                          ],
+                                  
+                                  // `NSArray` collection with `<EPPZModel>` conforming objects within (same as the `Player` represented).
+                                  @"invitees" : @[
+                                          @{
+                                              @"_id" : self.invitee.modelId,
+                                              @"_type" : @"Player",
+                                              @"UUID" : @(2),
+                                              @"name" : @"Alfred",
+                                              @"email" : @"alfred@wayne.com",
+                                              @"size" : @"CGSize:{5, 5}",
+                                              @"mainView" : @{
+                                                      @"_id" : self.invitee.mainView.modelId,
+                                                      @"_type" : @"UIView",
+                                                      @"frame" : @"CGRect:{{0, 0}, {20, 20}}"
+                                                      },
+                                              @"subViews" : @[
+                                                      @{
+                                                          @"_id" : [self.invitee.subViews[0] modelId],
+                                                          @"_type" : @"UIView",
+                                                          @"frame" : @"CGRect:{{0, 0}, {25, 25}}"
+                                                          },
+                                                      @{
+                                                          @"_id" : [self.invitee.subViews[1] modelId],
+                                                          @"_type" : @"UIView",
+                                                          @"frame" : @"CGRect:{{0, 0}, {30, 30}}"
+                                                          },
+                                                      @{
+                                                          @"_id" : [self.invitee.subViews[2] modelId],
+                                                          @"_type" : @"UIView",
+                                                          @"frame" : @"CGRect:{{0, 0}, {35, 35}}"
+                                                          }
+                                                      ],
+                                              
+                                              // `nil` value represented with default value mapping for type.
+                                              @"invitees" : @"<null>",
+                                              
+                                              // Property holding `<EPPZModel> conforming object (`GameProgress`).
+                                              @"gameProgress" : @{
+                                                      @"_id" : self.invitee.gameProgress.modelId,
+                                                      @"_type" : @"GameProgress",
+                                                      @"playerName" : @"Alfred",
+                                                      
+                                                      // `NSArray` collection with `<EPPZModel>` conforming objects within (`Achivement`).
+                                                      @"achivements" : @[
+                                                              @{
+                                                                  @"_id" : [self.invitee.gameProgress.achivements[0] modelId],
+                                                                  @"_type" : @"Achivement",
+                                                                  @"name" : @"Created!",
+                                                                  @"description" : @"Gained when player is allocated in memory.",
+                                                                  @"value" : @(10)
+                                                                  },
+                                                              @{
+                                                                  @"_id" : [self.invitee.gameProgress.achivements[1] modelId],
+                                                                  @"_type" : @"Achivement",
+                                                                  @"name" : @"Guest!",
+                                                                  @"description" : @"Gained when player has accepted an invitation.",
+                                                                  @"value" : @(20)
+                                                                  }
+                                                              ]
+                                                      }
+                                              }
+                                          ],
+                                  @"gameProgress" : @{
+                                          @"_id" : self.player.gameProgress.modelId,
+                                          @"_type" : @"GameProgress",
+                                          @"playerName" : @"Bruce",
+                                          
+                                          // `NSArray` collection with `<EPPZModel>` conforming objects within (`Achivement`).
+                                          @"achivements" : @[
+                                                  @{
+                                                      @"_id" : [self.player.gameProgress.achivements[0] modelId],
+                                                      @"_type" : @"Achivement",
+                                                      @"name" : @"Created!",
+                                                      @"description" : @"Gained when player is allocated in memory.",
+                                                      @"value" : @(10)
+                                                      },
+                                                  @{
+                                                      @"_id" : [self.player.gameProgress.achivements[1] modelId],
+                                                      @"_type" : @"Achivement",
+                                                      @"name" : @"Social!",
+                                                      @"description" : @"Gained when player invites a friend.",
+                                                      @"value" : @(20)
+                                                      }
+                                                  ]
+                                          }
                                   };
-    
-    XCTAssertEqualObjects(dictionary,
-                          assertation,
+
+    XCTAssertEqualObjects(dictionary.description,
+                          assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
 }
 
@@ -101,26 +211,19 @@
     // Set custom field mapper for class.
     [Player mapper].fieldMapper =
     [EPPZFieldMapper map:@{
-                           
                            @"UUID" : @"player_uuid",
                            @"name" : @"player_name",
-                           @"email" : @"player_email",
-                           
-                           @"friends" : @"player_friends",
-                           @"gameProgress" : @"player_game_progress"
-                           
+                           @"email" : @"player_email"
                            }];
     
-    // Assert.
+    // Turn of representing model attributes for `Player`.
+    [Player mapper].representModelAttributes = NO;
+    
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
-                                  
-                                  @"player_uuid" : @"42",
+                                  @"player_uuid" : @"1",
                                   @"player_name" : @"Bruce",
-                                  @"player_email" : @"bruce.wayne@wayne.com",
-                                  @"player_friends" : @"<null>",
-                                  @"player_game_progress" : @"<null>",
-                                  
+                                  @"player_email" : @"bruce@wayne.com"
                                   };
     
     XCTAssertEqualObjects(dictionary,
@@ -133,24 +236,114 @@
 
 -(void)testDictionaryRepresentationOfFields
 {
+    // Turn of representing model attributes for `Player`.
+    [Player mapper].representModelAttributes = NO;
+    
     NSDictionary *dictionary = [self.player
                                 dictionaryRepresentationOfFields:@[
                                                                    @"name",
                                                                    @"email"
                                                                    ]];
+    NSDictionary *assertation = @{
+                                  @"name" : @"Bruce",
+                                  @"email" : @"bruce@wayne.com",
+                                  };
+    
+    XCTAssertEqualObjects(dictionary.description,
+                          assertation.description,
+                          @"Dictionary representation should be equal to asserted dictionary.");
 }
 
--(void)testDictionaryRepresentationOfFieldsWithSubFields
+-(void)testDictionaryRepresentationOfFieldsWithSubFields_1
 {
+    // Turn of representing model attributes for `Player`.
+    [Player mapper].representModelAttributes = NO;
+    
     NSDictionary *dictionary = [self.player
                                 dictionaryRepresentationOfFields:@{
                                                                    field(@"name"),
                                                                    field(@"email"),
-                                                                   @"firends" : @{
-                                                                           field(@"email"),
+                                                                   @"invitees" : @{
+                                                                           field(@"name"),
                                                                            field(@"email")
                                                                            }
                                                                    }];
+    NSDictionary *assertation = @{
+                                  @"name" : @"Bruce",
+                                  @"email" : @"bruce@wayne.com",
+                                  @"invitees" : @[
+                                          @{
+                                              @"name" : @"Alfred",
+                                              @"email" : @"alfred@wayne.com",
+                                              }
+                                          ]
+                                  };
+    
+    XCTAssertEqualObjects(dictionary.description,
+                          assertation.description,
+                          @"Dictionary representation should be equal to asserted dictionary.");
+}
+
+-(void)testDictionaryRepresentationOfFieldsWithSubFields_2
+{
+    // Turn of representing model attributes for every class.
+    [Player mapper].representModelAttributes = NO;
+    [GameProgress mapper].representModelAttributes = NO;
+    [Achivement mapper].representModelAttributes = NO;
+    
+    NSDictionary *dictionary = [self.player
+                                dictionaryRepresentationOfFields:@{
+                                                                   field(@"name"),
+                                                                   field(@"email"),
+                                                                   @"gameProgress" : @{
+                                                                           @"achivements" : @{
+                                                                                   field(@"name")
+                                                                                   }
+                                                                           },
+                                                                   @"invitees" : @{
+                                                                           field(@"name"),
+                                                                           field(@"email"),
+                                                                           @"gameProgress" : @{
+                                                                                   @"achivements" : @{
+                                                                                           field(@"name")
+                                                                                           }
+                                                                                   }
+                                                                           }
+                                                                   }];
+    NSDictionary *assertation = @{
+                                  @"name" : @"Bruce",
+                                  @"email" : @"bruce@wayne.com",
+                                  @"gameProgress" : @{
+                                          @"achivements" : @[
+                                                  @{
+                                                      @"name" : @"Created!",
+                                                      },
+                                                  @{
+                                                      @"name" : @"Social!",
+                                                      }
+                                                  ]
+                                          },
+                                  @"invitees" : @[
+                                          @{
+                                              @"name" : @"Alfred",
+                                              @"email" : @"alfred@wayne.com",
+                                              @"gameProgress" : @{
+                                                      @"achivements" : @[
+                                                              @{
+                                                                  @"name" : @"Created!",
+                                                                  },
+                                                              @{
+                                                                  @"name" : @"Guest!",
+                                                                  }
+                                                              ]
+                                                      }
+                                              }
+                                          ]
+                                  };
+    
+    XCTAssertEqualObjects(dictionary.description,
+                          assertation.description,
+                          @"Dictionary representation should be equal to asserted dictionary.");
 }
                                 
 

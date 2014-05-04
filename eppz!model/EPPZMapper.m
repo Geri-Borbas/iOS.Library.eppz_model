@@ -34,13 +34,18 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 {
     if (self = [super init])
     {
+        // Default fiels.
+        self.modelIdField = @"_id";
+        self.classNameField = @"_type";
+        self.representModelAttributes = YES;
+        
         // Field mapper.
         self.fieldMapper = [FieldMapper new];
         
         // Default (straight) value mapper.
         self.defaultValueMapper = [ValueMapper new];
-        
-        // Value mapper.
+                
+        // Type name value mappers.
         self.valueMappersForTypeNames =
         @{
           
@@ -50,14 +55,37 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
                                        return [NSNull null];
                                    }],
           
+          @"CGPoint" : [ValueMapper type:@"CGPoint"
+                             representer:^id(id runtimeValue) {
+                                 return NSStringFromCGPoint([runtimeValue CGPointValue]);
+                             } reconstructor:^id(id representedValue) {
+                                 return [NSValue valueWithCGPoint:CGPointFromString((NSString*)representedValue)];
+                             }],
+          
           @"CGSize" : [ValueMapper type:@"CGSize"
                             representer:^id(id runtimeValue) {
                                 return NSStringFromCGSize([runtimeValue CGSizeValue]);
                             } reconstructor:^id(id representedValue) {
                                 return [NSValue valueWithCGSize:CGSizeFromString((NSString*)representedValue)];
-                            }]
+                            }],
+          
+          @"CGRect" : [ValueMapper type:@"CGRect"
+                            representer:^id(id runtimeValue) {
+                                return NSStringFromCGRect([runtimeValue CGRectValue]);
+                            } reconstructor:^id(id representedValue) {
+                                return [NSValue valueWithCGRect:CGRectFromString((NSString*)representedValue)];
+                            }],
+          
+          @"CGAffineTransform" : [ValueMapper type:@"CGAffineTransform"
+                                       representer:^id(id runtimeValue) {
+                                           return NSStringFromCGAffineTransform([runtimeValue CGAffineTransformValue]);
+                                       } reconstructor:^id(id representedValue) {
+                                           return [NSValue valueWithCGAffineTransform:CGAffineTransformFromString((NSString*)representedValue)];
+                                       }],
           
           };
+        
+        
     }
     return self;
 }
@@ -68,19 +96,33 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 -(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields
 {
     // Represent only `<EPPZModels>`.
-    if ([self conformsToProtocol:@protocol(EPPZModel)] == NO)
+    if ([model conformsToProtocol:@protocol(EPPZModel)] == NO)
     {
         WARNING(@"Object <%@> not conforms to <EPPZModel>, returning empty dictionary representation.", self.className);
         return @{};
     }
     
+    // If no fields sent, represent everything.
+    if (fields == nil)
+    {
+        EPPZFieldMapper *fieldMapper = model.class.mapper.fieldMapper;
+        fields = (fieldMapper.isCustomized) ? fieldMapper.runtimeFields : model.propertyNames;
+    }
+    
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
+    
+    // Model attributes (if not turned off).
+    if (self.representModelAttributes)
+    {
+        [dictionary setObject:model.modelId forKey:self.modelIdField];
+        [dictionary setObject:model.className forKey:self.classNameField];
+    }
     
     // Create representation for each property using representers.
     [self enumerateFields:fields :^(NSString *eachField, NSDictionary *eachSubFields)
     {
         // Check for property at all.
-        if ([model.propertyNames containsObject:eachField] == NO)
+        if ([model respondsToSelector:NSSelectorFromString(eachField)] == NO)
         { WARNING_AND_VOID(@"Can't find field `%@` on <%@> to represent.", eachField, model.className); }
         
         // Get value.
@@ -96,14 +138,15 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
                 if ([eachCollectionValue conformsToProtocol:@protocol(EPPZModel)])
                 {
                     NSObject *eachObject = (NSObject*)eachCollectionValue;
-                    return [eachObject dictionaryRepresentation];
+                    return [eachObject dictionaryRepresentationOfFields:eachSubFields];
                 }
                 
                 // Or represent value.
                 return [self representValue:eachCollectionValue
                                     ofModel:model
                                     inField:eachField
-                              withSubFields:eachSubFields];
+                              withSubFields:eachSubFields
+                          isCollectionValue:YES];
                 
             }];
         }
@@ -113,7 +156,8 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         id eachRepresentedValue = [self representValue:eachValue
                                                ofModel:model
                                                inField:eachField
-                                         withSubFields:eachSubFields];
+                                         withSubFields:eachSubFields
+                                     isCollectionValue:NO];
         
         // Set.
         [dictionary setObject:eachRepresentedValue forKey:eachRepresentedField];
@@ -122,13 +166,32 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     return dictionary;
 }
 
--(id)representValue:(id) value ofModel:(id) model inField:(NSString*) field withSubFields:(NSDictionary*) subfields
+-(id)representValue:(id) value ofModel:(id) model inField:(NSString*) field withSubFields:(NSDictionary*) subfields isCollectionValue:(BOOL) isCollectionValue
 {
+    if ([value isKindOfClass:[UIView class]])
+    {
+        // Debug breakpoint place.
+        NSLog(@"representValue: %@", value);
+    }
+    
+    // Represent `<EPPZModel>` values first (with their own mapper).
+    if ([value conformsToProtocol:@protocol(EPPZModel)])
+    {
+        NSObject *object = (NSObject*)value;
+        return [object dictionaryRepresentationOfFields:subfields];
+    }
+    
     // Get value mapper (for filed, then for type as a fallback).
     EPPZValueMapper *valueMapper = [self valueMapperForField:field];
     if (valueMapper == self.defaultValueMapper)
     {
+        // Get typeName for the field.
         NSString *typeName = [model typeOfPropertyNamed:field];
+        
+        // Or get typeName for the value itself if it is a value within collection.
+        if (isCollectionValue)
+        { typeName = NSStringFromClass([value class]); }
+        
         valueMapper = [self valueMapperForTypeName:typeName];
     }
     
@@ -179,7 +242,12 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     if (self.valueMappersForTypeNames == nil) return self.defaultValueMapper;
     if ([[self.valueMappersForTypeNames allKeys] containsObject:typeName] == NO) return self.defaultValueMapper;
     
-    return [self.valueMappersForTypeNames objectForKey:typeName];
+    // Check for aliases.
+    id valueMapper = [self.valueMappersForTypeNames objectForKey:typeName];
+    if ([valueMapper isKindOfClass:[NSString class]])
+    { return [self valueMapperForTypeName:(NSString*)valueMapper]; }
+    
+    return (EPPZValueMapper*)valueMapper;
 }
 
 

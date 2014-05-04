@@ -19,6 +19,16 @@
 @interface NSObject (EPPZModel_mapping)
 
 
+/*!
+ 
+ A unique identifier that identifes object during a mapping process. Having this
+ mapping can represent / reconstruct referenced relations between models. Default
+ value holds @c -hash of the object.
+ 
+ */
+@property (nonatomic, strong) NSString *modelId;
+
+
 #pragma mark - Mappers
 
 /*! A mapper that specifies how the model is represented, reconstructed. */

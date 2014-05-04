@@ -112,30 +112,51 @@
 -(NSString*)typeOfPropertyNamed:(NSString*) propertyName
 {
     NSString *propertyType = nil;
-
+    NSString *propertyAttributes;
+    
     // Get Class of property.
-    objc_property_t property = class_getProperty([self class], [propertyName UTF8String]);
+    Class class = object_getClass(self);
+    objc_property_t property = class_getProperty(class, [propertyName UTF8String]);
+    
+    // Try to get getter method.
     if (property == NULL)
-    { WARNING_AND_NIL(@"No property called `%@` of %@", propertyName, self.className); }
-    
-    // Get property attributes.
-    const char *propertyAttributesCString = property_getAttributes(property);
-    if (propertyAttributesCString == NULL)
-    { WARNING_AND_NIL(@"Could not get attributes for property called `%@` of <%@>", propertyName, self.className); }
-    
-    // Parse property attributes.
-    NSString *propertyAttributes = [NSString stringWithCString:propertyAttributesCString encoding:NSUTF8StringEncoding];
-    NSArray *splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@","];
-    if (splitPropertyAttributes.count > 0)
     {
-        // From Objective-C Runtime Programming Guide.
-        // xcdoc://ios//library/prerelease/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
-        NSString *encodeType = splitPropertyAttributes[0];
-        NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
-        propertyType = (splitEncodeType.count > 1) ? splitEncodeType[1] : [self typeNameForTypeEncoding:encodeType];
+        char typeCString[256];
+        Method getter = class_getInstanceMethod(class, NSSelectorFromString(propertyName));
+        method_getReturnType(getter, typeCString, 256);
+        propertyAttributes = [NSString stringWithCString:typeCString encoding:NSUTF8StringEncoding];
+        
+        // Mimic type encoding for `typeNameForTypeEncoding:`.
+        propertyType = [self typeNameForTypeEncoding:[NSString stringWithFormat:@"T%@", propertyAttributes]];
+        
+        if (getter == NULL)
+        { WARNING_AND_NIL(@"No property called `%@` of %@", propertyName, self.className); }
     }
+    
+    // Or go on with property attribute parsing.
     else
-    { WARNING_AND_NIL(@"Could not parse attributes for property called `%@` of <%@>å", propertyName, self.className); }
+    {
+        // Get property attributes.
+        const char *propertyAttributesCString;
+        propertyAttributesCString = property_getAttributes(property);
+        propertyAttributes = [NSString stringWithCString:propertyAttributesCString encoding:NSUTF8StringEncoding];
+        
+        if (propertyAttributesCString == NULL)
+        { WARNING_AND_NIL(@"Could not get attributes for property called `%@` of <%@>", propertyName, self.className); }
+        
+        // Parse property attributes.
+        NSArray *splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@","];
+        if (splitPropertyAttributes.count > 0)
+        {
+            // From Objective-C Runtime Programming Guide.
+            // xcdoc://ios//library/prerelease/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
+            NSString *encodeType = splitPropertyAttributes[0];
+            NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
+            propertyType = (splitEncodeType.count > 1) ? splitEncodeType[1] : [self typeNameForTypeEncoding:encodeType];
+        }
+        else
+        { WARNING_AND_NIL(@"Could not parse attributes for property called `%@` of <%@>å", propertyName, self.className); }
+    }
     
     return propertyType;
 }

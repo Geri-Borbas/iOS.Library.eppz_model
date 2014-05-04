@@ -26,6 +26,21 @@ static NSString *const EPPZFieldMapperWarningNoRuntimeCounterpart = @"No runtime
 
 /*!
  
+ Returns a field mapper object initialized with the given fields.
+ 
+ @param fields
+ An array that shows which field are to be represented in further representations. Represented
+ fields name will be the same as runtime fields. If you need a mapping between runtime an
+ representation field names, use @c +fieldMapperWithRepresentationFieldMap: or @c +map:.
+ 
+ */
++(instancetype)fieldMapperWithFields:(NSArray*) fields;
+
+/*! A short alias for @c +fieldMapperWithFields: factory method. */
++(instancetype)fields:(NSArray*) fields;
+
+/*!
+ 
  Returns a field mapper object initialized with the given field map.
  
  @param representationFieldMap

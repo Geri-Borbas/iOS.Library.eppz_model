@@ -26,12 +26,21 @@
 
 
 /*! Field dictionary entry shortcut */
-#define field(field) field : @(0)
+#define field(field) field : field
 
 
 @interface EPPZMapper : NSObject
 
+/*! A field name where dictionary representation Unique identifier that identifies the object within the scope of a mapping. Default value is @c @@"_id". */
+@property (nonatomic, strong) NSString *modelIdField;
 
+/*! A field name where dictionary representation will store the class name of the model. Default value is @c @@"_type". */
+@property (nonatomic, strong) NSString *classNameField;
+
+/*! Whether to represent model attributes - @c modelId, @c className - or not. Without these values mapper cannot reconstruct objects from dictionaries. Default value is @c YES. */
+@property (nonatomic) BOOL representModelAttributes;
+
+/*! Field mapper to be used when representing dictionaries from given models. */
 @property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
 @property (nonatomic, strong) NSDictionary *valueMappersForFields;
 @property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;

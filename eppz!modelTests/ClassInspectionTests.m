@@ -32,7 +32,7 @@
 -(void)setUp
 {
     [super setUp];
-    self.model = [SuperHero instance];
+    self.model = [SuperHero new];
 }
 
 -(void)testPropertyNameList

@@ -27,6 +27,12 @@
 
 #pragma mark - Creation
 
++(instancetype)fields:(NSArray*) fields
+{ return [self fieldMapperWithFields:fields]; }
+
++(instancetype)fieldMapperWithFields:(NSArray*) fields
+{ return [self fieldMapperWithRepresentationFieldMap:[NSDictionary dictionaryWithObjects:fields forKeys:fields]]; }
+
 +(instancetype)map:(NSDictionary*) representationFieldMap
 { return [self fieldMapperWithRepresentationFieldMap:representationFieldMap]; }
 

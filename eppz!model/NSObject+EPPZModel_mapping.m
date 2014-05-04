@@ -19,7 +19,44 @@
 static char mapper_key;
 
 
+@interface NSObject (EPPZModel_mapping_private)
+@property (nonatomic, strong) NSString *modelId_;
+@end
+
+
+@implementation NSObject (EPPZModel_mapping_private)
+@dynamic modelId_;
+@end
+
+
 @implementation NSObject (EPPZModel_mapping)
+@dynamic modelId;
+
+
+#pragma mark - Synthesize dynamic properties
+
++(void)load
+{
+    [EPPZSwizzler synthesizePropertyNamed:@"modelId_"
+                                   ofKind:[NSString class]
+                                 forClass:[NSObject class]
+                               withPolicy:retain];
+    
+    [EPPZSwizzler synthesizePropertyNamed:@"modelId"
+                                   ofKind:[NSString class]
+                                 forClass:[NSObject class]
+                               withPolicy:retain];
+}
+
+-(NSString*)modelId
+{
+    if (self.modelId_ == nil)
+    { self.modelId_ = @(self.hash).stringValue; }
+    return self.modelId_;
+}
+
+-(void)setModelId:(NSString*) modelId
+{ self.modelId_ = modelId; }
 
 
 #pragma mark - Mapper
@@ -59,12 +96,7 @@ static char mapper_key;
 #pragma mark - Representation (runtime to dictionary)
 
 -(NSDictionary*)dictionaryRepresentation
-{
-    // Represent mapped fields (or every property).
-    EPPZFieldMapper *fieldMapper = self.class.mapper.fieldMapper;
-    NSArray *fields = (fieldMapper.isCustomized) ? fieldMapper.runtimeFields : self.propertyNames;
-    return [self dictionaryRepresentationOfFields:fields];
-}
+{ return [self dictionaryRepresentationOfFields:nil]; } // Represent with mapped (or simply every) fields
 
 -(NSDictionary*)dictionaryRepresentationOfFields:(NSArray*) fields
 { return [self.class.mapper dictionaryRepresentationOfModel:self fields:fields]; }
