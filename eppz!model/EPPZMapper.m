@@ -38,6 +38,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         self.modelIdField = @"_id";
         self.classNameField = @"_type";
         self.representModelAttributes = YES;
+        self.representReferences = NO;
         
         // Field mapper.
         self.fieldMapper = [FieldMapper new];
@@ -93,20 +94,13 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 
 #pragma mark - Representation
 
--(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields
+-(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
 {
-    // Represent only `<EPPZModels>`.
+    // Represent only `<EPPZModel>` conforming objects.
     if ([model conformsToProtocol:@protocol(EPPZModel)] == NO)
     {
         WARNING(@"Object <%@> not conforms to <EPPZModel>, returning empty dictionary representation.", self.className);
         return @{};
-    }
-    
-    // If no fields sent, represent everything.
-    if (fields == nil)
-    {
-        EPPZFieldMapper *fieldMapper = model.class.mapper.fieldMapper;
-        fields = (fieldMapper.isCustomized) ? fieldMapper.runtimeFields : model.propertyNames;
     }
     
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
@@ -116,6 +110,24 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     {
         [dictionary setObject:model.modelId forKey:self.modelIdField];
         [dictionary setObject:model.className forKey:self.classNameField];
+    }
+
+    // Reference tracking.
+
+        // Turn of object tracking if explicitly requested.
+        if (self.representReferences) pool = nil;
+        
+        // If already represented (so tracked in pool).
+        BOOL alreadyRepresented = [pool containsObject:model];
+        if (alreadyRepresented) { return dictionary; } // Only model attributes gets represented.
+        else { [pool addObject:model]; } // Track is being represented otherwise.
+
+    
+    // If no fields sent, represent everything.
+    if (fields == nil)
+    {
+        EPPZFieldMapper *fieldMapper = model.class.mapper.fieldMapper;
+        fields = (fieldMapper.isCustomized) ? fieldMapper.runtimeFields : model.propertyNames;
     }
     
     // Create representation for each property using representers.
@@ -128,36 +140,38 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         // Get value.
         id eachValue = [model valueForKey:eachField];
         
-        // If a collection.
+        // Represent collection.
         if ([Collections isCollection:eachValue])
         {
             // Process each value within.
             eachValue = [Collections processCollection:eachValue processingBlock:^id(id eachCollectionValue)
             {
-                // Represent as dictionary if an `EPPZModel` inside.
+                // Represent as dictionary if an `<EPPZModel>` inside.
                 if ([eachCollectionValue conformsToProtocol:@protocol(EPPZModel)])
                 {
                     NSObject *eachObject = (NSObject*)eachCollectionValue;
-                    return [eachObject dictionaryRepresentationOfFields:eachSubFields];
+                    return [eachObject _dictionaryRepresentationOfFields:eachSubFields pool:pool];
                 }
                 
-                // Or represent value.
+                // Or represent single value.
                 return [self representValue:eachCollectionValue
                                     ofModel:model
                                     inField:eachField
                               withSubFields:eachSubFields
-                          isCollectionValue:YES];
+                          isCollectionValue:YES
+                                       pool:pool];
                 
             }];
         }
         
-        // Represent.
+        // Represent single value.
         NSString *eachRepresentedField = [self.fieldMapper representationFieldForField:eachField];
         id eachRepresentedValue = [self representValue:eachValue
                                                ofModel:model
                                                inField:eachField
                                          withSubFields:eachSubFields
-                                     isCollectionValue:NO];
+                                     isCollectionValue:NO
+                                                  pool:pool];
         
         // Set.
         [dictionary setObject:eachRepresentedValue forKey:eachRepresentedField];
@@ -166,19 +180,18 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     return dictionary;
 }
 
--(id)representValue:(id) value ofModel:(id) model inField:(NSString*) field withSubFields:(NSDictionary*) subfields isCollectionValue:(BOOL) isCollectionValue
+-(id)representValue:(id) value
+            ofModel:(id) model
+            inField:(NSString*) field
+      withSubFields:(id) subfields
+  isCollectionValue:(BOOL) isCollectionValue
+               pool:(NSMutableArray*) pool
 {
-    if ([value isKindOfClass:[UIView class]])
-    {
-        // Debug breakpoint place.
-        NSLog(@"representValue: %@", value);
-    }
-    
     // Represent `<EPPZModel>` values first (with their own mapper).
     if ([value conformsToProtocol:@protocol(EPPZModel)])
     {
         NSObject *object = (NSObject*)value;
-        return [object dictionaryRepresentationOfFields:subfields];
+        return [object _dictionaryRepresentationOfFields:subfields pool:pool];
     }
     
     // Get value mapper (for filed, then for type as a fallback).
@@ -255,7 +268,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 
 -(void)configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary
 {
-    // Do.
+    #warning To be implemented!
 }
 
 

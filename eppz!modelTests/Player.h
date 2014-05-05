@@ -34,7 +34,4 @@
 @property (nonatomic, strong) GameProgress *gameProgress;
 
 
-+(instancetype)testPlayer;
-
-
 @end

@@ -98,8 +98,12 @@ static char mapper_key;
 -(NSDictionary*)dictionaryRepresentation
 { return [self dictionaryRepresentationOfFields:nil]; } // Represent with mapped (or simply every) fields
 
--(NSDictionary*)dictionaryRepresentationOfFields:(NSArray*) fields
-{ return [self.class.mapper dictionaryRepresentationOfModel:self fields:fields]; }
+-(NSDictionary*)dictionaryRepresentationOfFields:(id) fields
+{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:[NSMutableArray new]]; }
+
+/*! For internal use. */
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool
+{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:pool]; }
 
 
 #pragma mark - Reconstruction

@@ -16,10 +16,15 @@
 #import "EPPZModel.h"
 
 
+@class GameProgress;
+
+
 @interface Achivement : NSObject
 
     <EPPZModel>
 
+
+@property (nonatomic, strong) NSArray *players;
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *description;

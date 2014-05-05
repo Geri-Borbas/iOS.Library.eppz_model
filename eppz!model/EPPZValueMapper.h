@@ -62,5 +62,4 @@ static NSString *const EPPZValueMapperTypeNameDelimiter = @":";
 @property (nonatomic, strong) id (^reconstructorBlock)(id representedValue);
 
 
-
 @end

@@ -15,6 +15,7 @@
 #import <XCTest/XCTest.h>
 #import "EPPZModel.h"
 #import "Player.h"
+#import "Player+TestPlayer.h"
 
 
 #pragma mark - Test case
@@ -73,6 +74,9 @@
     [Player mapper].representModelAttributes = YES;
     [GameProgress mapper].representModelAttributes = YES;
     [Achivement mapper].representModelAttributes = YES;
+    
+    // Make sure that representing references is turned off.
+    [Player mapper].representReferences = NO;
     
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
@@ -154,13 +158,28 @@
                                               @"gameProgress" : @{
                                                       @"_id" : self.invitee.gameProgress.modelId,
                                                       @"_type" : @"GameProgress",
-                                                      @"playerName" : @"Alfred",
+
+                                                      // Referenced object has only model attributes.
+                                                      @"player" : @{
+                                                              @"_id" : self.invitee.modelId,
+                                                              @"_type" : @"Player",
+                                                              },
                                                       
                                                       // `NSArray` collection with `<EPPZModel>` conforming objects within (`Achivement`).
                                                       @"achivements" : @[
                                                               @{
                                                                   @"_id" : [self.invitee.gameProgress.achivements[0] modelId],
                                                                   @"_type" : @"Achivement",
+                                                                  @"players" : @[
+                                                                          @{
+                                                                              @"_id" : self.player.modelId,
+                                                                              @"_type" : @"Player"
+                                                                              },
+                                                                          @{
+                                                                              @"_id" : self.invitee.modelId,
+                                                                              @"_type" : @"Player"
+                                                                              }
+                                                                          ],
                                                                   @"name" : @"Created!",
                                                                   @"description" : @"Gained when player is allocated in memory.",
                                                                   @"value" : @(10)
@@ -168,6 +187,12 @@
                                                               @{
                                                                   @"_id" : [self.invitee.gameProgress.achivements[1] modelId],
                                                                   @"_type" : @"Achivement",
+                                                                  @"players" : @[
+                                                                          @{
+                                                                              @"_id" : self.invitee.modelId,
+                                                                              @"_type" : @"Player"
+                                                                              }
+                                                                          ],
                                                                   @"name" : @"Guest!",
                                                                   @"description" : @"Gained when player has accepted an invitation.",
                                                                   @"value" : @(20)
@@ -179,20 +204,26 @@
                                   @"gameProgress" : @{
                                           @"_id" : self.player.gameProgress.modelId,
                                           @"_type" : @"GameProgress",
-                                          @"playerName" : @"Bruce",
+                                          @"player" : @{
+                                                  @"_id" : self.player.modelId,
+                                                  @"_type" : @"Player",
+                                                  },
                                           
                                           // `NSArray` collection with `<EPPZModel>` conforming objects within (`Achivement`).
                                           @"achivements" : @[
                                                   @{
                                                       @"_id" : [self.player.gameProgress.achivements[0] modelId],
-                                                      @"_type" : @"Achivement",
-                                                      @"name" : @"Created!",
-                                                      @"description" : @"Gained when player is allocated in memory.",
-                                                      @"value" : @(10)
+                                                      @"_type" : @"Achivement"
                                                       },
                                                   @{
                                                       @"_id" : [self.player.gameProgress.achivements[1] modelId],
                                                       @"_type" : @"Achivement",
+                                                      @"players" : @[
+                                                              @{
+                                                                  @"_id" : self.player.modelId,
+                                                                  @"_type" : @"Player"
+                                                                  }
+                                                              ],
                                                       @"name" : @"Social!",
                                                       @"description" : @"Gained when player invites a friend.",
                                                       @"value" : @(20)
@@ -290,6 +321,9 @@
     [Player mapper].representModelAttributes = NO;
     [GameProgress mapper].representModelAttributes = NO;
     [Achivement mapper].representModelAttributes = NO;
+    
+    // Turn on representing references (as it is safe when there are no circular references among fields).
+    [Player mapper].representReferences = YES;
     
     NSDictionary *dictionary = [self.player
                                 dictionaryRepresentationOfFields:@{

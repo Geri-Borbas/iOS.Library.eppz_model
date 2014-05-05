@@ -40,6 +40,17 @@
 /*! Whether to represent model attributes - @c modelId, @c className - or not. Without these values mapper cannot reconstruct objects from dictionaries. Default value is @c YES. */
 @property (nonatomic) BOOL representModelAttributes;
 
+/*!
+ 
+ Whether to represent referenced objects. Default value is NO. When turned off, representing
+ can result in an endless loop, so only turn off where there are no circular references among
+ the modeled fields.
+ 
+ When turned on, referenced objects representation will contain only model attributes.
+ 
+ */
+@property (nonatomic) BOOL representReferences;
+
 /*! Field mapper to be used when representing dictionaries from given models. */
 @property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
 @property (nonatomic, strong) NSDictionary *valueMappersForFields;
@@ -48,7 +59,11 @@
 
 /*!
  
- Returns a dictionary representation of the given model only with the given fields.
+ Returns a dictionary representation of the given model only with the given fields. @c NSObject
+ instances gonna call this method internally, not intended to client use.
+ 
+ @param model
+ Model object to be represented.
  
  @param fields
  Either an @c NSArray of fields to be represented, or may pass in an @c NSDictionary with fields,
@@ -56,8 +71,11 @@
  the keys gonna be parsed, the actual values will be dismissed (unless it is a sub-field
  @c NSDictionary).
  
+ @param pool
+ Object pool tracking the represented objects to resolve cross-references between objects.
+ 
  */
--(NSDictionary*)dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields;
+-(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
 
 /*! Configures the given model with the given dictionary representation. */
 -(void)configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary;

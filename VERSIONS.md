@@ -1,5 +1,12 @@
 ## Versions
 
+* 0.3.5
+
+    + Representing references
+    + Tests adjusted
+    + Comparison categories for test models
+    + Ready to implement reconstruction
+
 * 0.3.0
 
     + Aliases in value mappers

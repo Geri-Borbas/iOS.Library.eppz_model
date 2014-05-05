@@ -69,6 +69,8 @@
  */
 -(NSDictionary*)dictionaryRepresentationOfFields:(id) fields;
 
+/*! For internal use. */
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool;
 
 #pragma mark - Reconstruction (dictionary to runtime)
 

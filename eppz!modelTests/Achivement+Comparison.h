@@ -1,8 +1,8 @@
 //
-//  GameProgress.h
+//  Achivement+Comparison.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 05/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -11,24 +11,9 @@
 //  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//  Copyright (c) 2014 eppz! development, LLC. All rights reserved.
-//
 
-#import <Foundation/Foundation.h>
-#import "EPPZModel.h"
 #import "Achivement.h"
 
 
-@class Player;
-
-
-@interface GameProgress : NSObject
-
-    <EPPZModel>
-
-
-@property (nonatomic, weak) Player *player;
-@property (nonatomic, strong) NSArray *achivements; // Collection of `Achivements`
-
-
+@interface Achivement (Comparison)
 @end
