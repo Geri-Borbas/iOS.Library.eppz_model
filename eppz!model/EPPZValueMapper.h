@@ -53,6 +53,7 @@ static NSString *const EPPZValueMapperTypeNameDelimiter = @":";
 
 -(id)representValue:(id) runtimeValue;
 -(id)reconstructValue:(id) representedValue;
++(NSString*)typeNameOfRepresentation:(id) representation;
 
 
 #pragma mark - Properties

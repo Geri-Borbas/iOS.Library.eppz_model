@@ -111,12 +111,29 @@ static char mapper_key;
 +(instancetype)instanceWithDictionary:(NSDictionary*) dictionary
 {
     NSObject *instance = [self new];
-    [instance configureWithDictionary:dictionary];
+    [instance initializeWithDictionary:dictionary];
     return instance;
 }
 
+-(void)initializeWithDictionary:(NSDictionary*) dictionary
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary pool:[NSMutableDictionary new]]; }
+
 -(void)configureWithDictionary:(NSDictionary*) dictionary
-{ [self.class.mapper configureModel:self withDictionary:dictionary]; }
+{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:[NSMutableDictionary new]]; }
+
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{
+    NSObject *instance = [self new];
+    [instance _initializeWithDictionary:dictionary pool:pool];
+    return instance;
+}
+
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary pool:pool]; }
+
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }
+
 
 
 @end

@@ -80,6 +80,8 @@
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     Player *player = [Player instanceWithDictionary:dictionary];
     
+    NSLog(@"%@", player.dictionaryRepresentation);
+    
     XCTAssertEqualObjects(self.player,
                           player,
                           @"Original model and represented / reconstructed model should be the same.");

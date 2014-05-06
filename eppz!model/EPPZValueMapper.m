@@ -92,5 +92,14 @@
     return runtimeValue;
 }
 
++(NSString*)typeNameOfRepresentation:(id) representation
+{
+    if ([representation isKindOfClass:[NSString class]] == NO) return nil;
+    NSArray *components = [representation componentsSeparatedByString:EPPZValueMapperTypeNameDelimiter];
+    if (components.count > 1)
+    { return components[0]; }
+    return nil;
+}
+
 
 @end

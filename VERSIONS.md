@@ -1,5 +1,9 @@
 ## Versions
 
+* 0.4.0
+
+    + Reconstruction just works fine
+    
 * 0.3.5
 
     + Representing references

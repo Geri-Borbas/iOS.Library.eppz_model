@@ -55,6 +55,7 @@
 @property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
 @property (nonatomic, strong) NSDictionary *valueMappersForFields;
 @property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;
+@property (nonatomic, strong) EPPZValueMapper *defaultValueMapper;
 
 
 /*!
@@ -77,8 +78,35 @@
  */
 -(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
 
-/*! Configures the given model with the given dictionary representation. */
--(void)configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary;
+/*!
+ 
+ Initializes the given model with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, also create objects down the object graph is not
+ existed already.
+ 
+ @param dictionary
+ Dictionary holding the representation of the model to be initialized.
+ 
+ @param pool
+ Object pool tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
+ 
+ */
+-(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+
+/*!
+ 
+ Configures the given model with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, but only on objects that are already living in
+ the runtime object graph.
+ 
+ @param dictionary
+ Dictionary holding the representation of the model to be initialized.
+ 
+ @param pool
+ Object pool tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
+ 
+ */
+-(void)_configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end

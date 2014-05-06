@@ -64,7 +64,7 @@
         NSMutableArray *mutable = [NSMutableArray new];
         [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
         {
-            id _obj = processingBlock(obj);
+            id _obj = processingBlock(nil, obj);
             if (_obj != nil)
             { [mutable addObject:_obj]; }
         }];
@@ -77,7 +77,7 @@
         NSMutableDictionary *mutable = [NSMutableDictionary new];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
         {
-            id _obj = processingBlock(obj);
+            id _obj = processingBlock(key, obj);
             if (_obj != nil)
             { [mutable setObject:_obj forKey:key]; }
         }];
@@ -90,7 +90,7 @@
         NSMutableSet *mutable = [NSMutableSet new];
         [set enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
         {
-            id _obj = processingBlock(obj);
+            id _obj = processingBlock(nil, obj);
             if (_obj != nil)
             { [mutable addObject:_obj]; }
         }];
@@ -103,7 +103,7 @@
         NSMutableOrderedSet *mutable = [NSMutableOrderedSet new];
         [orderedSet enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
         {
-            id _obj = processingBlock(obj);
+            id _obj = processingBlock(nil, obj);
             if (_obj != nil)
             { [mutable addObject:_obj]; }
         }];

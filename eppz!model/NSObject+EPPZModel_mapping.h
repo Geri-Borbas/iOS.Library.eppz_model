@@ -82,8 +82,32 @@
  */
 +(instancetype)instanceWithDictionary:(NSDictionary*) dictionary;
 
-/*! Configures an instance with the given dictionary representation (using selected mapper). */
+/*!
+ 
+ Initializes an instance with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, also create objects down the object graph is not
+ existed already.
+ 
+ */
+-(void)initializeWithDictionary:(NSDictionary*) dictionary;
+
+/*!
+ 
+ Configures an instance with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, but only on objects that are already living in
+ the runtime object graph.
+ 
+ */
 -(void)configureWithDictionary:(NSDictionary*) dictionary;
+
+/*! For internal use. */
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+
+/*! For internal use. */
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+
+/*! For internal use. */
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end
