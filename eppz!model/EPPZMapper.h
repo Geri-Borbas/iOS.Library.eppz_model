@@ -37,6 +37,15 @@
 /*! A field name where dictionary representation will store the class name of the model. Default value is @c @@"_type". */
 @property (nonatomic, strong) NSString *classNameField;
 
+/*! The date format string to be appllied when representing `NSDate`. */
+@property (nonatomic, strong) NSString *dateFormat;
+
+/*! The time zone string to be appllied when representing `NSDate`. */
+@property (nonatomic, strong) NSString *timeZone;
+
+/*! The date formatter that is composed from `dateFormat` and `timeZone`. */
+@property (nonatomic, readonly) NSDateFormatter *dateFormatter;
+
 /*! Whether to represent model attributes - @c modelId, @c className - or not. Without these values mapper cannot reconstruct objects from dictionaries. Default value is @c YES. */
 @property (nonatomic) BOOL representModelAttributes;
 

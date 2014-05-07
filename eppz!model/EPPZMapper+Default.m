@@ -30,21 +30,44 @@
         self.representModelAttributes = YES;
         self.representReferences = NO;
         
+        // Date format.
+        self.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+        self.timeZone = [NSTimeZone localTimeZone].name;
+        
         // Field mapper.
         self.fieldMapper = [FieldMapper new];
         
         // Default (straight) value mapper.
         self.defaultValueMapper = [ValueMapper new];
         
+        // Nil value mapper.
+        self.nilValueMapper = [ValueMapper representer:^id(id runtimeValue) {
+                                               return @"<null>";
+                                           } reconstructor:^id(id representedValue) {
+                                               return nil;
+                                           }];
+        
         // Type name value mappers.
         self.valueMappersForTypeNames =
         @{
           
-          @"NSNull" : [ValueMapper representer:^id(id runtimeValue) {
-                                       return @"<null>";
-                                   } reconstructor:^id(id representedValue) {
-                                       return [NSNull null];
-                                   }],
+          // Foundation.
+          
+          @"NSData" : [ValueMapper type:@"NSData"
+                            representer:^id(id runtimeValue) {
+                                return [runtimeValue base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                            } reconstructor:^id(id representedValue) {
+                                return [[NSData alloc] initWithBase64EncodedData:representedValue options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                            }],
+          
+          @"NSDate" : [ValueMapper type:@"NSDate"
+                            representer:^id(id runtimeValue) {
+                                return [self.dateFormatter stringFromDate:runtimeValue];
+                            } reconstructor:^id(id representedValue) {
+                                return [self.dateFormatter dateFromString:representedValue];
+                            }],
+          
+          // CoreData.
           
           @"CGPoint" : [ValueMapper type:@"CGPoint"
                              representer:^id(id runtimeValue) {

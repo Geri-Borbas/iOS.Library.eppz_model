@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSString *UUID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSDate *creationDate;
+@property (nonatomic, strong) NSData *key;
 
 @property (nonatomic) CGSize size;
 @property (nonatomic, strong) UIView *mainView;

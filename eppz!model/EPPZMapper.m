@@ -28,7 +28,31 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 @implementation EPPZMapper
 
 
+#pragma mark - Date formatter
+
+-(NSDateFormatter*)dateFormatter
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:self.dateFormat];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
+    return dateFormatter;
+}
+
+
 #pragma mark - Representation
+
+-(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
+{
+    _nilValueMapper = nilValueMapper;
+
+    // Validate.
+    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
+    {
+        [NSException exceptionWithName:@"Invalid `nil` value mapper."
+                                reason:@"A `nil` representer should always return an NSString"
+                              userInfo:nil];
+    }
+}
 
 -(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
 {
