@@ -6,6 +6,7 @@
     + Default mapper extensions
         + `NSDate` (`dateFormatter`, `timeZone` property at mapper level)
         + `NSData` (base64 encoded string)
+    + `Achivement` objects don't get represented!
 
 * 0.4.0
 
