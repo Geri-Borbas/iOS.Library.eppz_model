@@ -62,9 +62,11 @@
 
 /*! Field mapper to be used when representing dictionaries from given models. */
 @property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
+@property (nonatomic, strong) EPPZValueMapper *nilValueMapper;
+@property (nonatomic, strong) EPPZValueMapper *defaultValueMapper;
 @property (nonatomic, strong) NSDictionary *valueMappersForFields;
 @property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;
-@property (nonatomic, strong) EPPZValueMapper *defaultValueMapper;
+
 
 
 /*!

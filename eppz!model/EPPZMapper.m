@@ -172,7 +172,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     valueMapper.fields = subfields;
     
     // Represent value.
-    if (value == nil) valueMapper = [self valueMapperForTypeName:@"NSNull"]; // `null` values represented with `NSNull` mapper
+    if (value == nil) return [NSNull null]; // valueMapper = self.nilValueMapper; // `nil` values represented with `nil` mapper
     id representation = [valueMapper representValue:value];
     
     return representation;
@@ -355,8 +355,19 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         if (typeName != nil) valueMapper = [self valueMapperForTypeName:typeName];
     }
     
+    // Check for null.
+    if ([self isValueNilRepresentation:value])
+    { valueMapper = self.nilValueMapper; }
+     
     // Return reconstruction or the value itself if no any mapper.
     return (valueMapper != nil) ? [valueMapper reconstructValue:value] : value;
+}
+
+-(BOOL)isValueNilRepresentation:(id) value
+{
+    if ([value isKindOfClass:[NSString class]] == NO) return NO;
+    if ([value isEqualToString:self.nilValueMapper.representerBlock(nil)] == NO) return NO;
+    return YES;
 }
 
 -(void)_configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
