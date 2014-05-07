@@ -3,10 +3,6 @@
 
 * Configure
     + Could configure unknown objects actually
-    
-* Default mapper extensions
-    + NSDate (`dateFormatter` property at mapper level)
-    + NSData (`base64`)
 
 * Refactor
     + Split interfaces

@@ -1,5 +1,12 @@
 ## Versions
 
+
+0.4.4
+    
+    + Default mapper extensions
+        + `NSDate` (`dateFormatter`, `timeZone` property at mapper level)
+        + `NSData` (base64 encoded string)
+
 * 0.4.0
 
     + Reconstruction just works fine
