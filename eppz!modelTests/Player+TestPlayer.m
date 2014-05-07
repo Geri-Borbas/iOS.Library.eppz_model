@@ -30,6 +30,8 @@
     player.UUID = @"1";
     player.name = @"Bruce";
     player.email = @"bruce@wayne.com";
+    player.creationDate = [NSDate dateWithTimeIntervalSince1970:1];
+    player.key = [@"wayne" dataUsingEncoding:NSUTF8StringEncoding];
     
     player.size = (CGSize){ 10.0, 10.0 };
     player.mainView = VIEW_WITH_SIZE(40.0, 40.0);
@@ -40,7 +42,9 @@
         invitee.UUID = @"2";
         invitee.name = @"Alfred";
         invitee.email = @"alfred@wayne.com";
-        
+        invitee.creationDate = [NSDate dateWithTimeIntervalSince1970:2];
+        invitee.key = [@"pennyworth" dataUsingEncoding:NSUTF8StringEncoding];
+    
         invitee.size = (CGSize){ 5.0, 5.0 };
         invitee.mainView = VIEW_WITH_SIZE(20.0, 20.0);
         invitee.subViews = @[ VIEW_WITH_SIZE(25.0, 25.0), VIEW_WITH_SIZE(30.0, 30.0), VIEW_WITH_SIZE(35.0, 35.0) ];

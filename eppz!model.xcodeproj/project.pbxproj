@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AE1E78F41918453000CF62DA /* EPPZMapper+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */; };
+		AE4F25611919A2CD004B2BD1 /* DictionaryReconstructionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECF61917268700B0BC55 /* DictionaryReconstructionTests.m */; };
+		AE4F25651919A492004B2BD1 /* UIImage+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4F25641919A492004B2BD1 /* UIImage+Test.m */; };
 		AE730A11191304DA00731BBD /* ClassInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A10191304DA00731BBD /* ClassInspectionTests.m */; };
 		AE730A12191308F800731BBD /* PropertyInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */; };
 		AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */; };
@@ -33,7 +35,6 @@
 		AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */; };
 		AEC8120619142A37007EC769 /* PropertyInspectionTestsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */; };
 		AED6ECF51917228800B0BC55 /* Player+TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECF41917228800B0BC55 /* Player+TestPlayer.m */; };
-		AED6ECF71917268700B0BC55 /* DictionaryReconstructionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECF61917268700B0BC55 /* DictionaryReconstructionTests.m */; };
 		AED6ECFB1917277F00B0BC55 /* Achivement+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECFA1917277F00B0BC55 /* Achivement+Comparison.m */; };
 		AED6ECFE191728B200B0BC55 /* GameProgress+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECFD191728B200B0BC55 /* GameProgress+Comparison.m */; };
 		AED6ED01191728D900B0BC55 /* Player+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ED00191728D900B0BC55 /* Player+Comparison.m */; };
@@ -69,6 +70,8 @@
 		AE1E78F21918453000CF62DA /* EPPZMapper+Default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EPPZMapper+Default.h"; sourceTree = "<group>"; };
 		AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EPPZMapper+Default.m"; sourceTree = "<group>"; };
 		AE1E78FC19185E4F00CF62DA /* DOING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DOING.md; sourceTree = "<group>"; };
+		AE4F25631919A492004B2BD1 /* UIImage+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Test.h"; sourceTree = "<group>"; };
+		AE4F25641919A492004B2BD1 /* UIImage+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Test.m"; sourceTree = "<group>"; };
 		AE730A10191304DA00731BBD /* ClassInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInspectionTests.m; sourceTree = "<group>"; };
 		AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_mapping.h"; sourceTree = "<group>"; };
 		AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_mapping.m"; sourceTree = "<group>"; };
@@ -158,6 +161,15 @@
 				AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */,
 			);
 			name = Default;
+			sourceTree = "<group>";
+		};
+		AE4F25691919AE79004B2BD1 /* Value mapping */ = {
+			isa = PBXGroup;
+			children = (
+				AE4F25631919A492004B2BD1 /* UIImage+Test.h */,
+				AE4F25641919A492004B2BD1 /* UIImage+Test.m */,
+			);
+			name = "Value mapping";
 			sourceTree = "<group>";
 		};
 		AE730A1719131ED900731BBD /* Class inspection */ = {
@@ -288,6 +300,7 @@
 		AEAE039A1912A0F50055FC20 /* eppz!modelTests */ = {
 			isa = PBXGroup;
 			children = (
+				AE4F25691919AE79004B2BD1 /* Value mapping */,
 				AE730A1719131ED900731BBD /* Class inspection */,
 				AEC8120219142A20007EC769 /* Property inspection */,
 				AEA5984D19142B05000364F1 /* Dictionary representation */,
@@ -532,12 +545,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4F25651919A492004B2BD1 /* UIImage+Test.m in Sources */,
 				AEA5985419142C52000364F1 /* Player.m in Sources */,
 				AED6ECFE191728B200B0BC55 /* GameProgress+Comparison.m in Sources */,
-				AED6ECF71917268700B0BC55 /* DictionaryReconstructionTests.m in Sources */,
 				AED6ED01191728D900B0BC55 /* Player+Comparison.m in Sources */,
 				AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */,
 				AEA5985119142C2C000364F1 /* GameProgress.m in Sources */,
+				AE4F25611919A2CD004B2BD1 /* DictionaryReconstructionTests.m in Sources */,
 				AEC0FEF81916AB6400578148 /* Achivement.m in Sources */,
 				AE730A1A19131EEE00731BBD /* Human.m in Sources */,
 				AEC0FEFB1916E83600578148 /* UIView+EPPZModel.m in Sources */,

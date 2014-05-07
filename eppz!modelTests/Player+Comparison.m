@@ -44,8 +44,7 @@
         {
             isEqual = NO;
             *stop = YES;
-        }
-            
+        }   
     }];
     return isEqual;
 }

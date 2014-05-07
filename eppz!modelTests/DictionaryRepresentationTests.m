@@ -78,17 +78,22 @@
     // Make sure that representing references is turned off.
     [Player mapper].representReferences = NO;
     
+    // Set timezone to `UTC+0`.
+    [Player mapper].timeZone = @"UTC";
+    
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
                                   
                                   // Model attributes.
-                                  @"_id" : self.player.modelId,
+                                  @"_id" : self.player.modelId, // `modelId` created from runtime hash by default (changes on every test)
                                   @"_type" : @"Player",
                                   
                                   // Arbitrary values, no value mapping.
                                   @"UUID" : @(1),
                                   @"name" : @"Bruce",
                                   @"email" : @"bruce@wayne.com",
+                                  @"creationDate" : @"NSDate:1970-01-01 00:00:01 +0000",
+                                  @"key" : @"NSData:d2F5bmU=",
                                   
                                   // `CGRect` value represented with default value mapping for type.
                                   @"size" : @"CGSize:{10, 10}",
@@ -127,6 +132,8 @@
                                               @"UUID" : @(2),
                                               @"name" : @"Alfred",
                                               @"email" : @"alfred@wayne.com",
+                                              @"creationDate" : @"NSDate:1970-01-01 00:00:02 +0000",
+                                              @"key" : @"NSData:cGVubnl3b3J0aA==",
                                               @"size" : @"CGSize:{5, 5}",
                                               @"mainView" : @{
                                                       @"_id" : self.invitee.mainView.modelId,
@@ -231,7 +238,7 @@
                                                   ]
                                           }
                                   };
-
+    
     XCTAssertEqualObjects(dictionary.description,
                           assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
