@@ -1,0 +1,7 @@
+{
+    UUID = 2;
+    "_id" = 47594448;
+    "_type" = Player;
+    email = "alfred@wayne.com";
+    name = Alfred;
+}

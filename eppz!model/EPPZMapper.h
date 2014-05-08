@@ -31,6 +31,7 @@
 
 @interface EPPZMapper : NSObject
 
+
 /*! A field name where dictionary representation Unique identifier that identifies the object within the scope of a mapping. Default value is @c @@"_id". */
 @property (nonatomic, strong) NSString *modelIdField;
 
@@ -118,6 +119,14 @@
  
  */
 -(void)_configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+
+
+
+#pragma mark - Debug
+
+@property (nonatomic) BOOL writeRepresentationLog;
+@property (nonatomic, strong) NSString *logFileDirectory;
+
 
 
 @end

@@ -81,6 +81,20 @@
     // Set timezone to `UTC+0`.
     [Player mapper].timeZone = @"UTC";
     
+    // File logging.
+    BOOL log = NO;
+    if (log)
+    {
+        NSString *libraryFolder = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+        [Player mapper].writeRepresentationLog = YES;
+        [GameProgress mapper].writeRepresentationLog = YES;
+        [Achivement mapper].writeRepresentationLog = YES;
+        [Player mapper].logFileDirectory = libraryFolder;
+        [GameProgress mapper].logFileDirectory = libraryFolder;
+        [Achivement mapper].logFileDirectory = libraryFolder;
+    }
+    
+    // Job.
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     NSDictionary *assertation = @{
                                   
@@ -188,7 +202,7 @@
                                                                               }
                                                                           ],
                                                                   @"name" : @"Created!",
-                                                                  @"description" : @"Gained when player is allocated in memory.",
+                                                                  @"definition" : @"Gained when player is allocated in memory.",
                                                                   @"value" : @(10)
                                                                   },
                                                               @{
@@ -201,7 +215,7 @@
                                                                               }
                                                                           ],
                                                                   @"name" : @"Guest!",
-                                                                  @"description" : @"Gained when player has accepted an invitation.",
+                                                                  @"definition" : @"Gained when player has accepted an invitation.",
                                                                   @"value" : @(20)
                                                                   }
                                                               ]
@@ -232,12 +246,19 @@
                                                                   }
                                                               ],
                                                       @"name" : @"Social!",
-                                                      @"description" : @"Gained when player invites a friend.",
+                                                      @"definition" : @"Gained when player invites a friend.",
                                                       @"value" : @(20)
                                                       }
                                                   ]
                                           }
                                   };
+    
+    if (log)
+    {
+        [Player mapper].writeRepresentationLog = NO;
+        [GameProgress mapper].writeRepresentationLog = NO;
+        [Achivement mapper].writeRepresentationLog = NO;
+    }
     
     XCTAssertEqualObjects(dictionary.description,
                           assertation.description,

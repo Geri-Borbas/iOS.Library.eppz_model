@@ -1,0 +1,27 @@
+{
+    "_id" = 47595184;
+    "_type" = GameProgress;
+    achivements =     (
+                {
+            "_id" = 47595328;
+            "_type" = Achivement;
+        },
+                {
+            "_id" = 47595360;
+            "_type" = Achivement;
+            description = "Gained when player invites a friend.";
+            name = "Social!";
+            players =             (
+                                {
+                    "_id" = 47593824;
+                    "_type" = Player;
+                }
+            );
+            value = 20;
+        }
+    );
+    player =     {
+        "_id" = 47593824;
+        "_type" = Player;
+    };
+}

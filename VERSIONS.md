@@ -1,7 +1,16 @@
 ## Versions
 
 
-0.4.4
+* 0.4.5
+
+    + Representing pool uses modelId to track ongoing representations
+    + Leaves one issue
+        + If a model gets reconstructed first by a reference representation only (only with model attributes)...
+        + ...it will tracked in the pool with that.
+            + Replacing with real values won't take place this case
+            + Somehow that placeholder should get real values (all the way down the graph!)
+
+* 0.4.4
     
     + Default mapper extensions
         + `NSDate` (`dateFormatter`, `timeZone` property at mapper level)

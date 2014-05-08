@@ -74,13 +74,18 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 
     // Reference tracking.
 
+        if ([model isKindOfClass:NSClassFromString(@"Achivement")])
+        {
+            
+        }
+    
         // Turn of object tracking if explicitly requested.
         if (self.representReferences) pool = nil;
         
         // If already represented (so tracked in pool).
-        BOOL alreadyRepresented = [pool containsObject:model];
+        BOOL alreadyRepresented = [pool containsObject:model.modelId];
         if (alreadyRepresented) { return dictionary; } // Only model attributes gets represented.
-        else { [pool addObject:model]; } // Track is being represented otherwise.
+        else { [pool addObject:model.modelId]; } // Track is being represented otherwise.
 
     
     // If no fields sent, represent everything.
@@ -135,6 +140,15 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         
         // Set.
         [dictionary setObject:eachRepresentedValue forKey:eachRepresentedField];
+        
+        // Debug.
+        if (self.writeRepresentationLog)
+        {
+            static int counter;
+            counter++;
+            NSString *fileName = FORMAT(@"%i <%@> (%@).log", counter, model.className, model.modelId);
+            [dictionary.description writeToFile:[self.logFileDirectory stringByAppendingPathComponent:fileName] atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
+        }
     }];
     
     return dictionary;
@@ -315,11 +329,11 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         // Create new instance.
         reconstructedValue = [class new];
         
-        // Track that model is being represented.
-        [pool setObject:reconstructedValue forKey:modelId];
-        
         // Reconstruct.
         [reconstructedValue _initializeWithDictionary:dictionaryRepresentation pool:pool];
+        
+        // Track that model is being represented.
+        // [pool setObject:reconstructedValue forKey:modelId];
     }
     
     return reconstructedValue;

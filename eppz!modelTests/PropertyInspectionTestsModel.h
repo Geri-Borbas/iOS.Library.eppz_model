@@ -23,7 +23,7 @@ typedef struct
     int number;
     char character;
 } PropertyInspectionTestsStruct;
-
+ 
 
 @interface PropertyInspectionTestsModel : NSObject
 

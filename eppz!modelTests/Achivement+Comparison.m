@@ -22,11 +22,11 @@
 -(BOOL)isEqual:(Achivement*) another
 {
     return (
-            [self isKindOfClass:another.class] //&&
-            //[Player playerArray:self.players isEqualToArray:another.players] // &&
-            //[self.name isEqualToString:another.name] &&
-            //[self.description isEqualToString:another.description] &&
-            //(self.value == another.value)
+            [self isKindOfClass:another.class] &&
+            [Player playerArray:self.players isEqualToArray:another.players] &&
+            [self.name isEqualToString:another.name] &&
+            [self.definition isEqualToString:another.definition] &&
+            (self.value == another.value)
             );    
 }
 

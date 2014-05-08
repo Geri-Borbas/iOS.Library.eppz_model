@@ -1,0 +1,15 @@
+{
+    "_id" = 47595328;
+    "_type" = Achivement;
+    name = "Created!";
+    players =     (
+                {
+            "_id" = 47593824;
+            "_type" = Player;
+        },
+                {
+            "_id" = 47594448;
+            "_type" = Player;
+        }
+    );
+}

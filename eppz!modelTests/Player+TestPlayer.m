@@ -60,12 +60,12 @@
         // Achivements.
         Achivement *achivement_1 = [Achivement new];
         achivement_1.name = @"Created!";
-        achivement_1.description = @"Gained when player is allocated in memory.";
+        achivement_1.definition = @"Gained when player is allocated in memory.";
         achivement_1.value = 10.0;
         
         Achivement *achivement_2 = [Achivement new];
         achivement_2.name = @"Social!";
-        achivement_2.description = @"Gained when player invites a friend.";
+        achivement_2.definition = @"Gained when player invites a friend.";
         achivement_2.value = 20.0;
     
         // Add.
@@ -79,7 +79,7 @@
             // Achivements.
             Achivement *achivement_3 = [Achivement new];
             achivement_3.name = @"Guest!";
-            achivement_3.description = @"Gained when player has accepted an invitation.";
+            achivement_3.definition = @"Gained when player has accepted an invitation.";
             achivement_3.value = 20.0;
     
         // Add.

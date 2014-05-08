@@ -51,7 +51,7 @@
     XCTAssertEqualObjects(onePlayer,
                           anotherPlayer,
                           @"`Player` comparison should work as expected.");
-    /*
+
     // Make some change deep inside.
     [(Achivement*)anotherPlayer.gameProgress.achivements[0] setName:@"Something else!"];
 
@@ -64,11 +64,11 @@
     
     XCTAssertEqualObjects(onePlayer,
                           anotherPlayer,
-                          @"`Player` comparison should work as expected.");*/
+                          @"`Player` comparison should work as expected.");
 }
 
 -(void)testInstanceWithDictionary
-{    
+{
     // Make sure that representing model attributes for classes is turned on.
     [Player mapper].representModelAttributes = YES;
     [GameProgress mapper].representModelAttributes = YES;
@@ -80,7 +80,13 @@
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     Player *player = [Player instanceWithDictionary:dictionary];
     
-    NSLog(@"%@", player.dictionaryRepresentation);
+    BOOL log = YES;
+    if (log)
+    {
+        NSString *libraryFolder = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+        [self.player.dictionaryRepresentation.description writeToFile:[libraryFolder stringByAppendingPathComponent:@"self.player.log"] atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
+        [player.dictionaryRepresentation.description writeToFile:[libraryFolder stringByAppendingPathComponent:@"player.log"] atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
+    }
     
     XCTAssertEqualObjects(self.player,
                           player,

@@ -1,0 +1,8 @@
+{
+    "_id" = 47595408;
+    "_type" = GameProgress;
+    player =     {
+        "_id" = 47594448;
+        "_type" = Player;
+    };
+}

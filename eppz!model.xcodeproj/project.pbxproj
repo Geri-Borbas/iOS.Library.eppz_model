@@ -29,6 +29,8 @@
 		AEAE03991912A0F50055FC20 /* libeppz!model.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAE03811912A0F50055FC20 /* libeppz!model.a */; };
 		AEAE039F1912A0F50055FC20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEAE039D1912A0F50055FC20 /* InfoPlist.strings */; };
 		AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m */; };
+		AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */; };
+		AEAFA5A8191B1845001FD2EA /* EPPZModelProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */; };
 		AEC0FEF81916AB6400578148 /* Achivement.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEF71916AB6400578148 /* Achivement.m */; };
 		AEC0FEFB1916E83600578148 /* UIView+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEFA1916E83600578148 /* UIView+EPPZModel.m */; };
 		AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FA191426C0007EC769 /* EPPZValueMapper.m */; };
@@ -106,6 +108,46 @@
 		AEAE03AE1912A1790055FC20 /* VERSIONS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSIONS.md; sourceTree = "<group>"; };
 		AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel_inspecting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_inspecting.h"; sourceTree = "<group>"; };
 		AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_inspecting.m"; sourceTree = "<group>"; };
+		AEAFA57E191ADFCF001FD2EA /* EPPZSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZSerializer.h; sourceTree = "<group>"; };
+		AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZSerializer.m; sourceTree = "<group>"; };
+		AEAFA582191AF99B001FD2EA /* 1 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "1 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA583191AF99B001FD2EA /* 2 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "2 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA584191AF99B001FD2EA /* 3 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "3 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA585191AF99B001FD2EA /* 4 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "4 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA586191AF99B001FD2EA /* 5 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "5 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA587191AF99B001FD2EA /* 6 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "6 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA588191AF99B001FD2EA /* 7 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "7 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA589191AF99B001FD2EA /* 8 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "8 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA58A191AF99B001FD2EA /* 9 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "9 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA58B191AF99B001FD2EA /* 10 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA58C191AF99B001FD2EA /* 11 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "11 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA58D191AF99B001FD2EA /* 12 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA58E191AF99B001FD2EA /* 13 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "13 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA58F191AF99B001FD2EA /* 14 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "14 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA590191AF99B001FD2EA /* 15 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "15 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA591191AF99B001FD2EA /* 16 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "16 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA592191AF99B001FD2EA /* 17 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "17 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA593191AF99B001FD2EA /* 18 <GameProgress> (47595408).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "18 <GameProgress> (47595408).log"; sourceTree = "<group>"; };
+		AEAFA594191AF99B001FD2EA /* 19 <Achivement> (47595328).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "19 <Achivement> (47595328).log"; sourceTree = "<group>"; };
+		AEAFA595191AF99B001FD2EA /* 20 <Achivement> (47595328).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "20 <Achivement> (47595328).log"; sourceTree = "<group>"; };
+		AEAFA596191AF99B001FD2EA /* 21 <Achivement> (47595328).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "21 <Achivement> (47595328).log"; sourceTree = "<group>"; };
+		AEAFA597191AF99B001FD2EA /* 22 <Achivement> (47595328).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "22 <Achivement> (47595328).log"; sourceTree = "<group>"; };
+		AEAFA598191AF99B001FD2EA /* 23 <Achivement> (47595424).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "23 <Achivement> (47595424).log"; sourceTree = "<group>"; };
+		AEAFA599191AF99B001FD2EA /* 24 <Achivement> (47595424).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "24 <Achivement> (47595424).log"; sourceTree = "<group>"; };
+		AEAFA59A191AF99B001FD2EA /* 25 <Achivement> (47595424).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "25 <Achivement> (47595424).log"; sourceTree = "<group>"; };
+		AEAFA59B191AF99B001FD2EA /* 26 <Achivement> (47595424).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "26 <Achivement> (47595424).log"; sourceTree = "<group>"; };
+		AEAFA59C191AF99B001FD2EA /* 27 <GameProgress> (47595408).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "27 <GameProgress> (47595408).log"; sourceTree = "<group>"; };
+		AEAFA59D191AF99B001FD2EA /* 28 <Player> (47594448).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28 <Player> (47594448).log"; sourceTree = "<group>"; };
+		AEAFA59E191AF99B001FD2EA /* 29 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "29 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA59F191AF99B001FD2EA /* 30 <GameProgress> (47595184).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "30 <GameProgress> (47595184).log"; sourceTree = "<group>"; };
+		AEAFA5A0191AF99B001FD2EA /* 31 <Achivement> (47595360).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "31 <Achivement> (47595360).log"; sourceTree = "<group>"; };
+		AEAFA5A1191AF99B001FD2EA /* 32 <Achivement> (47595360).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "32 <Achivement> (47595360).log"; sourceTree = "<group>"; };
+		AEAFA5A2191AF99B001FD2EA /* 33 <Achivement> (47595360).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "33 <Achivement> (47595360).log"; sourceTree = "<group>"; };
+		AEAFA5A3191AF99B001FD2EA /* 34 <Achivement> (47595360).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "34 <Achivement> (47595360).log"; sourceTree = "<group>"; };
+		AEAFA5A4191AF99B001FD2EA /* 35 <GameProgress> (47595184).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "35 <GameProgress> (47595184).log"; sourceTree = "<group>"; };
+		AEAFA5A5191AF99B001FD2EA /* 36 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "36 <Player> (47593824).log"; sourceTree = "<group>"; };
+		AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZModelProxy.h; sourceTree = "<group>"; };
+		AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelProxy.m; sourceTree = "<group>"; };
 		AEC0FEF61916AB6400578148 /* Achivement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achivement.h; sourceTree = "<group>"; };
 		AEC0FEF71916AB6400578148 /* Achivement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achivement.m; sourceTree = "<group>"; };
 		AEC0FEF91916E83600578148 /* UIView+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EPPZModel.h"; sourceTree = "<group>"; };
@@ -187,6 +229,8 @@
 				AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */,
 				AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */,
 				AE730A2419132D7800731BBD /* Mapper */,
+				AEAFA57E191ADFCF001FD2EA /* EPPZSerializer.h */,
+				AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */,
 			);
 			name = Mapping;
 			sourceTree = "<group>";
@@ -200,6 +244,8 @@
 				AE875D7E1915D61600DB9034 /* Collection enumerator */,
 				AEC811FF1914275C007EC769 /* Field mapper */,
 				AEC8120019142779007EC769 /* Value mapper */,
+				AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */,
+				AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */,
 			);
 			name = Mapper;
 			sourceTree = "<group>";
@@ -216,6 +262,7 @@
 		AEA5984D19142B05000364F1 /* Dictionary representation */ = {
 			isa = PBXGroup;
 			children = (
+				AEAFA581191AF977001FD2EA /* testDefaultMapper log */,
 				AEA5984E19142C05000364F1 /* Models */,
 				AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */,
 				AED6ECF61917268700B0BC55 /* DictionaryReconstructionTests.m */,
@@ -300,6 +347,7 @@
 		AEAE039A1912A0F50055FC20 /* eppz!modelTests */ = {
 			isa = PBXGroup;
 			children = (
+				AEAFA57D191ADE53001FD2EA /* Errors and Warnings */,
 				AE4F25691919AE79004B2BD1 /* Value mapping */,
 				AE730A1719131ED900731BBD /* Class inspection */,
 				AEC8120219142A20007EC769 /* Property inspection */,
@@ -316,6 +364,56 @@
 				AEAE039D1912A0F50055FC20 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AEAFA57D191ADE53001FD2EA /* Errors and Warnings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Errors and Warnings";
+			sourceTree = "<group>";
+		};
+		AEAFA581191AF977001FD2EA /* testDefaultMapper log */ = {
+			isa = PBXGroup;
+			children = (
+				AEAFA582191AF99B001FD2EA /* 1 <Player> (47593824).log */,
+				AEAFA583191AF99B001FD2EA /* 2 <Player> (47593824).log */,
+				AEAFA584191AF99B001FD2EA /* 3 <Player> (47593824).log */,
+				AEAFA585191AF99B001FD2EA /* 4 <Player> (47593824).log */,
+				AEAFA586191AF99B001FD2EA /* 5 <Player> (47593824).log */,
+				AEAFA587191AF99B001FD2EA /* 6 <Player> (47593824).log */,
+				AEAFA588191AF99B001FD2EA /* 7 <Player> (47593824).log */,
+				AEAFA589191AF99B001FD2EA /* 8 <Player> (47593824).log */,
+				AEAFA58A191AF99B001FD2EA /* 9 <Player> (47594448).log */,
+				AEAFA58B191AF99B001FD2EA /* 10 <Player> (47594448).log */,
+				AEAFA58C191AF99B001FD2EA /* 11 <Player> (47594448).log */,
+				AEAFA58D191AF99B001FD2EA /* 12 <Player> (47594448).log */,
+				AEAFA58E191AF99B001FD2EA /* 13 <Player> (47594448).log */,
+				AEAFA58F191AF99B001FD2EA /* 14 <Player> (47594448).log */,
+				AEAFA590191AF99B001FD2EA /* 15 <Player> (47594448).log */,
+				AEAFA591191AF99B001FD2EA /* 16 <Player> (47594448).log */,
+				AEAFA592191AF99B001FD2EA /* 17 <Player> (47594448).log */,
+				AEAFA593191AF99B001FD2EA /* 18 <GameProgress> (47595408).log */,
+				AEAFA594191AF99B001FD2EA /* 19 <Achivement> (47595328).log */,
+				AEAFA595191AF99B001FD2EA /* 20 <Achivement> (47595328).log */,
+				AEAFA596191AF99B001FD2EA /* 21 <Achivement> (47595328).log */,
+				AEAFA597191AF99B001FD2EA /* 22 <Achivement> (47595328).log */,
+				AEAFA598191AF99B001FD2EA /* 23 <Achivement> (47595424).log */,
+				AEAFA599191AF99B001FD2EA /* 24 <Achivement> (47595424).log */,
+				AEAFA59A191AF99B001FD2EA /* 25 <Achivement> (47595424).log */,
+				AEAFA59B191AF99B001FD2EA /* 26 <Achivement> (47595424).log */,
+				AEAFA59C191AF99B001FD2EA /* 27 <GameProgress> (47595408).log */,
+				AEAFA59D191AF99B001FD2EA /* 28 <Player> (47594448).log */,
+				AEAFA59E191AF99B001FD2EA /* 29 <Player> (47593824).log */,
+				AEAFA59F191AF99B001FD2EA /* 30 <GameProgress> (47595184).log */,
+				AEAFA5A0191AF99B001FD2EA /* 31 <Achivement> (47595360).log */,
+				AEAFA5A1191AF99B001FD2EA /* 32 <Achivement> (47595360).log */,
+				AEAFA5A2191AF99B001FD2EA /* 33 <Achivement> (47595360).log */,
+				AEAFA5A3191AF99B001FD2EA /* 34 <Achivement> (47595360).log */,
+				AEAFA5A4191AF99B001FD2EA /* 35 <GameProgress> (47595184).log */,
+				AEAFA5A5191AF99B001FD2EA /* 36 <Player> (47593824).log */,
+			);
+			name = "testDefaultMapper log";
 			sourceTree = "<group>";
 		};
 		AEC811FF1914275C007EC769 /* Field mapper */ = {
@@ -535,7 +633,9 @@
 				AE875D7D1915CB3F00DB9034 /* EPPZCollectionEnumerator.m in Sources */,
 				AE1E78F41918453000CF62DA /* EPPZMapper+Default.m in Sources */,
 				AEABF7261912A647006E9041 /* EPPZLog.m in Sources */,
+				AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */,
 				AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */,
+				AEAFA5A8191B1845001FD2EA /* EPPZModelProxy.m in Sources */,
 				AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */,
 				AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */,
 			);
@@ -685,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02AD504177094BA3916E5A80 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -712,6 +813,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02AD504177094BA3916E5A80 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
