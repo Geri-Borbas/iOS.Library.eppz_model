@@ -116,20 +116,20 @@ static char mapper_key;
 }
 
 -(void)initializeWithDictionary:(NSDictionary*) dictionary
-{ [self.class.mapper _initializeModel:self withDictionary:dictionary pool:[NSMutableDictionary new]]; }
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:[EPPZTracker new]]; }
 
 -(void)configureWithDictionary:(NSDictionary*) dictionary
 { [self.class.mapper _configureModel:self withDictionary:dictionary pool:[NSMutableDictionary new]]; }
 
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
 {
     NSObject *instance = [self new];
-    [instance _initializeWithDictionary:dictionary pool:pool];
+    [instance _initializeWithDictionary:dictionary tracker:tracker];
     return instance;
 }
 
--(void)_initializeWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
-{ [self.class.mapper _initializeModel:self withDictionary:dictionary pool:pool]; }
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:tracker]; }
 
 -(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
 { [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }

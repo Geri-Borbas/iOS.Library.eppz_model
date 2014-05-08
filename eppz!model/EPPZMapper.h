@@ -24,6 +24,8 @@
 #import "EPPZCollectionEnumerator.h"
 @compatibility_alias Collections EPPZCollectionEnumerator;
 
+#import "EPPZTracker.h"
+
 
 /*! Field dictionary entry shortcut */
 #define field(field) field : field
@@ -99,11 +101,11 @@
  @param dictionary
  Dictionary holding the representation of the model to be initialized.
  
- @param pool
- Object pool tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
+ @param tracker
+ Model tracker tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
  
  */
--(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+-(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
 
 /*!
  

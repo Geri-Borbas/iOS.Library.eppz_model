@@ -101,10 +101,10 @@
 -(void)configureWithDictionary:(NSDictionary*) dictionary;
 
 /*! For internal use. */
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
 
 /*! For internal use. */
--(void)_initializeWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
 
 /*! For internal use. */
 -(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;

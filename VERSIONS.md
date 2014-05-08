@@ -1,6 +1,13 @@
 ## Versions
 
 
+* [feature/reference-reconstructing] 0.0.0
+
+    + Added Tracker
+        + Tracks represented models
+        + Track every references to it so far
+        + Real instances can be set back to references
+
 * 0.4.51
 
     + Project grouping

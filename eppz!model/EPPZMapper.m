@@ -240,10 +240,10 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 
 #pragma mark - Reconstruction
 
--(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary *)pool
+-(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
 {
     // Track that model is being represented.
-    [pool setObject:model forKey:[self modelIdInDictionaryRepresentationIfAny:dictionary]];
+    [tracker trackModel:model forModelId:[self modelIdInDictionaryRepresentationIfAny:dictionary]];
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *eachField, id eachRepresentedValue, BOOL *stop)
     {
@@ -253,7 +253,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         
         // Reconstruct `<EPPZModel>` representations.
         if ([self isValueRepresentedEPPZModel:eachRepresentedValue])
-        { eachValue = [self reconstructEPPZModel:eachRepresentedValue pool:pool]; }
+        { eachValue = [self reconstructEPPZModel:eachRepresentedValue tracker:tracker]; }
         
         // Reconstruct an arbitrary value.
         else
@@ -261,10 +261,14 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
             eachValue = [self reconstructSingleValue:eachRepresentedValue
                                                model:model
                                                field:eachReconstructedField
-                                                pool:pool];
+                                             tracker:tracker];
         }
         
+        // Set.
         [self tryToSetValue:eachValue forKey:eachReconstructedField onModel:model];
+        
+        // Track reference.
+        [tracker trackModel:eachValue owner:model field:eachReconstructedField];
     }];
 }
 
@@ -309,57 +313,61 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     return YES;
 }
 
--(id)reconstructEPPZModel:(id) dictionaryRepresentation pool:(NSMutableDictionary*) pool
+-(id)reconstructEPPZModel:(id) dictionaryRepresentation tracker:(EPPZTracker*) tracker
 {
-    id reconstructedValue;
+    NSObject *reconstructedValue;
     
+    // Get model attributes from dictionary representation.
     NSString *modelId = [dictionaryRepresentation objectForKey:self.modelIdField];
     NSString *className = [dictionaryRepresentation objectForKey:self.classNameField];
     Class class = NSClassFromString(className);
     
-    // Lookup pool.
-    BOOL alreadyReconstructed = [[pool allKeys] containsObject:modelId];
-    if (alreadyReconstructed)
+    // Lookup tracker.
+    BOOL alreadyReconstructed = ([tracker modelForModelId:modelId] != nil);
+    BOOL onlyReferenceRepresentation = ([dictionaryRepresentation allKeys].count <= 2);
+    
+    // If just a reference (and already tracked), spit back model reference.
+    if (onlyReferenceRepresentation && alreadyReconstructed)
     {
-        // Select object from pool.
-        reconstructedValue = [pool objectForKey:modelId];
+        // Get model from tracker.
+        reconstructedValue = [tracker modelForModelId:modelId];
     }
+    
+    // Else create an instance and set overall references so far.
     else
     {
-        // Create new instance.
+        // Create new model.
         reconstructedValue = [class new];
+        [reconstructedValue _initializeWithDictionary:dictionaryRepresentation tracker:tracker]; // Reconstruct
         
-        // Reconstruct.
-        [reconstructedValue _initializeWithDictionary:dictionaryRepresentation pool:pool];
-        
-        // Track that model is being represented.
-        // [pool setObject:reconstructedValue forKey:modelId];
+        // Replace references (if any).
+        [tracker replaceModel:reconstructedValue];
     }
     
     return reconstructedValue;
 }
 
--(id)reconstructCollection:(id) collection model:(id) model field:(NSString*) field pool:(NSMutableDictionary*) pool
+-(id)reconstructCollection:(id) collection model:(id) model field:(NSString*) field tracker:(EPPZTracker*) tracker
 {
     return [Collections processCollection:collection processingBlock:^id(NSString *eachCollectionKey, NSObject *eachRepresentedCollectionValue)
     {
         // Look into dictionaries for `<EPPZModel>` representations.
         if ([self isValueRepresentedEPPZModel:eachRepresentedCollectionValue])
-        { return [self reconstructEPPZModel:eachRepresentedCollectionValue pool:pool]; }
+        { return [self reconstructEPPZModel:eachRepresentedCollectionValue tracker:tracker]; }
         
         // Reconstruct a single value.
         return [self reconstructSingleValue:eachRepresentedCollectionValue
                                       model:model
                                       field:field
-                                       pool:pool];
+                                    tracker:tracker];
     }];
 }
 
--(id)reconstructSingleValue:(id) value model:(id) model field:(NSString*) field pool:(NSMutableDictionary*) pool
+-(id)reconstructSingleValue:(id) value model:(id) model field:(NSString*) field tracker:(EPPZTracker*) tracker
 {
     // If is a collection.
     if ([Collections isCollection:value])
-    { return [self reconstructCollection:value model:model field:field pool:pool]; }
+    { return [self reconstructCollection:value model:model field:field tracker:tracker]; }
     
     // Get value mapper (for field, then for type prefix as a fallback).
     EPPZValueMapper *valueMapper = [self valueMapperForField:field];
@@ -398,7 +406,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         if ([key isEqualToString:self.modelIdField] || [key isEqualToString:self.classNameField]) return;
         WARNING_AND_VOID(@"Can't set field `%@` on <%@> to reconstruct.", key, model.className);
     }
-    @finally {}
+    @finally { }
 }
 
 
