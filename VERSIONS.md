@@ -1,6 +1,10 @@
 ## Versions
 
 
+* 0.4.51
+
+    + Project grouping
+
 * 0.4.5
 
     + Representing pool uses modelId to track ongoing representations

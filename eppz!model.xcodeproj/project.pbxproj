@@ -229,8 +229,6 @@
 				AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */,
 				AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */,
 				AE730A2419132D7800731BBD /* Mapper */,
-				AEAFA57E191ADFCF001FD2EA /* EPPZSerializer.h */,
-				AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */,
 			);
 			name = Mapping;
 			sourceTree = "<group>";
@@ -244,8 +242,6 @@
 				AE875D7E1915D61600DB9034 /* Collection enumerator */,
 				AEC811FF1914275C007EC769 /* Field mapper */,
 				AEC8120019142779007EC769 /* Value mapper */,
-				AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */,
-				AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */,
 			);
 			name = Mapper;
 			sourceTree = "<group>";
@@ -293,6 +289,7 @@
 				AEAE03AE1912A1790055FC20 /* VERSIONS.md */,
 				AE1E78FC19185E4F00CF62DA /* DOING.md */,
 				AEAE03AD1912A16F0055FC20 /* README.md */,
+				AEAFA5A9191B21C4001FD2EA /* Drafts */,
 				AEAE03861912A0F50055FC20 /* eppz!model */,
 				AEAE039A1912A0F50055FC20 /* eppz!modelTests */,
 				AEAE03831912A0F50055FC20 /* Frameworks */,
@@ -414,6 +411,18 @@
 				AEAFA5A5191AF99B001FD2EA /* 36 <Player> (47593824).log */,
 			);
 			name = "testDefaultMapper log";
+			sourceTree = "<group>";
+		};
+		AEAFA5A9191B21C4001FD2EA /* Drafts */ = {
+			isa = PBXGroup;
+			children = (
+				AEAFA57E191ADFCF001FD2EA /* EPPZSerializer.h */,
+				AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */,
+				AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */,
+				AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */,
+			);
+			name = Drafts;
+			path = "eppz!model";
 			sourceTree = "<group>";
 		};
 		AEC811FF1914275C007EC769 /* Field mapper */ = {
