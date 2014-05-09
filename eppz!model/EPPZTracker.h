@@ -14,10 +14,20 @@
 
 
 /*! Track that a model is being reconstructed (indexed on @c modelId). */
--(void)trackModel:(NSObject*) model forModelId:(NSString*) modelId;
+-(void)trackModel:(NSObject*) model
+       forModelId:(NSString*) modelId;
 
 /*! Track that a model has been set as a reference in an owner. */
--(void)trackModel:(NSObject*) model owner:(NSObject*) owner field:(NSObject*) field;
+-(void)trackModel:(NSObject*) model
+       forModelId:(NSString*) modelId
+            owner:(NSObject*) owner
+            field:(NSString*) field;
+
+/*! Track that a model has been set as as a reference in the given owner's collection (either @c NSArray, @c NSDictionary, @c NSSet or @c NSOrderedSet). */
+-(void)trackModelInCollection:(NSObject*) model
+                   forModelId:(NSString*) modelId
+                        owner:(NSObject*) owner
+                        field:(NSString*) field;
 
 
 /*! Returns a model for the given @c modelId if tracked any (return @c nil if not tracked yet). */
@@ -29,7 +39,7 @@
  points to the model so far in the reconstructed object graph.
  
  */
--(void)replaceModel:(NSObject*) model;
+-(void)replaceModel:(NSObject*) model forModelId:(NSString*) modelId;
 
 
 @end

@@ -1,6 +1,11 @@
 ## Versions
 
 
+* [feature/reference-reconstructing] 0.0.1
+
+    + Tracker tracks, but `modelId` values seems mixed up somewhere
+        + Next is simply skip `modelId` from interface
+
 * [feature/reference-reconstructing] 0.0.0
 
     + Added Tracker

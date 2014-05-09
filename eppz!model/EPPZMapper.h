@@ -22,7 +22,6 @@
 @compatibility_alias ValueMapper EPPZValueMapper;
 
 #import "EPPZCollectionEnumerator.h"
-@compatibility_alias Collections EPPZCollectionEnumerator;
 
 #import "EPPZTracker.h"
 

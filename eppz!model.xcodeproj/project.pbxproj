@@ -19,6 +19,7 @@
 		AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A2119132BFF00731BBD /* EPPZMapper.m */; };
 		AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */; };
 		AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E613191C400C00F68426 /* EPPZTracker.m */; };
+		AE80E619191C59E200F68426 /* EPPZModelTrackInArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E618191C59E200F68426 /* EPPZModelTrackInArray.m */; };
 		AE875D7D1915CB3F00DB9034 /* EPPZCollectionEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE875D7C1915CB3F00DB9034 /* EPPZCollectionEnumerator.m */; };
 		AEA5985119142C2C000364F1 /* GameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985019142C2C000364F1 /* GameProgress.m */; };
 		AEA5985419142C52000364F1 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985319142C52000364F1 /* Player.m */; };
@@ -89,6 +90,8 @@
 		AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelTrack.m; sourceTree = "<group>"; };
 		AE80E612191C400C00F68426 /* EPPZTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZTracker.h; sourceTree = "<group>"; };
 		AE80E613191C400C00F68426 /* EPPZTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZTracker.m; sourceTree = "<group>"; };
+		AE80E617191C59E200F68426 /* EPPZModelTrackInArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZModelTrackInArray.h; sourceTree = "<group>"; };
+		AE80E618191C59E200F68426 /* EPPZModelTrackInArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelTrackInArray.m; sourceTree = "<group>"; };
 		AE875D7B1915CB3F00DB9034 /* EPPZCollectionEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZCollectionEnumerator.h; sourceTree = "<group>"; };
 		AE875D7C1915CB3F00DB9034 /* EPPZCollectionEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZCollectionEnumerator.m; sourceTree = "<group>"; };
 		AEA5984F19142C2C000364F1 /* GameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameProgress.h; sourceTree = "<group>"; };
@@ -199,13 +202,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE1E78FB19184B6000CF62DA /* Default */ = {
+		AE1E78FB19184B6000CF62DA /* Default mapper */ = {
 			isa = PBXGroup;
 			children = (
 				AE1E78F21918453000CF62DA /* EPPZMapper+Default.h */,
 				AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */,
 			);
-			name = Default;
+			name = "Default mapper";
 			sourceTree = "<group>";
 		};
 		AE4F25691919AE79004B2BD1 /* Value mapping */ = {
@@ -241,16 +244,34 @@
 			children = (
 				AE730A2019132BFF00731BBD /* EPPZMapper.h */,
 				AE730A2119132BFF00731BBD /* EPPZMapper.m */,
-				AE80E612191C400C00F68426 /* EPPZTracker.h */,
-				AE80E613191C400C00F68426 /* EPPZTracker.m */,
-				AE80E60F191C3D8A00F68426 /* EPPZModelTrack.h */,
-				AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */,
-				AE1E78FB19184B6000CF62DA /* Default */,
+				AE1E78FB19184B6000CF62DA /* Default mapper */,
+				AE80E615191C4B8D00F68426 /* Tracker */,
 				AE875D7E1915D61600DB9034 /* Collection enumerator */,
 				AEC811FF1914275C007EC769 /* Field mapper */,
 				AEC8120019142779007EC769 /* Value mapper */,
 			);
 			name = Mapper;
+			sourceTree = "<group>";
+		};
+		AE80E615191C4B8D00F68426 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				AE80E612191C400C00F68426 /* EPPZTracker.h */,
+				AE80E613191C400C00F68426 /* EPPZTracker.m */,
+				AE80E616191C4B9600F68426 /* Model track */,
+			);
+			name = Tracker;
+			sourceTree = "<group>";
+		};
+		AE80E616191C4B9600F68426 /* Model track */ = {
+			isa = PBXGroup;
+			children = (
+				AE80E60F191C3D8A00F68426 /* EPPZModelTrack.h */,
+				AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */,
+				AE80E617191C59E200F68426 /* EPPZModelTrackInArray.h */,
+				AE80E618191C59E200F68426 /* EPPZModelTrackInArray.m */,
+			);
+			name = "Model track";
 			sourceTree = "<group>";
 		};
 		AE875D7E1915D61600DB9034 /* Collection enumerator */ = {
@@ -651,6 +672,7 @@
 				AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */,
 				AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */,
 				AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */,
+				AE80E619191C59E200F68426 /* EPPZModelTrackInArray.m in Sources */,
 				AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */,
 				AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */,
 			);

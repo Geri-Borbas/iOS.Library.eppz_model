@@ -109,7 +109,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         if ([Collections isCollection:eachValue])
         {
             // Process each value within.
-            eachValue = [Collections processCollection:eachValue processingBlock:^id(id eachCollectionKey, id eachCollectionValue)
+            eachValue = [Collections processCollection:eachValue processingBlock:^id(NSUInteger eachCollectionIndex, id eachCollectionKey, id eachCollectionValue)
             {
                 // Represent as dictionary if an `<EPPZModel>` inside.
                 if ([eachCollectionValue conformsToProtocol:@protocol(EPPZModel)])
@@ -243,10 +243,13 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 -(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
 {
     // Track that model is being represented.
-    [tracker trackModel:model forModelId:[self modelIdInDictionaryRepresentationIfAny:dictionary]];
+    NSString *modelId = [self modelIdInDictionaryRepresentationIfAny:dictionary];
+    [tracker trackModel:model
+             forModelId:modelId];
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *eachField, id eachRepresentedValue, BOOL *stop)
     {
+        // Map `field`.
         NSString *eachReconstructedField = [self.fieldMapper runtimeFieldForField:eachField];
         
         id eachValue;
@@ -267,8 +270,14 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         // Set.
         [self tryToSetValue:eachValue forKey:eachReconstructedField onModel:model];
         
-        // Track reference.
-        [tracker trackModel:eachValue owner:model field:eachReconstructedField];
+        // Track reference if `<EPPZModel>` has set.
+        if ([self isValueRepresentedEPPZModel:eachRepresentedValue])
+        {
+            [tracker trackModel:eachValue
+                     forModelId:[(NSObject*)eachValue modelId]
+                          owner:model
+                          field:eachReconstructedField];
+        }
     }];
 }
 
@@ -323,11 +332,11 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     Class class = NSClassFromString(className);
     
     // Lookup tracker.
-    BOOL alreadyReconstructed = ([tracker modelForModelId:modelId] != nil);
+    BOOL alreadyTracked = ([tracker modelForModelId:modelId] != nil);
     BOOL onlyReferenceRepresentation = ([dictionaryRepresentation allKeys].count <= 2);
     
     // If just a reference (and already tracked), spit back model reference.
-    if (onlyReferenceRepresentation && alreadyReconstructed)
+    if (onlyReferenceRepresentation && alreadyTracked)
     {
         // Get model from tracker.
         reconstructedValue = [tracker modelForModelId:modelId];
@@ -341,19 +350,29 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         [reconstructedValue _initializeWithDictionary:dictionaryRepresentation tracker:tracker]; // Reconstruct
         
         // Replace references (if any).
-        [tracker replaceModel:reconstructedValue];
+        [tracker replaceModel:reconstructedValue forModelId:modelId];
     }
     
-    return reconstructedValue;
+    return reconstructedValue; // @"45428224"
 }
 
 -(id)reconstructCollection:(id) collection model:(id) model field:(NSString*) field tracker:(EPPZTracker*) tracker
 {
-    return [Collections processCollection:collection processingBlock:^id(NSString *eachCollectionKey, NSObject *eachRepresentedCollectionValue)
+    return [Collections processCollection:collection processingBlock:^id(NSUInteger eachCollectionIndex, NSString *eachCollectionKey, NSObject *eachRepresentedCollectionValue)
     {
         // Look into dictionaries for `<EPPZModel>` representations.
         if ([self isValueRepresentedEPPZModel:eachRepresentedCollectionValue])
-        { return [self reconstructEPPZModel:eachRepresentedCollectionValue tracker:tracker]; }
+        {
+            NSObject *eachCollectionValue = [self reconstructEPPZModel:eachRepresentedCollectionValue tracker:tracker];
+            
+            // Track model (in collection).
+            [tracker trackModelInCollection:eachCollectionValue
+                                 forModelId:eachCollectionValue.modelId
+                                      owner:model
+                                      field:field];
+            
+            return eachCollectionValue;
+        }
         
         // Reconstruct a single value.
         return [self reconstructSingleValue:eachRepresentedCollectionValue

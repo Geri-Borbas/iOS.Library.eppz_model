@@ -16,7 +16,7 @@
 
 
 typedef void (^EPPZCollectionValueEnumeratingBlock)(id eachValue);
-typedef id (^EPPZCollectionValueProcessingBlock)(id eachKey, id eachValue);
+typedef id (^EPPZCollectionValueProcessingBlock)(NSUInteger eachIndex, NSString *eachKey, id eachValue);
 
 
 @interface EPPZCollectionEnumerator : NSObject
@@ -38,3 +38,6 @@ typedef id (^EPPZCollectionValueProcessingBlock)(id eachKey, id eachValue);
 
 
 @end
+
+
+@compatibility_alias Collections EPPZCollectionEnumerator;
