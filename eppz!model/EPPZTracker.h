@@ -39,7 +39,10 @@
  points to the model so far in the reconstructed object graph.
  
  */
--(void)replaceModel:(NSObject*) model forModelId:(NSString*) modelId;
+-(void)setReplacementModel:(NSObject*) model forModelId:(NSString*) modelId;
+
+/*! In the end. */
+-(void)replaceModels;
 
 
 @end

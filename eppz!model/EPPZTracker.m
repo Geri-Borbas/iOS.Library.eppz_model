@@ -73,12 +73,22 @@
     return track.model;
 }
 
--(void)replaceModel:(NSObject*) model forModelId:(NSString*) modelId
+-(void)setReplacementModel:(NSObject*) model forModelId:(NSString*) modelId
 {
-    // Replace model in every track (so in references).
+    // Set replacement model in every track.
     NSMutableArray *tracks = [self modelTracksForModelId:modelId];
     [tracks enumerateObjectsUsingBlock:^(EPPZModelTrack *eachModelTrack, NSUInteger idx, BOOL *stop)
-    { [eachModelTrack replaceModel:model]; }];
+    { eachModelTrack.replacementModel = model; }];
+}
+
+-(void)replaceModels
+{    
+    // Set replacement model in every track.
+    [self.modelTracksForModelIds enumerateKeysAndObjectsUsingBlock:^(id key, NSMutableArray *eachTracks, BOOL *stop)
+    {
+        [eachTracks enumerateObjectsUsingBlock:^(EPPZModelTrack *eachModelTrack, NSUInteger idx, BOOL *stop)
+        { [eachModelTrack replaceModel]; }];
+    }];
 }
 
 

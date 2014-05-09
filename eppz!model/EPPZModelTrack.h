@@ -15,8 +15,11 @@
 /*! The tracked model. */
 @property (nonatomic, weak) NSObject *model;
 
-/*! Replace the model (so in the owner) with a new instance. */
--(void)replaceModel:(NSObject*) model;
+/*! The replacement model to be set after reconstruction done. */
+@property (nonatomic, strong) NSObject *replacementModel;
+
+/*! Replace the tracked reference of the model with @c replacementModel. */
+-(void)replaceModel;
 
 
 #pragma mark - Creation

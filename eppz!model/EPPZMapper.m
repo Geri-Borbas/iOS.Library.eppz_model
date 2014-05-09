@@ -332,28 +332,34 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
     Class class = NSClassFromString(className);
     
     // Lookup tracker.
-    BOOL alreadyTracked = ([tracker modelForModelId:modelId] != nil);
+    BOOL notTrackedYet = ([tracker modelForModelId:modelId] == nil);
     BOOL onlyReferenceRepresentation = ([dictionaryRepresentation allKeys].count <= 2);
     
-    // If just a reference (and already tracked), spit back model reference.
-    if (onlyReferenceRepresentation && alreadyTracked)
+    if (notTrackedYet)
     {
-        // Get model from tracker.
-        reconstructedValue = [tracker modelForModelId:modelId];
+        // Reconstruct instance (get added to tracker inside).
+        reconstructedValue = [class _instanceWithDictionary:dictionaryRepresentation tracker:tracker];
     }
     
-    // Else create an instance and set overall references so far.
     else
     {
-        // Create new model.
-        reconstructedValue = [class new];
-        [reconstructedValue _initializeWithDictionary:dictionaryRepresentation tracker:tracker]; // Reconstruct
+        if (onlyReferenceRepresentation)
+        {
+            // Get instance from tracker (either main, or partial reconstruction).
+            reconstructedValue = [tracker modelForModelId:modelId];
+        }
         
-        // Replace references (if any).
-        [tracker replaceModel:reconstructedValue forModelId:modelId];
+        else // Probably the main representation
+        {
+             // Reconstruct main instance, replace in tracker.
+            reconstructedValue = [class _instanceWithDictionary:dictionaryRepresentation tracker:tracker];
+            
+            // Set main representation as replacement model.
+            [tracker setReplacementModel:reconstructedValue forModelId:modelId];
+        }
     }
     
-    return reconstructedValue; // @"45428224"
+    return reconstructedValue;
 }
 
 -(id)reconstructCollection:(id) collection model:(id) model field:(NSString*) field tracker:(EPPZTracker*) tracker

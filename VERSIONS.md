@@ -1,5 +1,10 @@
 ## Versions
 
+* [feature/reference-reconstructing] 0.0.2
+
+    + Replacement models should be there in all track
+        + Or better replacement models should be indexed in tracker itself
+        + So in the end, every tracker can set the same replacemodel to their track
 
 * [feature/reference-reconstructing] 0.0.1
 

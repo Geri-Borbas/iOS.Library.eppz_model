@@ -70,23 +70,23 @@ typedef enum
 
 #pragma mark - Replace model
 
--(void)replaceModel:(NSObject*) model
+-(void)replaceModel
 {
+    // Only if we have replacement.
+    if (self.replacementModel == nil) return;
+    
     // Set in owner's defined field.
     if (self.type == EPPZModelTrackTypeField)
-    { [self.owner setValue:model forKeyPath:self.field]; }
+    { [self.owner setValue:self.replacementModel forKeyPath:self.field]; }
     
     // Set in owner's defined collection in field.
     if (self.type == EPPZModelTrackTypeCollection)
     {
         #warning Add @try!
-        [self.owner setValue:[self collectionByReplaceModel:model
+        [self.owner setValue:[self collectionByReplaceModel:self.replacementModel
                                                inCollection:[self.owner valueForKey:self.field]]
                 forKeyPath:self.field];
     }
-    
-    // So here.
-    self.model = model;
 }
 
 -(id)collectionByReplaceModel:(NSObject*) replacementModel
