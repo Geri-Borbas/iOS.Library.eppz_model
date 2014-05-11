@@ -6,28 +6,38 @@ In the meanwhile it is fully customizable to the limits if there is a need.
 Works fine with deep object graphs, cross-references.
 
 ```Objective-C
+// On monday.
 NSDictionary *representation = [complexStuff dictionaryRepresentation];
-// Two days later...
+
+// Two days later.
 ComplexStuff *complexStuff = [ComplexStuff instanceWithDictionary:representation];
 ```
 
 Basically eppz!model is designed for **network usage**, to represent complex entities / object graphs
-(probably in an NSDictionary / JSON output), and also reconstruct runtime objects from a network
-responses (JSON). Later on I'll open the source that works with `CoreData`, and sync (based on last
-modification date) stuff as well.
+(probably in an `NSDictionary` / `JSON` output), and also reconstruct runtime objects from a network
+responses (probably `JSON`). Later on I'll open the source that works with `CoreData`, and sync (based
+on last modification date) stuff as well.
 
-Though, it can be use as **object formatter** for example, supposing you're designed an (MVVM)[https://en.wikipedia.org/wiki/Model_View_ViewModel]
+Though, it can be use as **object formatter** for example, supposing you're designed an [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel)
 architecture, it can be a flexible formatting layer in your view model conversions. Value / field
 mappers can be plugged in at runtime to fit every need.
 
-> ### Basic usage
-> ### Custom field mapping
-> ### Custom value mapping
-> ### Represent foreign classes
-> ### Save representations
-> ### Represent cross-references
-> ### Goodies (property inspection, collection tools, handy macros)
-> ### Examples (test suites)
+> #### Basic usage
+> Represent an object.
+> #### Custom field mapping
+> Map runtime property names to custom field names in representation.
+> #### Custom value mapping
+> Customize value representing / reconstruction in different fields.
+> #### Represent foreign classes
+> Represent / reconstruct a `UIView`.
+> #### Save representations
+> Save to `plist`, archive (automatic `<NSCoding>`) and more.
+> #### Represent cross-references
+> See cross-references being represented / reconstructed.
+> #### Goodies
+> Property inspection, collection tools, handy macros.
+> #### Examples (test suites)
+> See every feature in action in test suites.
 
 
 ## Basic usage
@@ -45,28 +55,28 @@ The basic value mapper beside basic Foundation classes can represent `NSData` (a
 
 ### Custom field mapping
 
-+ Field is a property, value is a value.
-+ Convert.
-+ Mask.
++ Field is a property, value is a value
++ Convert
++ Mask
 
 
 ### Custom value mapping
 
-+ Per field.
-+ Different color representations.
++ Per field
++ Different color representations
 
 
 ### Represent foreign classes
 
-+ Represent UIView
++ Represent `UIView`
 
 
 ### Save representations
 
-+ JSON
-+ plist
-+ NSUserDefaults
-+ NSCoding (automatic)
++ `JSON`
++ `plist`
++ `NSUserDefaults`
++ `<NSCoding>` (automatic)
 
 
 ### Represent cross-references
@@ -78,7 +88,7 @@ The basic value mapper beside basic Foundation classes can represent `NSData` (a
 
 + Property inspection
 + Collection operators
-+ Handy macros (FORMAT, WEAK_SELF)
++ Handy macros (`FORMAT`, `WEAK_SELF`)
 
 
 ### Configure unknown objects
@@ -86,7 +96,7 @@ The basic value mapper beside basic Foundation classes can represent `NSData` (a
 + SpriteKit `SKSpriteNode` configuration example
 
 
-> ### Examples (test suites)
+### Examples (test suites)
 
 Browsing test cases can tell you the most about every aspect of the library, it is actually almost 100% covered.
 
