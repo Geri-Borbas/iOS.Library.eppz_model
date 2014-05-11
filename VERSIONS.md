@@ -1,5 +1,9 @@
 ## Versions
 
+* 0.4.6
+
+    + Bump version number after merge [feature/reference-reconstructing]
+
 * [feature/reference-reconstructing] 0.0.3
 
     + Seems override `modelId` with the represented `modelId` resolved the issue
