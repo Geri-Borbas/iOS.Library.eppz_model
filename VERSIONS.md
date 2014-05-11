@@ -1,5 +1,28 @@
 ## Versions
 
+* [feature/reference-reconstructing] 0.0.3
+
+    + Seems override `modelId` with the represented `modelId` resolved the issue
+    + Now try to solve the problem sole with this
+    + Tests are passing!
+
+* [feature/reference-reconstructing] 0.0.2
+
+    + Replacement models should be there in all track
+        + Or better replacement models should be indexed in tracker itself
+        + So in the end, every tracker can set the same replacemodel to their track
+
+* [feature/reference-reconstructing] 0.0.1
+
+    + Tracker tracks, but `modelId` values seems mixed up somewhere
+        + Next is simply skip `modelId` from interface
+
+* [feature/reference-reconstructing] 0.0.0
+
+    + Added Tracker
+        + Tracks represented models
+        + Track every references to it so far
+        + Real instances can be set back to references
 
 * 0.4.51
 

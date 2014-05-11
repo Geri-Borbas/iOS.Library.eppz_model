@@ -17,6 +17,8 @@
 		AE730A1D19131F2A00731BBD /* SuperHero.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1C19131F2A00731BBD /* SuperHero.m */; };
 		AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */; };
 		AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A2119132BFF00731BBD /* EPPZMapper.m */; };
+		AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */; };
+		AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E613191C400C00F68426 /* EPPZTracker.m */; };
 		AE875D7D1915CB3F00DB9034 /* EPPZCollectionEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE875D7C1915CB3F00DB9034 /* EPPZCollectionEnumerator.m */; };
 		AEA5985119142C2C000364F1 /* GameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985019142C2C000364F1 /* GameProgress.m */; };
 		AEA5985419142C52000364F1 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA5985319142C52000364F1 /* Player.m */; };
@@ -30,7 +32,6 @@
 		AEAE039F1912A0F50055FC20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEAE039D1912A0F50055FC20 /* InfoPlist.strings */; };
 		AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m */; };
 		AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */; };
-		AEAFA5A8191B1845001FD2EA /* EPPZModelProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */; };
 		AEC0FEF81916AB6400578148 /* Achivement.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEF71916AB6400578148 /* Achivement.m */; };
 		AEC0FEFB1916E83600578148 /* UIView+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEFA1916E83600578148 /* UIView+EPPZModel.m */; };
 		AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FA191426C0007EC769 /* EPPZValueMapper.m */; };
@@ -84,6 +85,10 @@
 		AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryRepresentationTests.m; sourceTree = "<group>"; };
 		AE730A2019132BFF00731BBD /* EPPZMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZMapper.h; sourceTree = "<group>"; };
 		AE730A2119132BFF00731BBD /* EPPZMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZMapper.m; sourceTree = "<group>"; };
+		AE80E60F191C3D8A00F68426 /* EPPZModelTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZModelTrack.h; sourceTree = "<group>"; };
+		AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelTrack.m; sourceTree = "<group>"; };
+		AE80E612191C400C00F68426 /* EPPZTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZTracker.h; sourceTree = "<group>"; };
+		AE80E613191C400C00F68426 /* EPPZTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZTracker.m; sourceTree = "<group>"; };
 		AE875D7B1915CB3F00DB9034 /* EPPZCollectionEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZCollectionEnumerator.h; sourceTree = "<group>"; };
 		AE875D7C1915CB3F00DB9034 /* EPPZCollectionEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZCollectionEnumerator.m; sourceTree = "<group>"; };
 		AEA5984F19142C2C000364F1 /* GameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameProgress.h; sourceTree = "<group>"; };
@@ -146,8 +151,6 @@
 		AEAFA5A3191AF99B001FD2EA /* 34 <Achivement> (47595360).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "34 <Achivement> (47595360).log"; sourceTree = "<group>"; };
 		AEAFA5A4191AF99B001FD2EA /* 35 <GameProgress> (47595184).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "35 <GameProgress> (47595184).log"; sourceTree = "<group>"; };
 		AEAFA5A5191AF99B001FD2EA /* 36 <Player> (47593824).log */ = {isa = PBXFileReference; lastKnownFileType = text; path = "36 <Player> (47593824).log"; sourceTree = "<group>"; };
-		AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZModelProxy.h; sourceTree = "<group>"; };
-		AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelProxy.m; sourceTree = "<group>"; };
 		AEC0FEF61916AB6400578148 /* Achivement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achivement.h; sourceTree = "<group>"; };
 		AEC0FEF71916AB6400578148 /* Achivement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achivement.m; sourceTree = "<group>"; };
 		AEC0FEF91916E83600578148 /* UIView+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EPPZModel.h"; sourceTree = "<group>"; };
@@ -196,13 +199,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE1E78FB19184B6000CF62DA /* Default */ = {
+		AE1E78FB19184B6000CF62DA /* Default mapper */ = {
 			isa = PBXGroup;
 			children = (
 				AE1E78F21918453000CF62DA /* EPPZMapper+Default.h */,
 				AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */,
 			);
-			name = Default;
+			name = "Default mapper";
 			sourceTree = "<group>";
 		};
 		AE4F25691919AE79004B2BD1 /* Value mapping */ = {
@@ -238,12 +241,32 @@
 			children = (
 				AE730A2019132BFF00731BBD /* EPPZMapper.h */,
 				AE730A2119132BFF00731BBD /* EPPZMapper.m */,
-				AE1E78FB19184B6000CF62DA /* Default */,
+				AE1E78FB19184B6000CF62DA /* Default mapper */,
+				AE80E615191C4B8D00F68426 /* Tracker */,
 				AE875D7E1915D61600DB9034 /* Collection enumerator */,
 				AEC811FF1914275C007EC769 /* Field mapper */,
 				AEC8120019142779007EC769 /* Value mapper */,
 			);
 			name = Mapper;
+			sourceTree = "<group>";
+		};
+		AE80E615191C4B8D00F68426 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				AE80E612191C400C00F68426 /* EPPZTracker.h */,
+				AE80E613191C400C00F68426 /* EPPZTracker.m */,
+				AE80E616191C4B9600F68426 /* Model track */,
+			);
+			name = Tracker;
+			sourceTree = "<group>";
+		};
+		AE80E616191C4B9600F68426 /* Model track */ = {
+			isa = PBXGroup;
+			children = (
+				AE80E60F191C3D8A00F68426 /* EPPZModelTrack.h */,
+				AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */,
+			);
+			name = "Model track";
 			sourceTree = "<group>";
 		};
 		AE875D7E1915D61600DB9034 /* Collection enumerator */ = {
@@ -418,8 +441,6 @@
 			children = (
 				AEAFA57E191ADFCF001FD2EA /* EPPZSerializer.h */,
 				AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */,
-				AEAFA5A6191B1844001FD2EA /* EPPZModelProxy.h */,
-				AEAFA5A7191B1844001FD2EA /* EPPZModelProxy.m */,
 			);
 			name = Drafts;
 			path = "eppz!model";
@@ -643,10 +664,11 @@
 				AE1E78F41918453000CF62DA /* EPPZMapper+Default.m in Sources */,
 				AEABF7261912A647006E9041 /* EPPZLog.m in Sources */,
 				AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */,
+				AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */,
 				AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */,
-				AEAFA5A8191B1845001FD2EA /* EPPZModelProxy.m in Sources */,
 				AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */,
 				AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */,
+				AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
