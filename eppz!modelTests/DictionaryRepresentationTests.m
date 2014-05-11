@@ -13,7 +13,10 @@
 //
 
 #import <XCTest/XCTest.h>
+
 #import "EPPZModel.h"
+#import "EPPZMapper+Debug.h"
+
 #import "Player.h"
 #import "Player+TestPlayer.h"
 
@@ -407,7 +410,12 @@
                           assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
 }
-                                
+
+
+-(void)testMami
+{
+    [Player mapper].writeRepresentationLog = YES;
+}
 
 @end
 

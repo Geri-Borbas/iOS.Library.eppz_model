@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  EPPZMapper+Accessors.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -14,44 +14,40 @@
 
 #import "EPPZMapper.h"
 
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
 
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
-#import "EPPZMapper+Representation.h"
-#import "EPPZMapper+Debug.h"
+typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionary *eachSubFields);
 
 
-@interface EPPZMapper ()
-@end
+/*!
+ 
+ Features of @c EPPZMapper to be used internally while representing models from @c NSDictionary
+ representations. Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Accessors)
 
 
-@implementation EPPZMapper
+/*!
+ 
+ Enumerates fields in the given @c fields collection either it is an @c NSArray
+ or an @c NSDictionary.
+ 
+ */
+-(void)enumerateFields:(id) fields enumeratingBlock:(EPPZMapperFieldEnumeratingBlock) enumeratingBlock;
 
+/*!
+ 
+ Select a value mapper for a given @c field.
+ 
+ */
+-(EPPZValueMapper*)valueMapperForField:(NSString*) field;
 
-#pragma mark - Basic accessors
-
--(NSDateFormatter*)dateFormatter
-{
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
-}
-
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
-
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
+/*!
+ 
+ Select a value mapper for a given type name.
+ 
+ */
+-(EPPZValueMapper*)valueMapperForTypeName:(NSString*) typeName;
 
 
 @end

@@ -21,13 +21,18 @@
 
 /*!
  
- Protocol only to mark a given object to enjoy @c EPPZModel features.
+ Protocol to mark a given object to enjoy @c EPPZModel features.
  
  */
 @protocol EPPZModel <NSObject>
 @end
 
 
+/*!
+ 
+ Extend @c NSObject class to have some features to inspect class structure.
+ 
+ */
 @interface NSObject (Inspecting)
 
 
@@ -43,10 +48,11 @@
  
  Returns an array with all the available properties for the given @c <EPPZModel> object.
  It traverses up the inheritance chain, but collects properties only from @c <EPPZModel>
- classes.
+ classes (having this, you can avoid collect really basic properties you are not interested
+ in, like basic @c NSObject, @c UIKit properties, or accessibility properies for example).
  
- It gets populated once when the class loads, so later updates have to be invoked manually
- using @c -updatePropertyNames.
+ It gets populated once when the class loads, so later updates in class structure (like
+ runtime property swizzling) have to be invoked manually using @c -updatePropertyNames.
  
  */
 @property (nonatomic, readonly) NSArray *propertyNames;

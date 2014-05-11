@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  EPPZMapper+Representation.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -14,44 +14,34 @@
 
 #import "EPPZMapper.h"
 
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
 
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
-#import "EPPZMapper+Representation.h"
-#import "EPPZMapper+Debug.h"
-
-
-@interface EPPZMapper ()
-@end
+/*!
+ 
+ Features of @c EPPZMapper to be used internally while representing models to @c NSDictionary
+ representations. Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Representation)
 
 
-@implementation EPPZMapper
-
-
-#pragma mark - Basic accessors
-
--(NSDateFormatter*)dateFormatter
-{
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
-}
-
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
-
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
+/*!
+ 
+ Returns a dictionary representation of the given model (only with the given fields).
+ 
+ @param model
+ Model object to be represented.
+ 
+ @param fields
+ Either an @c NSArray of fields to be represented, or may pass in an @c NSDictionary with fields,
+ and can also passing sub-fields within collections down the line. In the latter case only
+ the keys gonna be parsed, the actual values will be dismissed (unless it is a sub-field
+ @c NSDictionary).
+ 
+ @param pool
+ Object pool tracking the represented objects to resolve cross-references between objects.
+ 
+ */
+-(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
 
 
 @end

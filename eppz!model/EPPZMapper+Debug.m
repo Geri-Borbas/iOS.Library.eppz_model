@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  EPPZMapper+Debug.m
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,46 +12,39 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "EPPZMapper.h"
-
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
-
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
-#import "EPPZMapper+Representation.h"
 #import "EPPZMapper+Debug.h"
+#import "EPPZSwizzler.h"
 
 
 @interface EPPZMapper ()
+@property (nonatomic, strong) NSNumber *writeRepresentationLog_;
 @end
 
 
-@implementation EPPZMapper
+@implementation EPPZMapper (Debug)
+@dynamic writeRepresentationLog;
+@dynamic logFileDirectory;
 
 
-#pragma mark - Basic accessors
-
--(NSDateFormatter*)dateFormatter
++(void)load
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
+    [EPPZSwizzler synthesizePropertyNamed:@"logFileDirectory"
+                                   ofKind:[NSString class]
+                                 forClass:[NSObject class]
+                               withPolicy:retain];
+    
+    // Workaround until `EPPZSwizzler` handles standard object types.
+    [EPPZSwizzler synthesizePropertyNamed:@"writeRepresentationLog_"
+                                   ofKind:[NSNumber class]
+                                 forClass:[NSObject class]
+                               withPolicy:assign];
 }
 
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
+-(void)setWriteRepresentationLog:(BOOL) writeRepresentationLog
+{ self.writeRepresentationLog_ = @(writeRepresentationLog); }
 
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
+-(BOOL)writeRepresentationLog
+{ return self.writeRepresentationLog_.boolValue; }
 
 
 @end

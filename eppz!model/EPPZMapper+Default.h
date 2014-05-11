@@ -14,6 +14,11 @@
 
 #import "EPPZMapper.h"
 
-
+/*!
+ 
+ This category overrides @c EPPZMapper @c -init method to provide default
+ values for every @c EPPZMapper instance.
+ 
+ */
 @interface EPPZMapper (Default)
 @end

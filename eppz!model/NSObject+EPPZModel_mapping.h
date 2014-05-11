@@ -15,7 +15,11 @@
 #import <Foundation/Foundation.h>
 #import "EPPZMapper.h"
 
-
+/*!
+ 
+ Extend @c NSObject with features by which you can
+ 
+ */
 @interface NSObject (EPPZModel_mapping)
 
 
@@ -69,8 +73,6 @@
  */
 -(NSDictionary*)dictionaryRepresentationOfFields:(id) fields;
 
-/*! For internal use. */
--(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool;
 
 #pragma mark - Reconstruction (dictionary to runtime)
 
@@ -99,15 +101,6 @@
  
  */
 -(void)configureWithDictionary:(NSDictionary*) dictionary;
-
-/*! For internal use. */
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
-
-/*! For internal use. */
--(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
-
-/*! For internal use. */
--(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end

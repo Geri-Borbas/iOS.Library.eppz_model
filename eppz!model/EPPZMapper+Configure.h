@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  EPPZMapper+Configure.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -14,44 +14,24 @@
 
 #import "EPPZMapper.h"
 
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
 
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
-#import "EPPZMapper+Representation.h"
-#import "EPPZMapper+Debug.h"
+@interface EPPZMapper (Configure)
 
 
-@interface EPPZMapper ()
-@end
-
-
-@implementation EPPZMapper
-
-
-#pragma mark - Basic accessors
-
--(NSDateFormatter*)dateFormatter
-{
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
-}
-
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
-
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
+/*!
+ 
+ Configures the given model with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, but only on objects that are already living in
+ the runtime object graph.
+ 
+ @param dictionary
+ Dictionary holding the representation of the model to be initialized.
+ 
+ @param pool
+ Object pool tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
+ 
+ */
+-(void)_configureModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end

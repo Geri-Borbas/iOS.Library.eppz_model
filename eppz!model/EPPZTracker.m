@@ -49,23 +49,8 @@
 
 -(void)addTrack:(EPPZModelTrack*) track forModelId:(NSString*) modelId
 {
-    NSObject *_model = track.model;
-    NSString *_modelId = _model.modelId;
-    
-    BOOL test = ([modelId isEqualToString:_modelId] == NO);
-    if (test)
-    {
-        NSLog(@"Hey! %@ is not %@", modelId, _modelId);
-    }
-    
-    NSMutableArray *tracks = [self modelTracksForModelId:_modelId];
+    NSMutableArray *tracks = [self modelTracksForModelId:track.model.modelId];
     [tracks addObject:track];
-    
-    if ([track.model isKindOfClass:NSClassFromString(@"Achivement")])
-    {
-        
-    }
-    
 }
 
 

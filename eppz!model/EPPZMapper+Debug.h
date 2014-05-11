@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  EPPZMapper+Debug.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -14,44 +14,31 @@
 
 #import "EPPZMapper.h"
 
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
 
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
-#import "EPPZMapper+Representation.h"
-#import "EPPZMapper+Debug.h"
-
-
-@interface EPPZMapper ()
-@end
+/*!
+ 
+ Features of @c EPPZMapper to be used in unit tests during development.
+ Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Debug)
 
 
-@implementation EPPZMapper
+/*!
+ 
+ Whether to write representation log (steps of representing an obejct).
+ Default value is @c NO.
+ 
+ */
+@property (nonatomic) BOOL writeRepresentationLog;
 
-
-#pragma mark - Basic accessors
-
--(NSDateFormatter*)dateFormatter
-{
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
-}
-
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
-
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
+/*!
+ 
+ A path where the representation log files gonna be written.
+ (during unit tests this directory is probably the library).
+ 
+ */
+@property (nonatomic, strong) NSString *logFileDirectory;
 
 
 @end

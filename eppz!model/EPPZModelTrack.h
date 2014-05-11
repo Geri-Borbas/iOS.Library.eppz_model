@@ -9,19 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-typedef enum
-{
-    EPPZModelTrackTypeDefault,
-    EPPZModelTrackTypeField,
-    EPPZModelTrackTypeCollection
-} EPPZModelTrackType;
-
-
 @interface EPPZModelTrack : NSObject
-
-
-#warning During development only!
-@property (nonatomic) EPPZModelTrackType type;
 
 
 /*! The tracked model. */

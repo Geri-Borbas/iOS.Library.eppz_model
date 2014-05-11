@@ -12,13 +12,22 @@
 #import "EPPZCollectionEnumerator.h"
 
 
+
+typedef enum
+{
+    EPPZModelTrackTypeDefault,
+    EPPZModelTrackTypeField,
+    EPPZModelTrackTypeCollection
+} EPPZModelTrackType;
+
+
 @interface EPPZModelTrack ()
 
+@property (nonatomic) EPPZModelTrackType type;
 @property (nonatomic, weak) NSObject *owner;
 @property (nonatomic, strong) NSString *field;
 
 @end
-
 
 
 @implementation EPPZModelTrack
@@ -93,17 +102,6 @@
         return eachValue;
     }];
 }
-
-#pragma mark - Debug
-
--(NSString*)description
-{ return [NSString stringWithFormat:@"<EPPZModelTrack> <%@> (%@).%@ %@ = <%@> (%@)",
-          self.owner.className,
-          self.owner.modelId,
-          self.field,
-          (self.type == EPPZModelTrackTypeCollection) ? @"(collection)" : @"",
-          self.model.className,
-          self.model.modelId]; }
 
 
 @end

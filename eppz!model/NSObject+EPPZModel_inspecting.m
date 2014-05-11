@@ -49,16 +49,14 @@
 
 -(NSArray*)propertyNames
 {
-    // Lazy initialize.
+    // Lazy initialize `propertyNames_`.
     if (self.propertyNames_ == nil)
     { self.propertyNames_ = [self.class propertyNamesIncludingSuperclassProperties]; }
     return self.propertyNames_;
 }
 
 -(void)updatePropertyNames
-{
-    self.propertyNames_ = [self.class propertyNamesIncludingSuperclassProperties];
-}
+{ self.propertyNames_ = [self.class propertyNamesIncludingSuperclassProperties]; }
 
 +(NSArray*)propertyNamesIncludingSuperclassProperties
 {

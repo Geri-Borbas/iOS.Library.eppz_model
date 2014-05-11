@@ -14,6 +14,11 @@
 
 #import "NSObject+EPPZModel_inspecting.h"
 #import "NSObject+EPPZModel_mapping.h"
+#import "NSObject+EPPZModel_mapping_internal.h"
+
+#import "EPPZMapper+Representation.h"
+#import "EPPZMapper+Reconstruction.h"
+#import "EPPZMapper+Configure.h"
 
 
 static char mapper_key;
@@ -101,21 +106,15 @@ static char mapper_key;
 -(NSDictionary*)dictionaryRepresentationOfFields:(id) fields
 { return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:[NSMutableArray new]]; }
 
-/*! For internal use. */
--(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool
-{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:pool]; }
-
 
 #pragma mark - Reconstruction
 
 +(instancetype)instanceWithDictionary:(NSDictionary*) dictionary
 {
     NSObject *instance = [self new];
-    
     EPPZTracker *tracker = [EPPZTracker new];
     [instance _initializeWithDictionary:dictionary tracker:tracker];
     [tracker replaceMasterModels];
-    
     return instance;
 }
 
@@ -126,22 +125,8 @@ static char mapper_key;
     [tracker replaceMasterModels];
 }
 
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
-{
-    NSObject *instance = [self new];
-    [instance _initializeWithDictionary:dictionary tracker:tracker];
-    return instance;
-}
-
--(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
-{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:tracker]; }
-
 -(void)configureWithDictionary:(NSDictionary*) dictionary
 { [self.class.mapper _configureModel:self withDictionary:dictionary pool:[NSMutableDictionary new]]; }
-
--(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
-{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }
-
 
 
 @end

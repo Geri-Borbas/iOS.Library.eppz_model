@@ -1,8 +1,8 @@
 //
-//  EPPZMapper.m
+//  NSObject+EPPZModel_mapping_internal.m
 //  eppz!model
 //
-//  Created by Borbás Geri on 02/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,46 +12,37 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "EPPZMapper.h"
-
 #import "NSObject+EPPZModel_inspecting.h"
 #import "NSObject+EPPZModel_mapping.h"
+#import "NSObject+EPPZModel_mapping_internal.h"
 
-#import "EPPZMapper+Default.h"
-#import "EPPZMapper+Accessors.h"
 #import "EPPZMapper+Representation.h"
-#import "EPPZMapper+Debug.h"
+#import "EPPZMapper+Reconstruction.h"
+#import "EPPZMapper+Configure.h"
 
 
-@interface EPPZMapper ()
-@end
+@implementation NSObject (EPPZModel_mapping_internal)
 
 
-@implementation EPPZMapper
+#pragma mark - Representation
+
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool
+{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:pool]; }
 
 
-#pragma mark - Basic accessors
+#pragma mark - Reconstruction 
 
--(NSDateFormatter*)dateFormatter
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:self.dateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timeZone]];
-    return dateFormatter;
+    NSObject *instance = [self new];
+    [instance _initializeWithDictionary:dictionary tracker:tracker];
+    return instance;
 }
 
--(void)setNilValueMapper:(EPPZValueMapper*) nilValueMapper
-{
-    _nilValueMapper = nilValueMapper;
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:tracker]; }
 
-    // Validate.
-    if ([nilValueMapper.representerBlock(nil) isKindOfClass:[NSString class]] == NO)
-    {
-        [NSException exceptionWithName:@"Invalid `nil` value mapper."
-                                reason:@"A `nil` representer should always return an NSString"
-                              userInfo:nil];
-    }
-}
-
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }
 
 @end
