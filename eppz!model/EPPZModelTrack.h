@@ -9,17 +9,26 @@
 #import <Foundation/Foundation.h>
 
 
+typedef enum
+{
+    EPPZModelTrackTypeDefault,
+    EPPZModelTrackTypeField,
+    EPPZModelTrackTypeCollection
+} EPPZModelTrackType;
+
+
 @interface EPPZModelTrack : NSObject
+
+
+#warning During development only!
+@property (nonatomic) EPPZModelTrackType type;
 
 
 /*! The tracked model. */
 @property (nonatomic, weak) NSObject *model;
 
-/*! The replacement model to be set after reconstruction done. */
-@property (nonatomic, strong) NSObject *replacementModel;
-
-/*! Replace the tracked reference of the model with @c replacementModel. */
--(void)replaceModel;
+/*! Replace the tracked reference of the model with @c masterModel. */
+-(void)replaceModelWithMasterModel:(NSObject*) masterModel;
 
 
 #pragma mark - Creation

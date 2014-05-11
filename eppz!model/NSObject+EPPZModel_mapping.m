@@ -111,18 +111,25 @@ static char mapper_key;
 +(instancetype)instanceWithDictionary:(NSDictionary*) dictionary
 {
     NSObject *instance = [self new];
-    [instance initializeWithDictionary:dictionary];
+    
+    EPPZTracker *tracker = [EPPZTracker new];
+    [instance _initializeWithDictionary:dictionary tracker:tracker];
+    [tracker replaceMasterModels];
+    
     return instance;
 }
 
 -(void)initializeWithDictionary:(NSDictionary*) dictionary
-{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:[EPPZTracker new]]; }
+{
+    EPPZTracker *tracker = [EPPZTracker new];
+    [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:[EPPZTracker new]];
+    [tracker replaceMasterModels];
+}
 
 +(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
 {
     NSObject *instance = [self new];
     [instance _initializeWithDictionary:dictionary tracker:tracker];
-    [tracker replaceModels];
     return instance;
 }
 

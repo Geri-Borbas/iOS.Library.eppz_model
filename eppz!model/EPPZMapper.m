@@ -244,6 +244,11 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 {
     // Track that model is being represented.
     NSString *modelId = [self modelIdInDictionaryRepresentationIfAny:dictionary];
+    
+    // Overwrite `modelId` with the one stored in representation.
+    model.modelId = modelId;
+    
+    // Track.
     [tracker trackModel:model
              forModelId:modelId];
     
@@ -355,7 +360,7 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
             reconstructedValue = [class _instanceWithDictionary:dictionaryRepresentation tracker:tracker];
             
             // Set main representation as replacement model.
-            [tracker setReplacementModel:reconstructedValue forModelId:modelId];
+            [tracker setMasterModel:reconstructedValue forModelId:modelId];
         }
     }
     
@@ -370,6 +375,8 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
         if ([self isValueRepresentedEPPZModel:eachRepresentedCollectionValue])
         {
             NSObject *eachCollectionValue = [self reconstructEPPZModel:eachRepresentedCollectionValue tracker:tracker];
+            
+            
             
             // Track model (in collection).
             [tracker trackModelInCollection:eachCollectionValue

@@ -7,10 +7,13 @@
 //
 
 #import "EPPZTracker.h"
+#import "NSObject+EPPZModel_inspecting.h"
+#import "NSObject+EPPZModel_mapping.h"
 
 
 @interface EPPZTracker ()
 @property (nonatomic, strong) NSMutableDictionary *modelTracksForModelIds;
+@property (nonatomic, strong) NSMutableDictionary *masterModelsForModelIds;
 @end
 
 
@@ -23,7 +26,10 @@
 -(instancetype)init
 {
     if (self = [super init])
-    { self.modelTracksForModelIds = [NSMutableDictionary new]; }
+    {
+        self.modelTracksForModelIds = [NSMutableDictionary new];
+        self.masterModelsForModelIds = [NSMutableDictionary new];
+    }
     return self;
 }
 
@@ -43,8 +49,23 @@
 
 -(void)addTrack:(EPPZModelTrack*) track forModelId:(NSString*) modelId
 {
-    [[self modelTracksForModelId:modelId] addObject:track];
-    NSLog(@"%@", self.modelTracksForModelIds);
+    NSObject *_model = track.model;
+    NSString *_modelId = _model.modelId;
+    
+    BOOL test = ([modelId isEqualToString:_modelId] == NO);
+    if (test)
+    {
+        NSLog(@"Hey! %@ is not %@", modelId, _modelId);
+    }
+    
+    NSMutableArray *tracks = [self modelTracksForModelId:_modelId];
+    [tracks addObject:track];
+    
+    if ([track.model isKindOfClass:NSClassFromString(@"Achivement")])
+    {
+        
+    }
+    
 }
 
 
@@ -73,21 +94,23 @@
     return track.model;
 }
 
--(void)setReplacementModel:(NSObject*) model forModelId:(NSString*) modelId
+-(void)setMasterModel:(NSObject*) masterModel forModelId:(NSString*) modelId
 {
-    // Set replacement model in every track.
-    NSMutableArray *tracks = [self modelTracksForModelId:modelId];
-    [tracks enumerateObjectsUsingBlock:^(EPPZModelTrack *eachModelTrack, NSUInteger idx, BOOL *stop)
-    { eachModelTrack.replacementModel = model; }];
+    // Checks.
+    if (masterModel == nil) return;
+    if (modelId == nil) return;
+    
+    [self.masterModelsForModelIds setObject:masterModel forKey:modelId];
 }
 
--(void)replaceModels
-{    
-    // Set replacement model in every track.
-    [self.modelTracksForModelIds enumerateKeysAndObjectsUsingBlock:^(id key, NSMutableArray *eachTracks, BOOL *stop)
+-(void)replaceMasterModels
+{
+    [self.masterModelsForModelIds enumerateKeysAndObjectsUsingBlock:^(NSString *eachModelId, NSObject *eachMasterModel, BOOL *stop)
     {
-        [eachTracks enumerateObjectsUsingBlock:^(EPPZModelTrack *eachModelTrack, NSUInteger idx, BOOL *stop)
-        { [eachModelTrack replaceModel]; }];
+        
+        NSMutableArray *eachModelTracks = [self modelTracksForModelId:eachModelId];
+        [eachModelTracks enumerateObjectsUsingBlock:^(EPPZModelTrack *eachModelTrack, NSUInteger index, BOOL *stop)
+        { [eachModelTrack replaceModelWithMasterModel:eachMasterModel]; }];
     }];
 }
 

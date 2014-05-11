@@ -12,17 +12,8 @@
 #import "EPPZCollectionEnumerator.h"
 
 
-typedef enum
-{
-    EPPZModelTrackTypeDefault,
-    EPPZModelTrackTypeField,
-    EPPZModelTrackTypeCollection
-} EPPZModelTrackType;
-
-
 @interface EPPZModelTrack ()
 
-@property (nonatomic) EPPZModelTrackType type;
 @property (nonatomic, weak) NSObject *owner;
 @property (nonatomic, strong) NSString *field;
 
@@ -70,20 +61,20 @@ typedef enum
 
 #pragma mark - Replace model
 
--(void)replaceModel
+-(void)replaceModelWithMasterModel:(NSObject*) masterModel
 {
     // Only if we have replacement.
-    if (self.replacementModel == nil) return;
+    if (masterModel == nil) return;
     
     // Set in owner's defined field.
     if (self.type == EPPZModelTrackTypeField)
-    { [self.owner setValue:self.replacementModel forKeyPath:self.field]; }
+    { [self.owner setValue:masterModel forKeyPath:self.field]; }
     
     // Set in owner's defined collection in field.
     if (self.type == EPPZModelTrackTypeCollection)
     {
         #warning Add @try!
-        [self.owner setValue:[self collectionByReplaceModel:self.replacementModel
+        [self.owner setValue:[self collectionByReplaceModel:masterModel
                                                inCollection:[self.owner valueForKey:self.field]]
                 forKeyPath:self.field];
     }

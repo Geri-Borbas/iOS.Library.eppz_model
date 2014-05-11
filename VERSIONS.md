@@ -1,5 +1,11 @@
 ## Versions
 
+* [feature/reference-reconstructing] 0.0.3
+
+    + Seems override `modelId` with the represented `modelId` resolved the issue
+    + Now try to solve the problem sole with this
+    + Tests are passing!
+
 * [feature/reference-reconstructing] 0.0.2
 
     + Replacement models should be there in all track
