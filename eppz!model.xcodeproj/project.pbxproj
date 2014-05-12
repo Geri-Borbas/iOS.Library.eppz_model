@@ -13,16 +13,18 @@
 		AE2C737419203C6D00438E7D /* EPPZMapper+Accessors.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C737319203C6D00438E7D /* EPPZMapper+Accessors.m */; };
 		AE2C737719203E1400438E7D /* EPPZMapper+Reconstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C737619203E1400438E7D /* EPPZMapper+Reconstruction.m */; };
 		AE2C737A19203E8F00438E7D /* EPPZMapper+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C737919203E8F00438E7D /* EPPZMapper+Configure.m */; };
-		AE2C737F192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C737E192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.m */; };
+		AE2C737F192040CD00438E7D /* NSObject+EPPZModel_internal.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C737E192040CD00438E7D /* NSObject+EPPZModel_internal.m */; };
+		AE2C7388192049DE00438E7D /* EPPZMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C7387192049DE00438E7D /* EPPZMapper.m */; };
+		AE2C738B192049E600438E7D /* EPPZFieldMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C738A192049E600438E7D /* EPPZFieldMapper.m */; };
+		AE2C738E192049ED00438E7D /* EPPZValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2C738D192049ED00438E7D /* EPPZValueMapper.m */; };
 		AE4F25611919A2CD004B2BD1 /* DictionaryReconstructionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECF61917268700B0BC55 /* DictionaryReconstructionTests.m */; };
 		AE4F25651919A492004B2BD1 /* UIImage+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4F25641919A492004B2BD1 /* UIImage+Test.m */; };
 		AE730A11191304DA00731BBD /* ClassInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A10191304DA00731BBD /* ClassInspectionTests.m */; };
 		AE730A12191308F800731BBD /* PropertyInspectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */; };
-		AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */; };
+		AE730A15191317DE00731BBD /* NSObject+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A14191317DE00731BBD /* NSObject+EPPZModel.m */; };
 		AE730A1A19131EEE00731BBD /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1919131EEE00731BBD /* Human.m */; };
 		AE730A1D19131F2A00731BBD /* SuperHero.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1C19131F2A00731BBD /* SuperHero.m */; };
 		AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */; };
-		AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE730A2119132BFF00731BBD /* EPPZMapper.m */; };
 		AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */; };
 		AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80E613191C400C00F68426 /* EPPZTracker.m */; };
 		AE875D7D1915CB3F00DB9034 /* EPPZCollectionEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE875D7C1915CB3F00DB9034 /* EPPZCollectionEnumerator.m */; };
@@ -40,8 +42,6 @@
 		AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAFA57F191ADFCF001FD2EA /* EPPZSerializer.m */; };
 		AEC0FEF81916AB6400578148 /* Achivement.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEF71916AB6400578148 /* Achivement.m */; };
 		AEC0FEFB1916E83600578148 /* UIView+EPPZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC0FEFA1916E83600578148 /* UIView+EPPZModel.m */; };
-		AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FA191426C0007EC769 /* EPPZValueMapper.m */; };
-		AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */; };
 		AEC8120619142A37007EC769 /* PropertyInspectionTestsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */; };
 		AED6ECF51917228800B0BC55 /* Player+TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECF41917228800B0BC55 /* Player+TestPlayer.m */; };
 		AED6ECFB1917277F00B0BC55 /* Achivement+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECFA1917277F00B0BC55 /* Achivement+Comparison.m */; };
@@ -89,20 +89,26 @@
 		AE2C737619203E1400438E7D /* EPPZMapper+Reconstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EPPZMapper+Reconstruction.m"; sourceTree = "<group>"; };
 		AE2C737819203E8F00438E7D /* EPPZMapper+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EPPZMapper+Configure.h"; sourceTree = "<group>"; };
 		AE2C737919203E8F00438E7D /* EPPZMapper+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EPPZMapper+Configure.m"; sourceTree = "<group>"; };
-		AE2C737D192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_mapping_internal.h"; sourceTree = "<group>"; };
-		AE2C737E192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_mapping_internal.m"; sourceTree = "<group>"; };
+		AE2C737D192040CD00438E7D /* NSObject+EPPZModel_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_internal.h"; sourceTree = "<group>"; };
+		AE2C737E192040CD00438E7D /* NSObject+EPPZModel_internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_internal.m"; sourceTree = "<group>"; };
+		AE2C73841920482200438E7D /* eppz!model.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "eppz!model.podspec"; sourceTree = "<group>"; };
+		AE2C7385192049B600438E7D /* EPPZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EPPZModel.h; path = public/EPPZModel.h; sourceTree = "<group>"; };
+		AE2C7386192049DE00438E7D /* EPPZMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZMapper.h; path = public/EPPZMapper.h; sourceTree = "<group>"; };
+		AE2C7387192049DE00438E7D /* EPPZMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZMapper.m; path = public/EPPZMapper.m; sourceTree = "<group>"; };
+		AE2C7389192049E600438E7D /* EPPZFieldMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZFieldMapper.h; path = public/EPPZFieldMapper.h; sourceTree = "<group>"; };
+		AE2C738A192049E600438E7D /* EPPZFieldMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZFieldMapper.m; path = public/EPPZFieldMapper.m; sourceTree = "<group>"; };
+		AE2C738C192049ED00438E7D /* EPPZValueMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZValueMapper.h; path = public/EPPZValueMapper.h; sourceTree = "<group>"; };
+		AE2C738D192049ED00438E7D /* EPPZValueMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZValueMapper.m; path = public/EPPZValueMapper.m; sourceTree = "<group>"; };
 		AE4F25631919A492004B2BD1 /* UIImage+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Test.h"; sourceTree = "<group>"; };
 		AE4F25641919A492004B2BD1 /* UIImage+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Test.m"; sourceTree = "<group>"; };
 		AE730A10191304DA00731BBD /* ClassInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInspectionTests.m; sourceTree = "<group>"; };
-		AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EPPZModel_mapping.h"; sourceTree = "<group>"; };
-		AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EPPZModel_mapping.m"; sourceTree = "<group>"; };
+		AE730A13191317DE00731BBD /* NSObject+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+EPPZModel.h"; path = "public/NSObject+EPPZModel.h"; sourceTree = "<group>"; };
+		AE730A14191317DE00731BBD /* NSObject+EPPZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+EPPZModel.m"; path = "public/NSObject+EPPZModel.m"; sourceTree = "<group>"; };
 		AE730A1819131EEE00731BBD /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		AE730A1919131EEE00731BBD /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		AE730A1B19131F2A00731BBD /* SuperHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperHero.h; sourceTree = "<group>"; };
 		AE730A1C19131F2A00731BBD /* SuperHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperHero.m; sourceTree = "<group>"; };
 		AE730A1E19131FA600731BBD /* DictionaryRepresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryRepresentationTests.m; sourceTree = "<group>"; };
-		AE730A2019132BFF00731BBD /* EPPZMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZMapper.h; sourceTree = "<group>"; };
-		AE730A2119132BFF00731BBD /* EPPZMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZMapper.m; sourceTree = "<group>"; };
 		AE80E60F191C3D8A00F68426 /* EPPZModelTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZModelTrack.h; sourceTree = "<group>"; };
 		AE80E610191C3D8A00F68426 /* EPPZModelTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZModelTrack.m; sourceTree = "<group>"; };
 		AE80E612191C400C00F68426 /* EPPZTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZTracker.h; sourceTree = "<group>"; };
@@ -118,7 +124,6 @@
 		AEABF7281912AA99006E9041 /* PropertyInspectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInspectionTests.m; sourceTree = "<group>"; };
 		AEABF72A1912AAD0006E9041 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AEABF72C1912AAD8006E9041 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AEABF72E1912AE92006E9041 /* EPPZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPPZModel.h; sourceTree = "<group>"; };
 		AEABF7321912D43E006E9041 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AEAE03811912A0F50055FC20 /* libeppz!model.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libeppz!model.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEAE03841912A0F50055FC20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,10 +178,6 @@
 		AEC0FEF71916AB6400578148 /* Achivement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achivement.m; sourceTree = "<group>"; };
 		AEC0FEF91916E83600578148 /* UIView+EPPZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EPPZModel.h"; sourceTree = "<group>"; };
 		AEC0FEFA1916E83600578148 /* UIView+EPPZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EPPZModel.m"; sourceTree = "<group>"; };
-		AEC811F9191426C0007EC769 /* EPPZValueMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZValueMapper.h; sourceTree = "<group>"; };
-		AEC811FA191426C0007EC769 /* EPPZValueMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZValueMapper.m; sourceTree = "<group>"; };
-		AEC811FC191426CB007EC769 /* EPPZFieldMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPPZFieldMapper.h; sourceTree = "<group>"; };
-		AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPPZFieldMapper.m; sourceTree = "<group>"; };
 		AEC8120419142A37007EC769 /* PropertyInspectionTestsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyInspectionTestsModel.h; sourceTree = "<group>"; };
 		AEC8120519142A37007EC769 /* PropertyInspectionTestsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInspectionTestsModel.m; sourceTree = "<group>"; };
 		AED6ECF31917228800B0BC55 /* Player+TestPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+TestPlayer.h"; sourceTree = "<group>"; };
@@ -220,9 +221,7 @@
 		AE2C737B1920404F00438E7D /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				AEABF72E1912AE92006E9041 /* EPPZModel.h */,
-				AEABF7241912A647006E9041 /* EPPZLog.h */,
-				AEABF7251912A647006E9041 /* EPPZLog.m */,
+				AE2C7385192049B600438E7D /* EPPZModel.h */,
 				AE2C73801920426200438E7D /* NSObject+EPPZModel */,
 				AE2C73811920426B00438E7D /* Mapper */,
 			);
@@ -232,10 +231,8 @@
 		AE2C73801920426200438E7D /* NSObject+EPPZModel */ = {
 			isa = PBXGroup;
 			children = (
-				AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel_inspecting.h */,
-				AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m */,
-				AE730A13191317DE00731BBD /* NSObject+EPPZModel_mapping.h */,
-				AE730A14191317DE00731BBD /* NSObject+EPPZModel_mapping.m */,
+				AE730A13191317DE00731BBD /* NSObject+EPPZModel.h */,
+				AE730A14191317DE00731BBD /* NSObject+EPPZModel.m */,
 			);
 			name = "NSObject+EPPZModel";
 			sourceTree = "<group>";
@@ -243,10 +240,40 @@
 		AE2C73811920426B00438E7D /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				AE730A2019132BFF00731BBD /* EPPZMapper.h */,
-				AE730A2119132BFF00731BBD /* EPPZMapper.m */,
+				AE2C7386192049DE00438E7D /* EPPZMapper.h */,
+				AE2C7387192049DE00438E7D /* EPPZMapper.m */,
+				AE1E78F21918453000CF62DA /* EPPZMapper+Default.h */,
+				AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */,
 				AEC811FF1914275C007EC769 /* Field mapper */,
 				AEC8120019142779007EC769 /* Value mapper */,
+			);
+			name = Mapper;
+			sourceTree = "<group>";
+		};
+		AE2C7382192045F000438E7D /* NSObject+EPPZModel */ = {
+			isa = PBXGroup;
+			children = (
+				AEAE03AF1912A1F80055FC20 /* NSObject+EPPZModel_inspecting.h */,
+				AEAE03B01912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m */,
+				AE2C737D192040CD00438E7D /* NSObject+EPPZModel_internal.h */,
+				AE2C737E192040CD00438E7D /* NSObject+EPPZModel_internal.m */,
+			);
+			name = "NSObject+EPPZModel";
+			sourceTree = "<group>";
+		};
+		AE2C7383192045FF00438E7D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				AE2C737219203C6D00438E7D /* EPPZMapper+Accessors.h */,
+				AE2C737319203C6D00438E7D /* EPPZMapper+Accessors.m */,
+				AE2C736C192035E000438E7D /* EPPZMapper+Representation.h */,
+				AE2C736D192035E000438E7D /* EPPZMapper+Representation.m */,
+				AE2C737519203E1400438E7D /* EPPZMapper+Reconstruction.h */,
+				AE2C737619203E1400438E7D /* EPPZMapper+Reconstruction.m */,
+				AE2C737819203E8F00438E7D /* EPPZMapper+Configure.h */,
+				AE2C737919203E8F00438E7D /* EPPZMapper+Configure.m */,
+				AE2C736F192036BD00438E7D /* EPPZMapper+Debug.h */,
+				AE2C7370192036BD00438E7D /* EPPZMapper+Debug.m */,
 			);
 			name = Mapper;
 			sourceTree = "<group>";
@@ -272,20 +299,10 @@
 		AE730A2419132D7800731BBD /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				AE2C737D192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.h */,
-				AE2C737E192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.m */,
-				AE2C737219203C6D00438E7D /* EPPZMapper+Accessors.h */,
-				AE2C737319203C6D00438E7D /* EPPZMapper+Accessors.m */,
-				AE2C736C192035E000438E7D /* EPPZMapper+Representation.h */,
-				AE2C736D192035E000438E7D /* EPPZMapper+Representation.m */,
-				AE2C737519203E1400438E7D /* EPPZMapper+Reconstruction.h */,
-				AE2C737619203E1400438E7D /* EPPZMapper+Reconstruction.m */,
-				AE2C737819203E8F00438E7D /* EPPZMapper+Configure.h */,
-				AE2C737919203E8F00438E7D /* EPPZMapper+Configure.m */,
-				AE2C736F192036BD00438E7D /* EPPZMapper+Debug.h */,
-				AE2C7370192036BD00438E7D /* EPPZMapper+Debug.m */,
-				AE1E78F21918453000CF62DA /* EPPZMapper+Default.h */,
-				AE1E78F31918453000CF62DA /* EPPZMapper+Default.m */,
+				AEABF7241912A647006E9041 /* EPPZLog.h */,
+				AEABF7251912A647006E9041 /* EPPZLog.m */,
+				AE2C7382192045F000438E7D /* NSObject+EPPZModel */,
+				AE2C7383192045FF00438E7D /* Mapper */,
 				AE80E615191C4B8D00F68426 /* Tracker */,
 				AE875D7E1915D61600DB9034 /* Collection enumerator */,
 			);
@@ -350,6 +367,7 @@
 		AEAE03781912A0F40055FC20 = {
 			isa = PBXGroup;
 			children = (
+				AE2C73841920482200438E7D /* eppz!model.podspec */,
 				AEABF7321912D43E006E9041 /* Podfile */,
 				AEAE03AE1912A1790055FC20 /* VERSIONS.md */,
 				AE1E78FC19185E4F00CF62DA /* DOING.md */,
@@ -487,8 +505,8 @@
 		AEC811FF1914275C007EC769 /* Field mapper */ = {
 			isa = PBXGroup;
 			children = (
-				AEC811FC191426CB007EC769 /* EPPZFieldMapper.h */,
-				AEC811FD191426CB007EC769 /* EPPZFieldMapper.m */,
+				AE2C7389192049E600438E7D /* EPPZFieldMapper.h */,
+				AE2C738A192049E600438E7D /* EPPZFieldMapper.m */,
 			);
 			name = "Field mapper";
 			sourceTree = "<group>";
@@ -496,8 +514,8 @@
 		AEC8120019142779007EC769 /* Value mapper */ = {
 			isa = PBXGroup;
 			children = (
-				AEC811F9191426C0007EC769 /* EPPZValueMapper.h */,
-				AEC811FA191426C0007EC769 /* EPPZValueMapper.m */,
+				AE2C738C192049ED00438E7D /* EPPZValueMapper.h */,
+				AE2C738D192049ED00438E7D /* EPPZValueMapper.m */,
 			);
 			name = "Value mapper";
 			sourceTree = "<group>";
@@ -696,20 +714,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2C737F192040CD00438E7D /* NSObject+EPPZModel_mapping_internal.m in Sources */,
+				AE2C7388192049DE00438E7D /* EPPZMapper.m in Sources */,
+				AE2C737F192040CD00438E7D /* NSObject+EPPZModel_internal.m in Sources */,
 				AEAE03B11912A1F80055FC20 /* NSObject+EPPZModel_inspecting.m in Sources */,
-				AEC811FB191426C0007EC769 /* EPPZValueMapper.m in Sources */,
+				AE2C738E192049ED00438E7D /* EPPZValueMapper.m in Sources */,
 				AE2C737A19203E8F00438E7D /* EPPZMapper+Configure.m in Sources */,
 				AE875D7D1915CB3F00DB9034 /* EPPZCollectionEnumerator.m in Sources */,
+				AE2C738B192049E600438E7D /* EPPZFieldMapper.m in Sources */,
 				AE1E78F41918453000CF62DA /* EPPZMapper+Default.m in Sources */,
 				AE2C736E192035E000438E7D /* EPPZMapper+Representation.m in Sources */,
 				AEABF7261912A647006E9041 /* EPPZLog.m in Sources */,
 				AE2C737419203C6D00438E7D /* EPPZMapper+Accessors.m in Sources */,
 				AEAFA580191ADFCF001FD2EA /* EPPZSerializer.m in Sources */,
 				AE80E611191C3D8A00F68426 /* EPPZModelTrack.m in Sources */,
-				AE730A15191317DE00731BBD /* NSObject+EPPZModel_mapping.m in Sources */,
-				AEC811FE191426CB007EC769 /* EPPZFieldMapper.m in Sources */,
-				AE730A2219132BFF00731BBD /* EPPZMapper.m in Sources */,
+				AE730A15191317DE00731BBD /* NSObject+EPPZModel.m in Sources */,
 				AE2C737719203E1400438E7D /* EPPZMapper+Reconstruction.m in Sources */,
 				AE2C7371192036BD00438E7D /* EPPZMapper+Debug.m in Sources */,
 				AE80E614191C400C00F68426 /* EPPZTracker.m in Sources */,

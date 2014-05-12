@@ -1,5 +1,5 @@
 //
-//  NSObject+EPPZModel_mapping.m
+//  NSObject+EPPZModel.m
 //  eppz!model
 //
 //  Created by Borbás Geri on 01/05/14.
@@ -13,28 +13,30 @@
 //
 
 #import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
-#import "NSObject+EPPZModel_mapping_internal.h"
+#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_internal.h"
 
 #import "EPPZMapper+Representation.h"
 #import "EPPZMapper+Reconstruction.h"
 #import "EPPZMapper+Configure.h"
 
+#import "EPPZTracker.h"
+
 
 static char mapper_key;
 
 
-@interface NSObject (EPPZModel_mapping_private)
+@interface NSObject (EPPZModel_private)
 @property (nonatomic, strong) NSString *modelId_;
 @end
 
 
-@implementation NSObject (EPPZModel_mapping_private)
+@implementation NSObject (EPPZModel_private)
 @dynamic modelId_;
 @end
 
 
-@implementation NSObject (EPPZModel_mapping)
+@implementation NSObject (EPPZModel)
 @dynamic modelId;
 
 

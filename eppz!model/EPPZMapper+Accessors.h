@@ -27,6 +27,8 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
 @interface EPPZMapper (Accessors)
 
 
+#pragma mark - Field enumerator
+
 /*!
  
  Enumerates fields in the given @c fields collection either it is an @c NSArray
@@ -35,19 +37,28 @@ typedef void (^EPPZMapperFieldEnumeratingBlock)(NSString *eachField, NSDictionar
  */
 -(void)enumerateFields:(id) fields enumeratingBlock:(EPPZMapperFieldEnumeratingBlock) enumeratingBlock;
 
-/*!
- 
- Select a value mapper for a given @c field.
- 
- */
+
+#pragma mark - Value mapper accessors
+
+@property (nonatomic, strong) EPPZValueMapper *defaultValueMapper;
+
+/*! Select a value mapper for a given @c field. */
 -(EPPZValueMapper*)valueMapperForField:(NSString*) field;
 
-/*!
- 
- Select a value mapper for a given type name.
- 
- */
+/*! Select a value mapper for a given type name. */
 -(EPPZValueMapper*)valueMapperForTypeName:(NSString*) typeName;
+
+
+#pragma mark - Reconstruction
+
+/*! Check if a value is the representation of a @c nil value using mapper's @c nilValueMapper. */
+-(BOOL)isValueNilRepresentation:(id) value;
+
+/* Look for a valid @c modelId within a dictionary representation. */
+-(NSString*)modelIdInDictionaryRepresentationIfAny:(NSDictionary*) dictionary;
+
+/*! Check if a value represents an @c <EPPZModel> (look for valid model attributes within). */
+-(BOOL)isValueRepresentedEPPZModel:(id) value;
 
 
 @end

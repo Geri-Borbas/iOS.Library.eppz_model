@@ -21,10 +21,6 @@
 #import "EPPZValueMapper.h"
 @compatibility_alias ValueMapper EPPZValueMapper;
 
-#import "EPPZCollectionEnumerator.h"
-
-#import "EPPZTracker.h"
-
 
 /*! Field dictionary entry shortcut */
 #define field(field) field : field
@@ -101,11 +97,40 @@
 @property (nonatomic) BOOL representReferences;
 
 
-/*! Field mapper to be used when representing dictionaries from given models. */
+#pragma mark - Mappers
+
+/*!
+ 
+ Field mapper to be used when representing dictionaries from given models.
+ 
+ */
 @property (nonatomic, strong) EPPZFieldMapper *fieldMapper;
+
+/*!
+ 
+ A value mapper for nil values. The default mapper represents @c nil as @c @@"<null>",
+ and reconstructs as @c nil. YOu may want to override this to reconstruct @c NSNull
+ objects for example, or other default null objects of your choice.
+ 
+ */
 @property (nonatomic, strong) EPPZValueMapper *nilValueMapper;
-@property (nonatomic, strong) EPPZValueMapper *defaultValueMapper;
+
+/*!
+ 
+ A collection of @c EPPZValueMapper objects keyed by the field (property) names that holds
+ the actual value. If no value mapper is present for a given field name, representing / 
+ reconstruction will fall back to using value mappers for the given type.
+ 
+ */
 @property (nonatomic, strong) NSDictionary *valueMappersForFields;
+
+/*!
+ 
+ A collection of @c EPPZValueMapper objects keyed by type / class names.
+ Representing / reconstructing will use these value mapper unless there
+ is value mapping defined already for a given field that contains the value.
+ 
+ */
 @property (nonatomic, strong) NSDictionary *valueMappersForTypeNames;
 
 

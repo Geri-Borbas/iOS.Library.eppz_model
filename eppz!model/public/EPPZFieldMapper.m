@@ -15,6 +15,8 @@
 #import "EPPZFieldMapper.h"
 #import "NSObject+EPPZModel_inspecting.h"
 
+#import "EPPZLog.h"
+
 
 @interface EPPZFieldMapper ()
 @property (nonatomic, strong) NSDictionary *representationFieldMap;

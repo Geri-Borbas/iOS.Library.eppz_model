@@ -1,5 +1,5 @@
 //
-//  NSObject+EPPZModel_mapping_internal.h
+//  NSObject+EPPZModel_internal.m
 //  eppz!model
 //
 //  Created by Borbás Geri on 12/05/14.
@@ -12,31 +12,37 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "NSObject+EPPZModel_inspecting.h"
+#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_internal.h"
+
+#import "EPPZMapper+Representation.h"
+#import "EPPZMapper+Reconstruction.h"
+#import "EPPZMapper+Configure.h"
 
 
-@class EPPZTracker;
-
-
-@interface NSObject (EPPZModel_mapping_internal)
+@implementation NSObject (EPPZModel_internal)
 
 
 #pragma mark - Representation
 
-/*! For internal use. */
--(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool;
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool
+{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:pool]; }
 
 
-#pragma mark - Reconstruction
+#pragma mark - Reconstruction 
 
-/*! For internal use. */
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{
+    NSObject *instance = [self new];
+    [instance _initializeWithDictionary:dictionary tracker:tracker];
+    return instance;
+}
 
-/*! For internal use. */
--(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:tracker]; }
 
-/*! For internal use. */
--(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
-
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }
 
 @end

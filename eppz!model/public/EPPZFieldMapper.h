@@ -13,7 +13,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EPPZLog.h"
 
 
 static NSString *const EPPZFieldMapperWarningNonStringObject = @"Representation field map cannot contain non-string object <%@>.";

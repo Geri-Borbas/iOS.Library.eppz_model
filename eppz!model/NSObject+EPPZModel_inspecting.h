@@ -21,15 +21,6 @@
 
 /*!
  
- Protocol to mark a given object to enjoy @c EPPZModel features.
- 
- */
-@protocol EPPZModel <NSObject>
-@end
-
-
-/*!
- 
  Extend @c NSObject class to have some features to inspect class structure.
  
  */

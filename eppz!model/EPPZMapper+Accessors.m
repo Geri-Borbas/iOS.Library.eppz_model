@@ -13,10 +13,24 @@
 //
 
 #import "EPPZMapper+Accessors.h"
+#import "EPPZSwizzler.h"
 
 
 @implementation EPPZMapper (Accessors)
+@dynamic defaultValueMapper;
 
+
+#pragma mark - Synthesize properties
+
++(void)load
+{
+    [EPPZSwizzler synthesizePropertyNamed:@"defaultValueMapper"
+                                   ofKind:[EPPZValueMapper class]
+                                 forClass:[EPPZMapper class]
+                               withPolicy:retain];
+}
+
+#pragma mark - Field enumerator
 
 -(void)enumerateFields:(id) fields enumeratingBlock:(EPPZMapperFieldEnumeratingBlock) enumeratingBlock
 {
@@ -34,6 +48,9 @@
          { enumeratingBlock(key, obj); }];
     }
 }
+
+
+#pragma mark - Value mapper accessors
 
 -(EPPZValueMapper*)valueMapperForField:(NSString*) field
 {
@@ -58,6 +75,57 @@
     { return [self valueMapperForTypeName:(NSString*)valueMapper]; }
     
     return (EPPZValueMapper*)valueMapper;
+}
+
+
+#pragma mark - Reconstruction
+
+-(BOOL)isValueNilRepresentation:(id) value
+{
+    if ([value isKindOfClass:[NSString class]] == NO) return NO;
+    if ([value isEqualToString:self.nilValueMapper.representerBlock(nil)] == NO) return NO;
+    return YES;
+}
+
+-(NSString*)modelIdInDictionaryRepresentationIfAny:(NSDictionary*) dictionary
+{
+    if ([dictionary isKindOfClass:[NSDictionary class]] == NO) return @"";
+    if ([[dictionary allKeys] containsObject:self.modelIdField] == NO) return @"";
+    NSString *modelId = [dictionary objectForKey:self.modelIdField];
+    if ([modelId isKindOfClass:[NSString class]] == NO) return @"";
+    return modelId;
+}
+
+-(BOOL)isValueRepresentedEPPZModel:(id) value
+{
+    // Look for `<EPPZModel>` representations.
+    
+    // Is `NSDictionary`.
+    if ([value isKindOfClass:[NSDictionary class]] == NO) return NO;
+    NSDictionary *eachRepresentationDictionary = (NSDictionary*)value;
+    
+    // Has `modelId` key.
+    if ([[eachRepresentationDictionary allKeys] containsObject:self.modelIdField] == NO) return NO;
+    NSString *modelId = [eachRepresentationDictionary objectForKey:self.modelIdField];
+    
+    // Has `modelId` value.
+    if ([modelId isKindOfClass:[NSString class]] == NO) return NO;
+    if (modelId == nil) return NO;
+    
+    // Has `modelId` key.
+    if ([[eachRepresentationDictionary allKeys] containsObject:self.classNameField] == NO) return NO;
+    NSString *className = [eachRepresentationDictionary objectForKey:self.classNameField];
+    
+    // Has `modelId` value.
+    if ([className isKindOfClass:[NSString class]] == NO) return NO;
+    if (className == nil) return NO;
+    
+    // Is class present.
+    Class class = NSClassFromString(className);
+    if (class == nil) return NO;
+    
+    // Phew, we can reconstruct like that.
+    return YES;
 }
 
 

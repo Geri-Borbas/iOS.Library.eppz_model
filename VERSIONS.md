@@ -1,5 +1,14 @@
 ## Versions
 
+
+* [feature/refactor-interfaces] 0.0.1
+
+    + Hid more features from public (`(EPPZModel_inspecting)`, `EPPZLog` also became hidden)
+    + Some wording
+    + Moved some methods to clean up arrangement
+    + Added `podspec`
+    + Moved public header into their own location
+
 * [feature/refactor-interfaces] 0.0.0
 
     + Split interfaces

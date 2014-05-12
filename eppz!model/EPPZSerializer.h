@@ -18,7 +18,8 @@
 @interface EPPZSerializer : NSObject
 
 
-+(NSString*)JSONStringFromModel:(id) model;
++(NSString*)JSONStringFromModel:(NSObject*) model;
++(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint;
 +(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation;
 +(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation prettyPrint:(BOOL) prettyPrint;
 

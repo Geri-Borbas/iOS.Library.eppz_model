@@ -17,8 +17,11 @@
 #import "EPPZMapper+Accessors.h"
 
 #import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
-#import "NSObject+EPPZModel_mapping_internal.h"
+#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_internal.h"
+
+#import "EPPZCollectionEnumerator.h"
+#import "EPPZTracker.h"
 
 
 @implementation EPPZMapper (Reconstruction)
@@ -70,47 +73,6 @@
                            field:eachReconstructedField];
          }
      }];
-}
-
--(NSString*)modelIdInDictionaryRepresentationIfAny:(NSDictionary*) dictionary
-{
-    if ([dictionary isKindOfClass:[NSDictionary class]] == NO) return @"";
-    if ([[dictionary allKeys] containsObject:self.modelIdField] == NO) return @"";
-    NSString *modelId = [dictionary objectForKey:self.modelIdField];
-    if ([modelId isKindOfClass:[NSString class]] == NO) return @"";
-    return modelId;
-}
-
--(BOOL)isValueRepresentedEPPZModel:(id) value
-{
-    // Look for `<EPPZModel>` representations.
-    
-    // Is `NSDictionary`.
-    if ([value isKindOfClass:[NSDictionary class]] == NO) return NO;
-    NSDictionary *eachRepresentationDictionary = (NSDictionary*)value;
-    
-    // Has `modelId` key.
-    if ([[eachRepresentationDictionary allKeys] containsObject:self.modelIdField] == NO) return NO;
-    NSString *modelId = [eachRepresentationDictionary objectForKey:self.modelIdField];
-    
-    // Has `modelId` value.
-    if ([modelId isKindOfClass:[NSString class]] == NO) return NO;
-    if (modelId == nil) return NO;
-    
-    // Has `modelId` key.
-    if ([[eachRepresentationDictionary allKeys] containsObject:self.classNameField] == NO) return NO;
-    NSString *className = [eachRepresentationDictionary objectForKey:self.classNameField];
-    
-    // Has `modelId` value.
-    if ([className isKindOfClass:[NSString class]] == NO) return NO;
-    if (className == nil) return NO;
-    
-    // Is class present.
-    Class class = NSClassFromString(className);
-    if (class == nil) return NO;
-    
-    // Phew, we can reconstruct like that.
-    return YES;
 }
 
 -(id)reconstructEPPZModel:(id) dictionaryRepresentation tracker:(EPPZTracker*) tracker
@@ -203,13 +165,6 @@
     return (valueMapper != nil) ? [valueMapper reconstructValue:value] : value;
 }
 
--(BOOL)isValueNilRepresentation:(id) value
-{
-    if ([value isKindOfClass:[NSString class]] == NO) return NO;
-    if ([value isEqualToString:self.nilValueMapper.representerBlock(nil)] == NO) return NO;
-    return YES;
-}
-
 -(void)tryToSetValue:(id) value forKey:(NSString*) key onModel:(NSObject*) model
 {
     @try { [model setValue:value forKeyPath:key]; }
@@ -221,7 +176,6 @@
     }
     @finally { }
 }
-
 
 
 @end

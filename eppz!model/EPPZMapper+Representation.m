@@ -17,8 +17,11 @@
 #import "EPPZMapper+Accessors.h"
 
 #import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
-#import "NSObject+EPPZModel_mapping_internal.h"
+#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_internal.h"
+
+#import "EPPZCollectionEnumerator.h"
+// #import "EPPZTracker.h"
 
 
 @implementation EPPZMapper (Representation)

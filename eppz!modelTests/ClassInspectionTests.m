@@ -13,7 +13,10 @@
 //
 
 #import <XCTest/XCTest.h>
+
 #import "EPPZModel.h"
+#import "NSObject+EPPZModel_inspecting.h"
+
 #import "Human.h"
 #import "SuperHero.h"
 

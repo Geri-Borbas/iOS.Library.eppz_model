@@ -21,4 +21,14 @@
  
  */
 @interface EPPZMapper (Default)
+
+/*!
+ 
+ Actually an alias for @c +new. Every @c EPPZMapper instance gets initialized with default values below.
+ See implementation at https://github.com/eppz/eppz.model/blob/master/eppz!model/public/EPPZMapper%2BDefault.m
+ for actual default mappers.
+ 
+ */
++(instancetype)defaultMapper;
+
 @end

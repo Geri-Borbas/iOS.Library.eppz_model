@@ -13,7 +13,7 @@
 //
 
 #import "EPPZSerializer.h"
-#import "NSObject+EPPZModel_mapping.h"
+#import "NSObject+EPPZModel.h"
 
 
 @implementation EPPZSerializer
@@ -21,6 +21,9 @@
 
 +(NSString*)JSONStringFromModel:(NSObject*) model
 { return [self JSONStringFromModel:model.dictionaryRepresentation]; }
+
++(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint
+{ return [self JSONStringFromDictionaryRepresentation:model.dictionaryRepresentation prettyPrint:prettyPrint]; }
 
 +(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation
 { return [self JSONStringFromDictionaryRepresentation:dictionaryRepresentation prettyPrint:NO]; }

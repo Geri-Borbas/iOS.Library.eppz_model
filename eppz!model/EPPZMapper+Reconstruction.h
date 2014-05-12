@@ -15,6 +15,9 @@
 #import "EPPZMapper.h"
 
 
+@class EPPZTracker;
+
+
 /*!
  
  Features of @c EPPZMapper to be used internally while reconstructing models from @c NSDictionary
