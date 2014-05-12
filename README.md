@@ -3,14 +3,19 @@
 **A model layer for the everydays.** Extreme simplicity (while fully customizable).
 
 ```Objective-C
+
+// Just add `<EPPZModel>` to your existing model(s)
+@interface ComplexStuff <EPPZModel>
+// Various properties, containing references to / collections of other models
+@end
+
 // On monday.
 NSDictionary *representation = [complexStuff dictionaryRepresentation];
 
 // Two days later.
 ComplexStuff *complexStuff = [ComplexStuff instanceWithDictionary:representation];
-```
 
-Works fine with deep object graphs, cross-references.
+```
 
 Basically eppz!model is designed for **network usage**, to represent complex entities / object graphs
 (probably in an `NSDictionary` / `JSON` output), and also reconstruct runtime objects from a network
