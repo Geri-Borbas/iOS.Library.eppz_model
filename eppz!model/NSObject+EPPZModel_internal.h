@@ -1,8 +1,8 @@
 //
-//  EPPZSerializer.h
+//  NSObject+EPPZModel_internal.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 08/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -15,14 +15,28 @@
 #import <Foundation/Foundation.h>
 
 
-@interface EPPZSerializer : NSObject
+@class EPPZTracker;
 
 
-+(NSString*)JSONStringFromModel:(NSObject*) model;
-+(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation prettyPrint:(BOOL) prettyPrint;
+@interface NSObject (EPPZModel_internal)
+
+
+#pragma mark - Representation
+
+/*! For internal use. */
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool;
+
+
+#pragma mark - Reconstruction
+
+/*! For internal use. */
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
+
+/*! For internal use. */
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
+
+/*! For internal use. */
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end
-

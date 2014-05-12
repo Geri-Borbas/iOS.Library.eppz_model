@@ -1,8 +1,8 @@
 //
-//  EPPZModel.h
+//  EPPZMapper+Representation.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 01/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,7 +12,36 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "EPPZLog.h"
-#import "NSObject+EPPZModel_inspecting.h"
-#import "NSObject+EPPZModel_mapping.h"
-#import "EPPZSerializer.h"
+#import "EPPZMapper.h"
+
+
+/*!
+ 
+ Features of @c EPPZMapper to be used internally while representing models to @c NSDictionary
+ representations. Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Representation)
+
+
+/*!
+ 
+ Returns a dictionary representation of the given model (only with the given fields).
+ 
+ @param model
+ Model object to be represented.
+ 
+ @param fields
+ Either an @c NSArray of fields to be represented, or may pass in an @c NSDictionary with fields,
+ and can also passing sub-fields within collections down the line. In the latter case only
+ the keys gonna be parsed, the actual values will be dismissed (unless it is a sub-field
+ @c NSDictionary).
+ 
+ @param pool
+ Object pool tracking the represented objects to resolve cross-references between objects.
+ 
+ */
+-(NSDictionary*)_dictionaryRepresentationOfModel:(NSObject*) model fields:(id) fields pool:(NSMutableArray*) pool;
+
+
+@end

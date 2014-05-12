@@ -1,8 +1,8 @@
 //
-//  EPPZSerializer.h
+//  EPPZMapper+Reconstruction.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 08/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,17 +12,35 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "EPPZMapper.h"
 
 
-@interface EPPZSerializer : NSObject
+@class EPPZTracker;
 
 
-+(NSString*)JSONStringFromModel:(NSObject*) model;
-+(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation prettyPrint:(BOOL) prettyPrint;
+/*!
+ 
+ Features of @c EPPZMapper to be used internally while reconstructing models from @c NSDictionary
+ representations. Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Reconstruction)
+
+
+/*!
+ 
+ Initializes the given model with the given dictionary representation (using selected mapper).
+ Sets every property that is represented, also create objects down the object graph is not
+ existed already.
+ 
+ @param dictionary
+ Dictionary holding the representation of the model to be initialized.
+ 
+ @param tracker
+ Model tracker tracking the represented objects (keyed by @c modelId) to resolve cross-references between objects.
+ 
+ */
+-(void)_initializeModel:(NSObject*) model withDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
 
 
 @end
-

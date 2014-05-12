@@ -1,5 +1,5 @@
 //
-//  NSObject+EPPZModel_mapping.h
+//  NSObject+EPPZModel.h
 //  eppz!model
 //
 //  Created by Borbás Geri on 01/05/14.
@@ -16,14 +16,29 @@
 #import "EPPZMapper.h"
 
 
-@interface NSObject (EPPZModel_mapping)
+/*!
+ 
+ Protocol to mark a given class to enjoy @c EPPZModel features. No methods to implement,
+ it only tells @c EPPZModel internals that the class is a subject to represent / reconstruct.
+ 
+ */
+@protocol EPPZModel <NSObject>
+@end
 
 
 /*!
  
- A unique identifier that identifes object during a mapping process. Having this
- mapping can represent / reconstruct referenced relations between models. Default
- value holds @c -hash of the object.
+ Extend @c NSObject with `EPPZModel` features.
+ 
+ */
+@interface NSObject (EPPZModel)
+
+
+/*!
+ 
+ A unique identifier that identifes object during a mapping process. Having this,
+ mapping can represent / reconstruct cross referenced relations between models.
+ Default value holds @c -hash of the object.
  
  */
 @property (nonatomic, strong) NSString *modelId;
@@ -31,13 +46,19 @@
 
 #pragma mark - Mappers
 
-/*! A mapper that specifies how the model is represented, reconstructed. */
+/*!
+ 
+ A mapper that specifies how the model is represented, reconstructed. Typically you
+ implement this method, and return an @c EPPZMapper instance that contains all the
+ customizaion you need for the given class.
+ 
+ */
 +(EPPZMapper*)defaultMapper;
 
 /*!
  
  Currently selected mapper that specifies how the model is represented,
- reconstructed. If not set already, falls back to @c +defaultMapper.
+ reconstructed. If not set, falls back to @c +defaultMapper.
  
  */
 +(EPPZMapper*)mapper;
@@ -69,8 +90,6 @@
  */
 -(NSDictionary*)dictionaryRepresentationOfFields:(id) fields;
 
-/*! For internal use. */
--(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool;
 
 #pragma mark - Reconstruction (dictionary to runtime)
 
@@ -99,15 +118,6 @@
  
  */
 -(void)configureWithDictionary:(NSDictionary*) dictionary;
-
-/*! For internal use. */
-+(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
-
-/*! For internal use. */
--(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker;
-
-/*! For internal use. */
--(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool;
 
 
 @end

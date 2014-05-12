@@ -1,8 +1,8 @@
 //
-//  EPPZSerializer.h
+//  EPPZMapper+Debug.m
 //  eppz!model
 //
-//  Created by Borbás Geri on 08/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,17 +12,39 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "EPPZMapper+Debug.h"
+#import "EPPZSwizzler.h"
 
 
-@interface EPPZSerializer : NSObject
+@interface EPPZMapper ()
+@property (nonatomic, strong) NSNumber *writeRepresentationLog_;
+@end
 
 
-+(NSString*)JSONStringFromModel:(NSObject*) model;
-+(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation prettyPrint:(BOOL) prettyPrint;
+@implementation EPPZMapper (Debug)
+@dynamic writeRepresentationLog;
+@dynamic logFileDirectory;
+
+
++(void)load
+{
+    [EPPZSwizzler synthesizePropertyNamed:@"logFileDirectory"
+                                   ofKind:[NSString class]
+                                 forClass:[NSObject class]
+                               withPolicy:retain];
+    
+    // Workaround until `EPPZSwizzler` handles standard object types.
+    [EPPZSwizzler synthesizePropertyNamed:@"writeRepresentationLog_"
+                                   ofKind:[NSNumber class]
+                                 forClass:[NSObject class]
+                               withPolicy:assign];
+}
+
+-(void)setWriteRepresentationLog:(BOOL) writeRepresentationLog
+{ self.writeRepresentationLog_ = @(writeRepresentationLog); }
+
+-(BOOL)writeRepresentationLog
+{ return self.writeRepresentationLog_.boolValue; }
 
 
 @end
-

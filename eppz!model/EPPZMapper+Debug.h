@@ -1,8 +1,8 @@
 //
-//  EPPZSerializer.h
+//  EPPZMapper+Debug.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 08/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,17 +12,33 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "EPPZMapper.h"
 
 
-@interface EPPZSerializer : NSObject
+/*!
+ 
+ Features of @c EPPZMapper to be used in unit tests during development.
+ Methods here not meant for public use.
+ 
+ */
+@interface EPPZMapper (Debug)
 
 
-+(NSString*)JSONStringFromModel:(NSObject*) model;
-+(NSString*)JSONStringFromModel:(NSObject*) model prettyPrint:(BOOL) prettyPrint;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation;
-+(NSString*)JSONStringFromDictionaryRepresentation:(NSDictionary*) dictionaryRepresentation prettyPrint:(BOOL) prettyPrint;
+/*!
+ 
+ Whether to write representation log (steps of representing an obejct).
+ Default value is @c NO.
+ 
+ */
+@property (nonatomic) BOOL writeRepresentationLog;
+
+/*!
+ 
+ A path where the representation log files gonna be written.
+ (during unit tests this directory is probably the library).
+ 
+ */
+@property (nonatomic, strong) NSString *logFileDirectory;
 
 
 @end
-

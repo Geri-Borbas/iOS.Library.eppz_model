@@ -13,12 +13,16 @@
 //
 
 #import "EPPZMapper+Default.h"
+#import "EPPZMapper+Accessors.h"
 
 
 @implementation EPPZMapper (Default)
 
 
 #pragma mark - Default mappers
+
++(instancetype)defaultMapper
+{ return [self new]; }
 
 -(id)init
 {

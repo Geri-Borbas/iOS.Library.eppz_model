@@ -14,6 +14,21 @@
 
 #import "EPPZMapper.h"
 
-
+/*!
+ 
+ This category overrides @c EPPZMapper @c -init method to provide default
+ values for every @c EPPZMapper instance.
+ 
+ */
 @interface EPPZMapper (Default)
+
+/*!
+ 
+ Actually an alias for @c +new. Every @c EPPZMapper instance gets initialized with default values below.
+ See implementation at https://github.com/eppz/eppz.model/blob/master/eppz!model/public/EPPZMapper%2BDefault.m
+ for actual default mappers.
+ 
+ */
++(instancetype)defaultMapper;
+
 @end

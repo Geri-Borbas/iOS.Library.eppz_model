@@ -1,8 +1,8 @@
 //
-//  EPPZValueReference.h
+//  NSObject+EPPZModel_internal.m
 //  eppz!model
 //
-//  Created by Borbás Geri on 01/05/14.
+//  Created by Borbás Geri on 12/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,33 +12,37 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "NSObject+EPPZModel_inspecting.h"
+#import "NSObject+EPPZModel.h"
+#import "NSObject+EPPZModel_internal.h"
+
+#import "EPPZMapper+Representation.h"
+#import "EPPZMapper+Reconstruction.h"
+#import "EPPZMapper+Configure.h"
 
 
-@interface EPPZModelTrack : NSObject
+@implementation NSObject (EPPZModel_internal)
 
 
-/*! The tracked model. */
-@property (nonatomic, weak) NSObject *model;
+#pragma mark - Representation
 
-/*! Replace the tracked reference of the model with @c masterModel. */
--(void)replaceModelWithMasterModel:(NSObject*) masterModel;
+-(NSDictionary*)_dictionaryRepresentationOfFields:(id) fields pool:(NSMutableArray*) pool
+{ return [self.class.mapper _dictionaryRepresentationOfModel:self fields:fields pool:pool]; }
 
 
-#pragma mark - Creation
+#pragma mark - Reconstruction 
 
-/*! Create a single track of the model. */
-+(instancetype)trackModel:(NSObject*) model;
++(instancetype)_instanceWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{
+    NSObject *instance = [self new];
+    [instance _initializeWithDictionary:dictionary tracker:tracker];
+    return instance;
+}
 
-/*! Create a track for the given model in the given owner. */
-+(instancetype)trackModel:(NSObject*) model
-                    owner:(NSObject*) owner
-                    field:(NSString*) field;
+-(void)_initializeWithDictionary:(NSDictionary*) dictionary tracker:(EPPZTracker*) tracker
+{ [self.class.mapper _initializeModel:self withDictionary:dictionary tracker:tracker]; }
 
-/*! Create a track for the given model in the given owner's collection (either @c NSArray, @c NSDictionary, @c NSSet or @c NSOrderedSet). */
-+(instancetype)trackModelInCollection:(NSObject*) model
-                                owner:(NSObject*) owner
-                                field:(NSString*) field;
-
+-(void)_configureWithDictionary:(NSDictionary*) dictionary pool:(NSMutableDictionary*) pool
+{ [self.class.mapper _configureModel:self withDictionary:dictionary pool:pool]; }
 
 @end
