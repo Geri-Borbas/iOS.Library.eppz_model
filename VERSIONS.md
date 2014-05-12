@@ -1,5 +1,8 @@
 ## Versions
 
+
+* 0.4.61 (prevent fast forward)
+
 * 0.4.6
 
     + Bump version number after merge [feature/reference-reconstructing]
