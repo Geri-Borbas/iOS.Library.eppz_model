@@ -1,8 +1,8 @@
 //
-//  EPPZModel.h
+//  City.h
 //  eppz!model
 //
-//  Created by Borbás Geri on 01/05/14.
+//  Created by Borbás Geri on 13/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,5 +12,17 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSObject+EPPZModel.h"
-#import "NSObject+EPPZModel_JSON.h"
+#import <Foundation/Foundation.h>
+#import "EPPZModel.h"
+#import "House.h"
+
+
+@interface City : NSObject
+
+    <EPPZModel>
+
+
+@property (nonatomic, strong) NSArray *houses;
+
+
+@end

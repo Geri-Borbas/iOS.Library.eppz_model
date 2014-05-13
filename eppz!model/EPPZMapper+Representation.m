@@ -52,8 +52,8 @@
         
     }
     
-    // Turn of object tracking if explicitly requested.
-    if (self.representReferences) pool = nil;
+    // Turn off object tracking if explicitly requested.
+    if (self.representEveryInstance) pool = nil;
     
     // If already represented (so tracked in pool).
     BOOL alreadyRepresented = [pool containsObject:model.modelId];

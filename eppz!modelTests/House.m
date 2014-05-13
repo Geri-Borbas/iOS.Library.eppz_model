@@ -1,8 +1,8 @@
 //
-//  EPPZModel.h
+//  House.m
 //  eppz!model
 //
-//  Created by Borbás Geri on 01/05/14.
+//  Created by Borbás Geri on 13/05/14.
 //  Copyright (c) 2010-2014 eppz! development, LLC.
 //
 //  donate! by following http://www.twitter.com/_eppz
@@ -12,5 +12,34 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSObject+EPPZModel.h"
-#import "NSObject+EPPZModel_JSON.h"
+#import "House.h"
+
+
+@implementation House
+
+
++(instancetype)houseInCity:(City*) city
+{
+    static int modelId;
+    modelId++;
+    
+    House *instance = [self new];
+    instance.modelId = [NSString stringWithFormat:@"h_%i", modelId];
+    instance.city = city;
+    return instance;
+}
+
+-(void)addCitizens:(NSArray*) citizens
+{
+    self.citizens = citizens;
+    [self.citizens enumerateObjectsUsingBlock:^(Citizen *eachCitizen, NSUInteger index, BOOL *stop)
+    {
+        NSMutableArray *neighbours = [NSMutableArray arrayWithArray:self.citizens];
+        [neighbours removeObject:eachCitizen]; // Everyone but him/her
+        eachCitizen.city = self.city;
+        eachCitizen.neighbours = neighbours;
+    }];
+}
+
+
+@end

@@ -17,7 +17,6 @@
 #import "EPPZModel.h"
 #import "EPPZMapper+Debug.h"
 
-#import "Player.h"
 #import "Player+TestPlayer.h"
 
 
@@ -73,14 +72,6 @@
 
 -(void)testDefaultMapper
 {
-    // Make sure that representing model attributes for classes is turned on.
-    [Player mapper].representModelAttributes = YES;
-    [GameProgress mapper].representModelAttributes = YES;
-    [Achivement mapper].representModelAttributes = YES;
-    
-    // Make sure that representing references is turned off.
-    [Player mapper].representReferences = NO;
-    
     // Set timezone to `UTC+0`.
     [Player mapper].timeZone = @"UTC";
     
@@ -314,6 +305,9 @@
     XCTAssertEqualObjects(dictionary.description,
                           assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
+    
+    // Turn back.
+    [Player mapper].representModelAttributes = YES;
 }
 
 -(void)testDictionaryRepresentationOfFieldsWithSubFields_1
@@ -344,6 +338,9 @@
     XCTAssertEqualObjects(dictionary.description,
                           assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
+    
+    // Turn back.
+    [Player mapper].representModelAttributes = YES;
 }
 
 -(void)testDictionaryRepresentationOfFieldsWithSubFields_2
@@ -354,7 +351,7 @@
     [Achivement mapper].representModelAttributes = NO;
     
     // Turn on representing references (as it is safe when there are no circular references among fields).
-    [Player mapper].representReferences = YES;
+    [Player mapper].representEveryInstance = YES;
     
     NSDictionary *dictionary = [self.player
                                 dictionaryRepresentationOfFields:@{
@@ -409,13 +406,14 @@
     XCTAssertEqualObjects(dictionary.description,
                           assertation.description,
                           @"Dictionary representation should be equal to asserted dictionary.");
+    
+    // Turn back.
+    [Player mapper].representModelAttributes = YES;
+    [GameProgress mapper].representModelAttributes = YES;
+    [Achivement mapper].representModelAttributes = YES;
+    [Player mapper].representEveryInstance = NO;
 }
 
-
--(void)testMami
-{
-    [Player mapper].writeRepresentationLog = YES;
-}
 
 @end
 

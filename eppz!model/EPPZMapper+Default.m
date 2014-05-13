@@ -32,7 +32,7 @@
         self.modelIdField = @"_id";
         self.classNameField = @"_type";
         self.representModelAttributes = YES;
-        self.representReferences = NO;
+        self.representEveryInstance = NO;
         
         // Date format.
         self.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";

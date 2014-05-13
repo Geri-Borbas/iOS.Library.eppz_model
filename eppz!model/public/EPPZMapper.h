@@ -94,7 +94,7 @@
  attributes (known as @c modelId and @c className).
  
  */
-@property (nonatomic) BOOL representReferences;
+@property (nonatomic) BOOL representEveryInstance;
 
 
 #pragma mark - Mappers
