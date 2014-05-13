@@ -1,6 +1,10 @@
 ## Versions
 
 
+* 0.5.0
+
+    + Bump version number after merge [tests/cross-references]
+
 * [tests/cross-references] 0.0.0
 
     + Tests for cross-references
