@@ -1,8 +1,0 @@
-{
-    "_id" = 47595184;
-    "_type" = GameProgress;
-    player =     {
-        "_id" = 47593824;
-        "_type" = Player;
-    };
-}

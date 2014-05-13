@@ -1,6 +1,16 @@
 ## Versions
 
 
+* [tests/cross-references] 0.0.0
+
+    + Tests for cross-references
+    + JSON serializing
+    + JSON file I/O
+
+* 0.4.61
+
+    + Bump version number after merge [feature/refactor-interfaces]
+
 * [feature/refactor-interfaces] 0.0.1
 
     + Hid more features from public (`(EPPZModel_inspecting)`, `EPPZLog` also became hidden)

@@ -77,7 +77,7 @@
     [Achivement mapper].representModelAttributes = YES;
     
     // Make sure that representing references is turned off.
-    [Player mapper].representReferences = NO;
+    [Player mapper].representEveryInstance = NO;
     
     NSDictionary *dictionary = self.player.dictionaryRepresentation;
     Player *player = [Player instanceWithDictionary:dictionary];
