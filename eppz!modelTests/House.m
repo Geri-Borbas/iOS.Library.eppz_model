@@ -35,7 +35,7 @@
     [self.citizens enumerateObjectsUsingBlock:^(Citizen *eachCitizen, NSUInteger index, BOOL *stop)
     {
         NSMutableArray *neighbours = [NSMutableArray arrayWithArray:self.citizens];
-        [neighbours removeObject:eachCitizen]; // Everyone but him/her
+        // [neighbours removeObject:eachCitizen]; // Everyone but him/her
         eachCitizen.city = self.city;
         eachCitizen.neighbours = neighbours;
     }];

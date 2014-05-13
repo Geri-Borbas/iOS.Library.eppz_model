@@ -1,6 +1,10 @@
 ## Doing
 
 
+* JSON documentation
+
+    + Finish documentation headers for JSON features
+
 * Test error cases
 
     + Arbitrary `NSDictionary`
