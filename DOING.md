@@ -5,6 +5,7 @@
 
     + Finish documentation headers for JSON features
 
+
 * Test error cases
 
     + Arbitrary `NSDictionary`
@@ -29,3 +30,8 @@
 * Configure
 
     + Could configure unknown objects actually
+    
+    
+* Issues
+
+    + custom `BOOL` getters does not get recognized during representing

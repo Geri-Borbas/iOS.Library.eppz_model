@@ -1,6 +1,11 @@
 ## Versions
 
 
+* 0.5.1
+
+    + Added a test suite that models a GitHub API user
+    + Added `NSURL` default mapper
+
 * 0.5.0
 
     + Bump version number after merge [tests/cross-references]

@@ -56,6 +56,9 @@
 		AED6ECFE191728B200B0BC55 /* GameProgress+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ECFD191728B200B0BC55 /* GameProgress+Comparison.m */; };
 		AED6ED01191728D900B0BC55 /* Player+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ED00191728D900B0BC55 /* Player+Comparison.m */; };
 		AED6ED0419172A8000B0BC55 /* UIView+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = AED6ED0319172A8000B0BC55 /* UIView+Comparison.m */; };
+		AED7E621192C17EB006B20C7 /* eppz.json in Resources */ = {isa = PBXBuildFile; fileRef = AED7E620192C17EB006B20C7 /* eppz.json */; };
+		AED7E623192C181E006B20C7 /* GitHub.m in Sources */ = {isa = PBXBuildFile; fileRef = AED7E622192C181E006B20C7 /* GitHub.m */; };
+		AED7E627192C184F006B20C7 /* GitHubUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AED7E626192C184F006B20C7 /* GitHubUser.m */; };
 		D03518B5911046448507B78B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C74A81B0F9B47768378D8B8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +181,10 @@
 		AED6ED00191728D900B0BC55 /* Player+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+Comparison.m"; sourceTree = "<group>"; };
 		AED6ED0219172A8000B0BC55 /* UIView+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Comparison.h"; sourceTree = "<group>"; };
 		AED6ED0319172A8000B0BC55 /* UIView+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Comparison.m"; sourceTree = "<group>"; };
+		AED7E620192C17EB006B20C7 /* eppz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = eppz.json; sourceTree = "<group>"; };
+		AED7E622192C181E006B20C7 /* GitHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHub.m; sourceTree = "<group>"; };
+		AED7E625192C184F006B20C7 /* GitHubUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUser.h; sourceTree = "<group>"; };
+		AED7E626192C184F006B20C7 /* GitHubUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +457,7 @@
 		AEAE039A1912A0F50055FC20 /* eppz!modelTests */ = {
 			isa = PBXGroup;
 			children = (
+				AED7E61F192C17D3006B20C7 /* GitHub */,
 				AEAFA57D191ADE53001FD2EA /* ! Errors and Warnings */,
 				AE4F25691919AE79004B2BD1 /* ! Value mapping */,
 				AE03E2A41921986000B6D4BB /* Cross-references */,
@@ -539,6 +547,25 @@
 			name = Comparison;
 			sourceTree = "<group>";
 		};
+		AED7E61F192C17D3006B20C7 /* GitHub */ = {
+			isa = PBXGroup;
+			children = (
+				AED7E624192C1841006B20C7 /* Models */,
+				AED7E622192C181E006B20C7 /* GitHub.m */,
+			);
+			name = GitHub;
+			sourceTree = "<group>";
+		};
+		AED7E624192C1841006B20C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AED7E625192C184F006B20C7 /* GitHubUser.h */,
+				AED7E626192C184F006B20C7 /* GitHubUser.m */,
+				AED7E620192C17EB006B20C7 /* eppz.json */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -614,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEAE039F1912A0F50055FC20 /* InfoPlist.strings in Resources */,
+				AED7E621192C17EB006B20C7 /* eppz.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,10 +741,12 @@
 			files = (
 				AE4F25651919A492004B2BD1 /* UIImage+Test.m in Sources */,
 				AEA5985419142C52000364F1 /* Player.m in Sources */,
+				AED7E627192C184F006B20C7 /* GitHubUser.m in Sources */,
 				AE03E2C01921A91300B6D4BB /* Citizen+Comparison.m in Sources */,
 				AED6ECFE191728B200B0BC55 /* GameProgress+Comparison.m in Sources */,
 				AED6ED01191728D900B0BC55 /* Player+Comparison.m in Sources */,
 				AE730A1F19131FA600731BBD /* DictionaryRepresentationTests.m in Sources */,
+				AED7E623192C181E006B20C7 /* GitHub.m in Sources */,
 				AEA5985119142C2C000364F1 /* GameProgress.m in Sources */,
 				AE4F25611919A2CD004B2BD1 /* DictionaryReconstructionTests.m in Sources */,
 				AEC0FEF81916AB6400578148 /* Achivement.m in Sources */,

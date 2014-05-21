@@ -71,6 +71,13 @@
                                 return [self.dateFormatter dateFromString:representedValue];
                             }],
           
+          @"NSURL" : [ValueMapper type:@"NSURL"
+                           representer:^id(id runtimeValue) {
+                               return [runtimeValue absoluteString];
+                           } reconstructor:^id(id representedValue) {
+                               return [NSURL URLWithString:representedValue];
+                           }],
+          
           // CoreData.
           
           @"CGPoint" : [ValueMapper type:@"CGPoint"

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "eppz!model"
-  s.version          = "0.4.6"
+  s.version          = "0.5.1"
   s.summary          = "A model layer for the everydays. Extreme simplicity (while fully customizable)."
   s.homepage         = "https://github.com/eppz/eppz.model"
   s.license = { :type => 'MIT', :file => 'LICENSE' }

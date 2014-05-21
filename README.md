@@ -44,9 +44,23 @@ mappers can be plugged in at runtime to fit every need.
 > See every feature in action in test suites.
 
 
+## Names
+
+Some library notions you can bump into while browsing class headers:
+
+>    * **Field**
+>        + is actually a property name
+>    * **Field mapper**
+>        + converts runtime property names to representation property names (and vica-versa)
+>    * **Value mapper**
+>        + converts runtime values to representation values (and vica-versa)
+>    * **Mapper**
+>        + is an object containing a field mapper, value mappers and some additional mapping property (like dateFormatter).
+
+
 ## Basic usage
 
-If you just need a dictionary representation of an objecy, or object graph, you can simply mark the model as an `<EPPZModel>`, and done.
+If you just need a dictionary representation of an object, or object graph, you can simply mark the model as an `<EPPZModel>`, and done.
 
 ```Objective-C
 // Model.
